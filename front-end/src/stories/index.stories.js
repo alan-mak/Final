@@ -26,4 +26,6 @@ storiesOf('Button', module)
     }/>)
   .add("I need help!", () => <Button message="I need Help!" />)
   .add("I can help!", () => <Button message="I can help!" />)
- 
+
+storiesOf('Nav', module)
+  .add('Nav', () => <Nav />);
