@@ -1,11 +1,11 @@
 import './App.css';
 import React from 'react';
 import Button from './components/Button'
-import Input from './components/Input'
 import Image from './components/Image'
 import DropDown from './components/DropDown'
 import TextBox from './components/TextBox'
 import Landing from './components/Landing/Index';
+import { Login } from "./components/Login"
 import useApplicationData from './hooks/useApplicationData'
 
 const App = () => {
@@ -19,6 +19,7 @@ const App = () => {
     <div className="App">
       <h1>Only Grans</h1>
       <Landing />
+      <Login />
     </div>
   );
 }
