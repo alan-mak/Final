@@ -28,6 +28,7 @@ export default function Index(props) {
         <TextBox textbox="Helpmii-HelpU connects helpful  neighbors with neighbors who need help. Signup now   and see what's up in your community. Quit being such  a slacker."/>
       </div>
     </div>
+    </div>
   )
 }
 

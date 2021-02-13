@@ -7,6 +7,7 @@ export default function Button (props) {
   let buttonClass = classNames("button")
   console.log(props)
   return (
+
     <button 
       className={buttonClass}
       onClick={props.onClick}
@@ -14,5 +15,6 @@ export default function Button (props) {
     >
       {props.message}
     </button>
+
   )
 }

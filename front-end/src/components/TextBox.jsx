@@ -2,6 +2,9 @@ import "./TextBox.scss"
 
 export default function TextBox (props) {
   return (
-    <p>{props.textbox}</p>
+
+    <h1>{props.message}</h1>
+
+
   )
 }
