@@ -1,11 +1,14 @@
 import './App.css';
 import React from 'react';
 import Button from './components/Button'
-import Input from './components/Input'
 import Image from './components/Image'
 import DropDown from './components/DropDown'
 import TextBox from './components/TextBox'
+
 import Index from './components/Landing/Index';
+
+import { Login } from "./components/Login"
+
 import useApplicationData from './hooks/useApplicationData'
 import useVisualMode from './hooks/useVisualMode';
 
@@ -21,7 +24,7 @@ const App = () => {
   return (
     <div className="App">
       <h1>Only Grans</h1>
-      
+    
       <Index transition={transition}/>
     </div>
   );
