@@ -1,6 +1,7 @@
 import React from 'react';
 import useVisualMode from '../../hooks/useVisualMode';
 import Button from '../Button';
+import AfterLogin from './AfterLogin';
 
 
 export default function Landing(props) {
@@ -11,6 +12,7 @@ export default function Landing(props) {
     <div>
       <Button message="Login" />
       <Button message="Signup" />
+      <AfterLogin />
     </div>
   )
 }
