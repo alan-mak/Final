@@ -5,9 +5,6 @@
 
 # Read more: https://github.com/cyu/rack-cors
 
-# config/initializers/cors.rb
-# client running on port 3000
-
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins 'localhost:3000'
