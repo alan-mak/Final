@@ -5,8 +5,8 @@ import Button from '../Button';
 export default function AfterLogin() {
   return (
     <div id="afterlogin">
-    <Button message="I can Help!" />
-    <Button message="I need Help!" />
+    <Button id="offer-help" message="I can Help!" />
+    <Button id="get-help" message="I need Help!" />
     </div>
   )
 }

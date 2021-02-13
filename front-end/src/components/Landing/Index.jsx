@@ -2,6 +2,7 @@ import React from 'react';
 import useVisualMode from '../../hooks/useVisualMode';
 import AfterLogin from './AfterLogin';
 import Landing from './Landing'
+import '../Landing/styles.scss';
 
 const LANDING = "LANDING";
 const AFTER = "AFTER";
