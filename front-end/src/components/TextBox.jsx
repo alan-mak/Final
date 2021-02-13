@@ -1,6 +1,7 @@
-export default function TextBox (props) {
+import "./TextBox.scss"
 
+export default function TextBox (props) {
   return (
-    <h1>{props.textbox}</h1>
+    <p>{props.textbox}</p>
   )
 }
