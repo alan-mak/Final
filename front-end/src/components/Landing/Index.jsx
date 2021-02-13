@@ -1,17 +1,18 @@
 import React from 'react';
 import useVisualMode from '../../hooks/useVisualMode';
-import Button from '../Button';
 import AfterLogin from './AfterLogin';
+import Landing from './Landing'
 
+const LANDING = "LANDING";
+const AFTER = "AFTER";
 
-export default function Landing(props) {
-  const { mode } = useVisualMode()
+export default function Index(props) {
+  const { mode, transition } = useVisualMode()
 
 
   return (
     <div>
-      <Button message="Login" />
-      <Button message="Signup" />
+      <Landing />
       <AfterLogin />
     </div>
   )
