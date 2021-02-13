@@ -1,5 +1,33 @@
 @import '../styles/variables.scss';
 
-div {
-  // font-family: $font-logo;
+section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+
+  .logo {
+    font-family: $font-logo;
+    font-size: 28px;
+    font-weight: 900;
+  }
+
+  .logo-red {
+    color: red;
+  }
+
+  a,
+  a:visited,
+  a:hover,
+  a:active {
+    font-weight: 500;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .nav-right {
+    a {
+      margin-left: 20px;
+    }
+  }
 }
