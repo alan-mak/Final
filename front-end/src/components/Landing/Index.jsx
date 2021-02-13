@@ -6,6 +6,8 @@ import '../Landing/styles.scss';
 
 const LANDING = "LANDING";
 const AFTER = "AFTER";
+import Button from '../Button';
+import TextBox from '../TextBox'
 
 export default function Index(props) {
   console.log('index props', props);
@@ -21,6 +23,10 @@ export default function Index(props) {
       <Landing onFinish={() => transition(AFTER)}/>}
       {mode === AFTER && 
        <AfterLogin />}
+    <div class="container">
+      <div>
+        <TextBox textbox="Helpmii-HelpU connects helpful  neighbors with neighbors who need help. Signup now   and see what's up in your community. Quit being such  a slacker."/>
+      </div>
     </div>
   )
 }
