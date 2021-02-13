@@ -14,5 +14,13 @@
   border-color: $black;
   color: $black;
   background-color: transparent;
+  margin-top: 2rem;
+
+  &:hover {
+    background-color: #A5B6F2;
+    color: #fff;
+    border-color: #fff;
+    text-shadow: #000 0px 0px 3px;
+  }
 }
 

@@ -12,9 +12,9 @@ export class Login extends React.Component {
   render() {
     return (
       <div className="base-container">
-        <h1>LOGIN</h1>
+        <h1>Login</h1>
         <div className="content">
-          <form>
+          <form autoComplete="off">
             <div className="form-group">
               <label>EMAIL: </label>
               <input type="email"   placeholder="MScott@dunder.com"  name="email" />
