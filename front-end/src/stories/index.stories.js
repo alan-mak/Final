@@ -7,6 +7,8 @@ import '../index.scss';
 
 import Button from '../components/Button';
 import Nav from '../components/Nav';
+import { Login, SignUp } from "../components/Login"
+
 
 // export default {
 //   title: 'Button',
@@ -26,4 +28,11 @@ storiesOf('Button', module)
     }/>)
   .add("I need help!", () => <Button message="I need Help!" />)
   .add("I can help!", () => <Button message="I can help!" />)
- 
+
+storiesOf('Nav', module)
+  .add('Nav', () => <Nav />);
+
+storiesOf('Login', module)
+    .add('Login', () => <Login />)
+storiesOf('Sign Up', module)
+  .add('Sign Up', () => <SignUp />)
