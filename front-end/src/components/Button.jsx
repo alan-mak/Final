@@ -10,6 +10,7 @@ export default function Button (props) {
     <button 
       className={buttonClass}
       onClick={props.onClick}
+      id={props.id}
     >
       {props.message}
     </button>
