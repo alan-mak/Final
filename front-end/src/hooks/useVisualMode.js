@@ -6,6 +6,7 @@ export default function useVisualMode(inputMode){
 
   function transition(input) {
     setMode(input);
+    console.log('clicked');
   };
 
 

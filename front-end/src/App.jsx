@@ -5,20 +5,24 @@ import Input from './components/Input'
 import Image from './components/Image'
 import DropDown from './components/DropDown'
 import TextBox from './components/TextBox'
-import Landing from './components/Landing/Index';
+import Index from './components/Landing/Index';
 import useApplicationData from './hooks/useApplicationData'
+import useVisualMode from './hooks/useVisualMode';
 
 const App = () => {
   const {
     state,
     dispatch
   } = useApplicationData();
+  const { mode, transition } = useVisualMode()
+
   const userList = state.users.map((user) => (<li key={user.id} > {user.first_name} {user.last_name} {user.email} </li>
   ));
   return (
     <div className="App">
       <h1>Only Grans</h1>
-      <Landing />
+      
+      <Index transition={transition}/>
     </div>
   );
 }

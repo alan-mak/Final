@@ -7,13 +7,19 @@ const LANDING = "LANDING";
 const AFTER = "AFTER";
 
 export default function Index(props) {
-  const { mode, transition } = useVisualMode()
-
+  console.log('index props', props);
+  const { mode, transition } = useVisualMode(
+    LANDING
+  )
+  // {mode === EMPTY && 
+  //   <Empty onAdd={() => transition(CREATE)} />}
 
   return (
     <div>
-      <Landing />
-      <AfterLogin />
+      {mode === LANDING &&
+      <Landing onFinish={() => transition(AFTER)}/>}
+      {mode === AFTER && 
+       <AfterLogin />}
     </div>
   )
 }
