@@ -5,7 +5,6 @@ import useVisualMode from '../../hooks/useVisualMode';
 const AFTER = "AFTER";
 
 export default function Landing (props) {
-  console.log("landing props", props);
 
 
   return (
