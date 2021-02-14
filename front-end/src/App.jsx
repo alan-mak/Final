@@ -4,6 +4,7 @@ import Button from './components/Button'
 import Image from './components/Image'
 import DropDown from './components/DropDown'
 import TextBox from './components/TextBox'
+import Main from './components/TaskItem/Main';
 
 import Index from './components/Landing/Index';
 
@@ -25,7 +26,8 @@ const App = () => {
     <div className="App">
       <h1>Only Grans</h1>
     
-      <Index transition={transition}/>
+      {/* <Index transition={transition}/> */}
+      <Main />
     </div>
   );
 }
