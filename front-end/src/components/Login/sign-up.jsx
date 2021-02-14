@@ -27,7 +27,7 @@ export class SignUp extends React.Component {
               <label>CONFIRM PASSWORD: </label>
               <input type="password" placeholder="Re-Enter Your Password" name="confPassword" />
             </div>
-            <Button message="Register"/>
+            <Button message="Sign Up"/>
           </form>
         </div>
       </div>
