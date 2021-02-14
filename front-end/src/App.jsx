@@ -27,13 +27,7 @@ const App = () => {
     <div className="App">
       <h1>Only Grans</h1>
     
-      {/* <Index transition={transition}/> */}
-      <Main />
-      {/* <Show 
-      title="Shovel my driveway plz"
-      description="My eyes are dim. I cannot see. My eyesight is bad. My eyes are poor. My nose is knackered."
-      time_to_complete="50"
-      /> */}
+      <Index transition={transition}/>
     </div>
   );
 }
