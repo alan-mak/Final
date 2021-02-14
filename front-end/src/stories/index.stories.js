@@ -9,7 +9,7 @@ import '../components/Landing/styles.scss';
 import Button from '../components/Button';
 import Nav from '../components/Nav';
 
-import Show from '../components/TaskItem/Show'
+// import Show from '../components/TaskItem/Show'
 
 import { Login, SignUp } from "../components/Login"
 
@@ -36,12 +36,12 @@ storiesOf('Button', module)
 
 
 
-  storiesOf('TaskItem', module)
-  .add('Show', () => <Show 
-  title="Shovel my driveway plz"
-  description="My eyes are dim. I cannot see. My eyesight is bad. My eyes are poor. My nose is knackered."
-  time_to_complete="50"
-  />)
+  // storiesOf('TaskItem', module)
+  // .add('Show', () => <Show 
+  // title="Shovel my driveway plz"
+  // description="My eyes are dim. I cannot see. My eyesight is bad. My eyes are poor. My nose is knackered."
+  // time_to_complete="50"
+  // />)
 
   
  
@@ -50,8 +50,8 @@ storiesOf('Button', module)
 storiesOf('Nav', module)
   .add('Nav', () => <Nav />);
 
-storiesOf('Login', module)
-    .add('Login', () => <Login />)
-storiesOf('Sign Up', module)
+storiesOf('Login Signup', module)
+  .add('Login', () => <Login />)
   .add('Sign Up', () => <SignUp />)
+  // .add('Sign Up/Login', () => <LogSign />)
 
