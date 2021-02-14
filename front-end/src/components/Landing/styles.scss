@@ -26,7 +26,19 @@ $color-button-green: #5cb85c;
   color: white;
   border-color: white;
 }
+#login-button {
+  background-color: $color-button-green;
+  color: white;
+}
+#signup-button {
+  background-color: #5bc0de;
+  color: white;
+}
 
+.button:hover {
+  -webkit-box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23); 
+  box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23);
+}
 #separator {
 border: 0.5px dashed black;
 width: 80vw
