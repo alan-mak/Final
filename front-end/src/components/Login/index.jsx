@@ -3,6 +3,8 @@ import React from "react";
 import { Login } from "./log-in"
 import { SignUp } from "./sign-up"
 
+import "./styles.scss"
+
 export class LogSign extends React.Component {
   constructor(props) {
     super(props);

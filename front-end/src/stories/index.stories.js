@@ -11,7 +11,7 @@ import Nav from '../components/Nav';
 
 // import Show from '../components/TaskItem/Show'
 
-import { Login, SignUp } from "../components/Login"
+import { LogSign } from "../components/Login"
 
 
 
@@ -51,7 +51,5 @@ storiesOf('Nav', module)
   .add('Nav', () => <Nav />);
 
 storiesOf('Login Signup', module)
-  .add('Login', () => <Login />)
-  .add('Sign Up', () => <SignUp />)
-  // .add('Sign Up/Login', () => <LogSign />)
+  .add('Sign Up/Login', () => <LogSign />)
 
