@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import React from 'react';
 import Button from './components/Button'
 import Image from './components/Image'
@@ -40,23 +40,25 @@ class App extends React.Component {
       isLogin: true,
     }
   }
+  
   changeState() {
     const { isLogin } = this.state;
     if(isLogin) {
-      this.rightSide.classList.remove("right");
-      this.rightSide.classList.add("left")
+      this.side.classList.remove("right");
+      this.side.classList.add("left")
     } else {
-      this.rightSide.classList.remove("left")
-      this.rightSide.classList.add("right")
+      this.side.classList.remove("left")
+      this.side.classList.add("right")
     }
     this.setState(prevState => ({ isLogin: !prevState.isLogin }))
   }
 
   render() {
     const { isLogin } = this.state;
-    const current = isLogin ? "SignUp" : "Login";
+    const current = isLogin ? "Sign Up Here" : "Log In Here";
     const currentActive = isLogin ? "login" : "signUp"
     return (
+      <div className="Title"><h1>Help Me Help You</h1>
       <div className="App">
         <div className="login">
           <div className="container" ref={ref => (this.container = ref)}>
@@ -67,22 +69,24 @@ class App extends React.Component {
             <SignUp baseRef={ref => (this.current = ref)}/>
           )}
         </div>
-        <RightSide 
+        <Side 
           current={current}
           currentActive={currentActive}
-          baseRef={ref => (this.rightSide = ref)}
+          baseRef={ref => (this.side = ref)}
           onClick={this.changeState.bind(this)}/>
       </div>
+    </div>
     </div>
     )
   }
 }
 
-const RightSide = props => {
+const Side = props => {
   return (
-    <div className="right-side" ref={props.baseRef} onClick={props.onClick}>
+    // This initializes the two wings
+    <div className="right-side right" ref={props.baseRef} onClick={props.onClick}>
       <div className="inner-container">
-        <div className="text">{props.current}</div>
+        <div className="option">{props.current}</div>
       </div>
     </div>
   )}
