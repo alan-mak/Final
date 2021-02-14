@@ -1,0 +1,42 @@
+$color-button-green: #5cb85c;
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+}
+
+#task-description {
+  height: 150px;
+}
+
+#task-wrapper {
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#task-accept {
+  background-color: $color-button-green;
+  color: white;
+}
+
+#task-clarify {
+  background-color: #5bc0de;
+  color: white;
+}
+
+#task-accept:hover {
+  -webkit-box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23); 
+  box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23);
+}
+
+#task-clarify:hover {
+  -webkit-box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23); 
+  box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23);
+}
+
+
+

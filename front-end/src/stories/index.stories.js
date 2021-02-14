@@ -4,10 +4,15 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import '../index.scss';
+import '../components/Landing/styles.scss';
 
 import Button from '../components/Button';
 import Nav from '../components/Nav';
+
+import Show from '../components/TaskItem/Show'
+
 import { Login, SignUp } from "../components/Login"
+
 
 
 // export default {
@@ -26,8 +31,21 @@ storiesOf('Button', module)
     message="signup"
     onConfirm={action("onSignup")
     }/>)
-  .add("I need help!", () => <Button message="I need Help!" />)
-  .add("I can help!", () => <Button message="I can help!" />)
+  .add("I need help!", () => <Button id="help-button" message="I need Help!" />)
+  .add("I can help!", () => <Button id="help-button" message="I can help!" />)
+
+
+
+  storiesOf('TaskItem', module)
+  .add('Show', () => <Show 
+  title="Shovel my driveway plz"
+  description="My eyes are dim. I cannot see. My eyesight is bad. My eyes are poor. My nose is knackered."
+  time_to_complete="50"
+  />)
+
+  
+ 
+
 
 storiesOf('Nav', module)
   .add('Nav', () => <Nav />);
@@ -36,3 +54,4 @@ storiesOf('Login', module)
     .add('Login', () => <Login />)
 storiesOf('Sign Up', module)
   .add('Sign Up', () => <SignUp />)
+

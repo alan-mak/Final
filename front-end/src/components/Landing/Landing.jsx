@@ -9,8 +9,8 @@ export default function Landing (props) {
 
   return (
     <div>
-    <Button message="Login" onClick={props.onFinish}/>
-    <Button message="Signup" />
+    <Button id="login-button" message="Login" onClick={props.onFinish}/>
+    <Button id="signup-button" message="Signup" />
     </div>
   )
 }
