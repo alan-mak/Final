@@ -5,6 +5,7 @@ import Image from './components/Image'
 import DropDown from './components/DropDown'
 import TextBox from './components/TextBox'
 import Main from './components/TaskItem/Main';
+import Show from './components/TaskItem/Show';
 
 import Index from './components/Landing/Index';
 
@@ -28,6 +29,11 @@ const App = () => {
     
       {/* <Index transition={transition}/> */}
       <Main />
+      {/* <Show 
+      title="Shovel my driveway plz"
+      description="My eyes are dim. I cannot see. My eyesight is bad. My eyes are poor. My nose is knackered."
+      time_to_complete="50"
+      /> */}
     </div>
   );
 }

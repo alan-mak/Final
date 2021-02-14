@@ -31,5 +31,11 @@ storiesOf('Button', module)
 
 
   storiesOf('TaskItem', module)
-  .add('Show', () => <Show />)
+  .add('Show', () => <Show 
+  title="Shovel my driveway plz"
+  description="My eyes are dim. I cannot see. My eyesight is bad. My eyes are poor. My nose is knackered."
+  time_to_complete="50"
+  />)
+
+  
  

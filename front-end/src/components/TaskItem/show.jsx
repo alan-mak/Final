@@ -1,12 +1,18 @@
 import React from 'react';
 import TextBox from '../TextBox';
+import Button from '../Button';
+import '../TaskItem/TaskItem.scss'
 
-export default function Show () {
+export default function Show (props) {
   return (
-    <div>
-      <img/>
-    <TextBox message="I am user name" />
-  <TextBox message="I am user decription, lorem ipsum descriptionlorem ipsum descriptionlorem ipsum description.lorem ipsum description lorem ipsum description lorem ipsum description lorem ipsum description" />
+    <div id="show-wrapper">
+   <TextBox message={props.title} />
+   <p>{props.description}</p>
+   <p>Estimated time: {props.time_to_complete}</p>
+   <div id="button-group" >
+   <Button message="Accept!" />
+   <Button message="Clarify" />
+   </div>
   </div>
   )
 }

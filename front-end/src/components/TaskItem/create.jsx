@@ -5,7 +5,7 @@ export default function Create () {
   return (
     <div>
       <TextBox message="Fill out this simple form and we'll find people to help!" />
-    <form id="create-profile">
+    <form id="task-wrapper">
       <div className="form-group">
         <label for="title">What Do you need done? </label>
         <input type="text" placeholder="Shovelling, errands run etc." name="title" />
