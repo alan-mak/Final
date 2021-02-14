@@ -1,3 +1,5 @@
+$color-button-green: #5cb85c;
+
 #afterlogin{
   display: flex;
   flex-direction: column;
@@ -11,7 +13,7 @@
 #help-button {
   width: 60vw;
   height: 20vh;
-  font-size: 24px;
+  font-size: 30px;
   border-radius: 15px;
   transition: color 0.5s;
   transition: background-color 0.5s;
@@ -20,10 +22,9 @@
 #help-button:hover {
   -webkit-box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23); 
   box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23);
-  background-color: #5cb85c;
+  background-color: $color-button-green;
   color: white;
   border-color: white;
-
 }
 
 #separator {

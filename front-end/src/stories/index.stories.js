@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import '../index.scss';
+import '../components/Landing/styles.scss';
 
 import Button from '../components/Button';
 import Nav from '../components/Nav';
@@ -25,8 +26,8 @@ storiesOf('Button', module)
     message="signup"
     onConfirm={action("onSignup")
     }/>)
-  .add("I need help!", () => <Button message="I need Help!" />)
-  .add("I can help!", () => <Button message="I can help!" />)
+  .add("I need help!", () => <Button id="help-button" message="I need Help!" />)
+  .add("I can help!", () => <Button id="help-button" message="I can help!" />)
 
 
 

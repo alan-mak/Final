@@ -1,7 +1,7 @@
 import React from 'react';
 import TextBox from '../TextBox';
 import Button from '../Button';
-import '../TaskItem/TaskItem.scss'
+import '../TaskItem/TaskItem.scss';
 
 export default function Show (props) {
   return (
@@ -10,8 +10,8 @@ export default function Show (props) {
    <p>{props.description}</p>
    <p>Estimated time: {props.time_to_complete}</p>
    <div id="button-group" >
-   <Button message="Accept!" />
-   <Button message="Clarify" />
+   <Button id="task-accept" message="Accept!" />
+   <Button id="task-clarify" message="Clarify" />
    </div>
   </div>
   )
