@@ -6,6 +6,7 @@ import DropDown from './components/DropDown'
 import TextBox from './components/TextBox'
 import Main from './components/TaskItem/Main';
 import Show from './components/TaskItem/Show';
+import Create from './components/TaskItem/Create';
 
 import Index from './components/Landing/Index';
 

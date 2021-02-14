@@ -1,5 +1,6 @@
 import React from 'react';
 import TextBox from '../TextBox';
+import Button from '../Button';
 
 export default function Create () {
   return (
@@ -18,6 +19,7 @@ export default function Create () {
         <label for="time">Please estimate how many minutes the the task should take</label>
         <input type="number" placeholder="123412341235123412412" size="5" name="time_to_complete"/>
       </div>
+      <Button message="Post Task!" />
     </form>
     </div>
   )
