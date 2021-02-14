@@ -11,7 +11,7 @@ export class Login extends React.Component {
 
   render() {
     return (
-      <div className="base-container">
+      <div className="base-container" ref={this.props.baseRef}>
         <h1>Login</h1>
         <div className="content">
           <form autoComplete="off">

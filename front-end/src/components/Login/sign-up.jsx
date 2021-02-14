@@ -11,7 +11,7 @@ export class SignUp extends React.Component {
 
   render() {
     return (
-      <div className="base-container">
+      <div className="base-container" ref={this.props.baseRef}>
         <h1>Sign Up</h1>
         <div className="content">
           <form autoComplete="off">
