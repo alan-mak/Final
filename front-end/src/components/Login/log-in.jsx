@@ -23,7 +23,7 @@ export class Login extends React.Component {
               <label>PASSWORD: </label>
               <input type="password" placeholder="Type Your Password" name="password" />
             </div>
-            <Button message="Log In"/>
+            <Button type="submit" message="Log In"/>
           </form>
         </div>
       </div>

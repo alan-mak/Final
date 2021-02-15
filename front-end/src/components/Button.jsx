@@ -11,6 +11,7 @@ export default function Button (props) {
       className={buttonClass}
       onClick={props.onClick}
       id={props.id}
+      type={props.type}
     >
       {props.message}
     </button>
