@@ -90,7 +90,7 @@ export default function SignUp(props) {
             value={input.postCode}
             onChange={handleInput}/>
           </div>
-          <Button type="submit" message="Sign Up" onClick={validate}/>
+          <Button type="submit" message="Sign Up" onClick={console.log(props.createUser)}/>
         </form>
       </div>
     </div>

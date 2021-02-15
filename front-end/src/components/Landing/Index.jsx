@@ -18,8 +18,8 @@ export default function Index(props) {
 
   return (
     <div>
-      {mode === LANDING &&
-      <Landing onFinish={() => transition(AFTER)}/>}
+      {/* {mode === LANDING &&
+      <Landing onFinish={() => transition(AFTER)}/>} */}
       {mode === AFTER && 
        <AfterLogin />}
     </div>

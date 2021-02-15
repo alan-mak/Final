@@ -29,9 +29,14 @@ const useApplicationData = () => {
           .catch((err) => console.log(err));
   }, []);
 
+  function createUser(user) {
+    return axios.put(`/api/users`, { user })
+  }
+
   return {
       state,
       dispatch,
+      createUser
   };
 };
 

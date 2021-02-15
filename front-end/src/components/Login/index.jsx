@@ -38,7 +38,7 @@ export class LogSign extends React.Component {
             <Login baseRef={ref => (this.current = ref)}/>
           )}
           {!isLogin && (
-            <SignUp baseRef={ref => (this.current = ref)}/>
+            <SignUp createUser={this.props.createUser} baseRef={ref => (this.current = ref)}/>
           )}
         </div>
         <Side 

@@ -18,7 +18,8 @@ import useVisualMode from './hooks/useVisualMode';
 const App = () => {
   const {
     state,
-    dispatch
+    dispatch,
+    createUser
   } = useApplicationData();
   const { mode, transition } = useVisualMode()
 
@@ -26,7 +27,8 @@ const App = () => {
   ));
   return (
     <div className="App">
-      <LogSign />
+      <LogSign 
+      createUser={createUser}/>
       <Index transition={transition}/>
     </div>
   );
