@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Login } from "./log-in"
+import Login from "./log-in"
 import SignUp from "./sign-up"
 
 import "./styles.scss"
