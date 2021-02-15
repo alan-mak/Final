@@ -1,4 +1,5 @@
 export const SET_USERS = 'SET_USERS';
+export const SET_TASKS = 'SET_TASKS';
 
 const dataReducer = (state, action) => {
     switch (action.type) {
@@ -8,6 +9,12 @@ const dataReducer = (state, action) => {
                 users: action.users,
                     loading: false,
             };
+            case SET_TASKS:
+                return {
+                    ...state,
+                    tasks: action.tasks,
+                    loading: false,
+                };
         default:
             return state;
     }
