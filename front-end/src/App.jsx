@@ -18,16 +18,18 @@ import useVisualMode from './hooks/useVisualMode';
 const App = () => {
   const {
     state,
-    dispatch
+    dispatch,
+    tasks
   } = useApplicationData();
   const { mode, transition } = useVisualMode()
-
+  const taskList = tasks.map((task) => (<li key={task.id} > {task.title} </li>));
   const userList = state.users.map((user) => (<li key={user.id} > {user.first_name} {user.last_name} {user.email} </li>
   ));
   return (
     <div className="App">
       <LogSign />
       <Index transition={transition}/>
+      {/* {taskList} */}
     </div>
   );
 }

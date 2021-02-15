@@ -1,6 +1,7 @@
 import {
   useEffect,
-  useReducer
+  useReducer,
+  useState
 } from 'react';
 import dataReducer, {
   SET_USERS
@@ -12,6 +13,8 @@ const useApplicationData = () => {
       users: [],
       loading: true,
   });
+
+  const [tasks, setTasks] = useState([]);
   useEffect(() => {
       axios({
               method: 'GET',
@@ -29,9 +32,19 @@ const useApplicationData = () => {
           .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    axios.get('/api/tasks')
+    .then((tasks) => {
+      setTasks(tasks);
+      console.log(tasks)
+    })
+    .catch((err) => console.log(err));
+  }, [])
+
   return {
       state,
       dispatch,
+      tasks
   };
 };
 
