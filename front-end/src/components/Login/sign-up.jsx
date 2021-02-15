@@ -8,7 +8,6 @@ export default function SignUp(props) {
   const [input, setInput] = useState({
     email:"",
     password:"",
-    confPassword:"",
     street:"",
     city:"",
     province:"",
@@ -90,7 +89,7 @@ export default function SignUp(props) {
             value={input.postCode}
             onChange={handleInput}/>
           </div>
-          <Button type="submit" message="Sign Up" onClick={console.log(props.createUser)}/>
+          <Button type="submit" message="Sign Up" onClick={() => props.createUser(input)}/>
         </form>
       </div>
     </div>

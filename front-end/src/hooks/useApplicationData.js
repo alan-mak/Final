@@ -30,7 +30,7 @@ const useApplicationData = () => {
   }, []);
 
   function createUser(user) {
-    return axios.put(`/api/users`, { user })
+    return axios.post(`/api/users`, { user })
   }
 
   return {
