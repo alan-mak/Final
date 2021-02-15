@@ -4,6 +4,7 @@ import Button from './components/Button'
 import Image from './components/Image'
 import DropDown from './components/DropDown'
 import TextBox from './components/TextBox'
+import TaskList from './components/TaskList';
 // import Main from './components/TaskItem/Main';
 // import Show from './components/TaskItem/Show';
 // import Create from './components/TaskItem/Create';
@@ -22,14 +23,13 @@ const App = () => {
     tasks
   } = useApplicationData();
   const { mode, transition } = useVisualMode()
-  const taskList = state.tasks.map((task) => (<li key={task.id} > {task.name} {task.description}</li>));
   const userList = state.users.map((user) => (<li key={user.id} > {user.first_name} {user.last_name} {user.email} </li>
   ));
   return (
     <div className="App">
       <LogSign />
-      <Index transition={transition}/>
-      {taskList}
+      {/* <Index transition={transition}/> */}
+      <TaskList />
     </div>
   );
 }
