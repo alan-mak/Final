@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Login } from "./log-in"
-import { SignUp } from "./sign-up"
+import SignUp from "./sign-up"
 
 import "./styles.scss"
 
