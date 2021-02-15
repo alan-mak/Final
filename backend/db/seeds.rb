@@ -28,4 +28,16 @@ User.destroy_all
   )
 end
 
+## TASKS
+
+puts "Re-creating Tasks ..."
+
+Task.destroy_all
+
+Task.create!(
+  name: "Shovelling the driveway",
+  description: "I need help shovelling my driveway before 2pm today.",
+  recipient_id: 1,
+)
+
 puts "DONE!"

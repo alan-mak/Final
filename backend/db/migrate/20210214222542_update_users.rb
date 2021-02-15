@@ -9,6 +9,7 @@ class UpdateUsers < ActiveRecord::Migration[6.1]
     add_column :users, :post_code, :string, null: false
   
     create_table :tasks do |t|
+      # t.references :user, foreign_key: true
       t.string :name, null: false
       t.text :description, null: false
       t.datetime :accepted_at
