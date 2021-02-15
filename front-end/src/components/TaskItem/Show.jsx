@@ -2,8 +2,10 @@ import React from 'react';
 import TextBox from '../TextBox';
 import Button from '../Button';
 import '../TaskItem/TaskItem.scss';
+import useApplicationData from '../../hooks/useApplicationData';
 
 export default function Show (props) {
+  const { state } = useApplicationData();
   return (
     <div id="show-wrapper">
    <TextBox message={props.title} />
