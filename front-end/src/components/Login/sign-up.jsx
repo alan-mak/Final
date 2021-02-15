@@ -27,6 +27,22 @@ export class SignUp extends React.Component {
               <label>CONFIRM PASSWORD: </label>
               <input type="password" placeholder="Re-Enter Your Password" name="confPassword" />
             </div>
+            <div className="form-group">
+              <label>STREET: </label>
+              <input type="text" placeholder="123 Street" name="street" />
+            </div>
+            <div className="form-group">
+              <label>CITY: </label>
+              <input type="text" placeholder="Toronto" name="city" />
+            </div>
+            <div className="form-group">
+              <label>PROVINCE: </label>
+              <input type="text" placeholder="Ontario" name="province" />
+            </div>
+            <div className="form-group">
+              <label>POSTAL CODE: </label>
+              <input type="text" placeholder="A1B2C3" name="post_code" />
+            </div>
             <Button message="Sign Up"/>
           </form>
         </div>
