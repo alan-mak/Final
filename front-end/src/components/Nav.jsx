@@ -6,7 +6,7 @@ import './Nav.scss';
 
 export default function Nav(props) {
   return (
-    <section>
+    <section id='nav-section'>
       <Link to={'/choice'}>
         <div className={classNames('logo')}>
           <div>
