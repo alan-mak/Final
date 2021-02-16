@@ -8,16 +8,16 @@ export default function Nav(props) {
   return (
     <section id='nav-section'>
       <Link to={'/choice'}>
-        <div className={classNames('logo')}>
+        <div className='logo'>
           <div>
-            <span className={classNames('logo-red')}>help</span>Me
+            <span className='logo-red'>help</span>Me
           </div>
           <div>
-            help<span className={classNames('logo-red')}>You</span>
+            help<span className='logo-red'>You</span>
           </div>
         </div>
       </Link>
-      <div className={classNames('nav-right')}>
+      <div className='nav-right'>
         <Link to={'/choice'}>Log in</Link>
       </div>
     </section>

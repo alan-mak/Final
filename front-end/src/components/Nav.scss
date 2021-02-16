@@ -1,15 +1,17 @@
 @import '../styles/variables.scss';
 
 #nav-section {
+  z-index: 4;
+  position: absolute;
+  top: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  max-width: 768px;
-  margin: auto;
+  width: 100vw;
 
   .logo {
     font-family: $font-logo;
-    font-size: 28px;
+    font-size: 78px;
     font-weight: 900;
   }
 
@@ -27,8 +29,13 @@
   }
 
   .nav-right {
+    position: absolute;
+    right: 70px;
+
     a {
-      margin-left: 20px;
+      font-size: 28px;
+      padding: 5px;
+      border: 3px solid black;
     }
   }
 }
