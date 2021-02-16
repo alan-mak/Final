@@ -8,7 +8,7 @@ export default function AfterLogin() {
     <div id='after-login'>
       <div id='color-overlay'>
         <section id='after-login-links-container'>
-          <h1>What would you like to do today?</h1>
+          <h1 id='after-login-links-label'>How are you feeling today?</h1>
           <div id='after-login-links'>
             <Link to={'/tasks/new'} className='after-login-link'>
               I Need Help!

@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 #after-login {
   position: relative;
   display: flex;
@@ -12,26 +14,30 @@
       z-index: 3;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 400px;
+      height: 280px;
       width: 600px;
+      color: $primary-text-color;
       background-color: white;
       box-shadow: 0 5px 7px 2px #3a3a3a;
 
-      .after-login-link,
-      .after-login-link:visited,
-      .after-login-link:hover,
-      .after-login-link:active {
-        text-decoration: none;
-        border-radius: 1.6em;
-        border: none;
-        background-color: #378ae2;
+      #after-login-links-label {
+        font-size: 33px;
+        margin: 75px 0 50px;
+      }
+
+      .after-login-link {
         margin: 0.9em;
         padding: 0.9em 3.4em;
-        color: white;
-        font-size: 0.8em;
+        text-decoration: none;
+        color: black;
+        background-color: $divider-color;
+        font-size: 20px;
         font-weight: bold;
+
+        &:hover {
+          background-color: $primary-color;
+        }
       }
     }
   }
@@ -40,7 +46,7 @@
     position: absolute;
     z-index: 2;
     content: '';
-    background-color: rgb(38, 192, 38);
+    background-color: $primary-color;
     background-size: cover;
     background-repeat: no-repeat;
     display: block;
