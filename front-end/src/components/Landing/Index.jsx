@@ -13,20 +13,11 @@ export default function Index(props) {
   const { mode, transition } = useVisualMode(
     LANDING
   )
-  // {mode === EMPTY && 
-  //   <Empty onAdd={() => transition(CREATE)} />}
 
   return (
     <div>
-      {mode === LANDING &&
-      <Landing onFinish={() => transition(AFTER)}/>}
       {mode === AFTER && 
        <AfterLogin />}
-    <div class="container">
-      {/* <div>
-        <TextBox message="Helpmii-HelpU connects helpful  neighbors with neighbors who need help. Signup now   and see what's up in your community. Quit being such  a slacker."/>
-      </div> */}
-    </div>
     </div>
   )
 }

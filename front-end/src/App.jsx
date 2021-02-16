@@ -22,7 +22,8 @@ import './App.scss';
 import AfterLogin from './components/Landing/AfterLogin';
 
 const App = () => {
-  const { state, dispatch, tasks } = useApplicationData();
+
+  const { state, dispatch, createUser } = useApplicationData();
   const { mode, transition } = useVisualMode();
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem

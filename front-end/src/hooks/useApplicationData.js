@@ -50,10 +50,15 @@ const useApplicationData = () => {
   })
   .catch((err) => console.log(err));
   }, [])
+  
+  function createUser(user) {
+    return axios.post(`/api/users`, { user })
+  }
 
   return {
       state,
-      dispatch
+      dispatch,
+      createUser
   };
 };
 
