@@ -15,7 +15,7 @@ const io = require('socket.io')(http,  {
   }
 });
 
-const STATIC_CHANNELS = [{name: 'global_notifications', id: 1}, {name: 'global_chat', id: 2}];
+const STATIC_CHANNELS = [{name: 'global_notifications', id: 1, sockets: []}, {name: 'global_chat', id: 2, sockets: []}];
 
 app.use(cors());
 
@@ -52,6 +52,10 @@ io.on('connection', function(socket) {
     return id;
   })
 })
+
+io.on('send-message', message => {
+  io.emit('message', message);
+});
 
 app.get('/getChannels', (req, res) => {
   res.json({
