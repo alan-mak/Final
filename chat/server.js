@@ -1,39 +1,80 @@
-const express = require('express');
 const bodyParser = require('body-parser');
 const pgp = require('pg-promise');
-//const db = pgp('postgres://connormackay@localhost:3000/messages'); //Test database, not for production
 
-const app = express();
+const app = require('express')();
+const http = require('http').createServer(app);
+const cors = require('cors');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+const PORT = 8080;
 
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
-
-
-const server = app.listen(3003, () => {
-  console.log('server is running on port', server.address().port);
+const io = require('socket.io')(http,  {
+  cors: {
+    origin: 'http://localhost:3002',
+    methods: ['GET', 'POST']
+  }
 });
 
-io.on('connection', () => {
+const STATIC_CHANNELS = [{
+  name: 'global_notifications', id: 1, sockets: []},
+ {name: 'global_chat', id: 2, sockets: []}];
+
+app.use(cors());
+
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3002');
+  next();
+})
+
+http.listen(PORT, () => {
+  console.log(`listening on ${PORT}`);
+});
+
+
+io.on('connection', function(socket) {
   console.log('a user is connected');
+  socket.emit('connection', null);
+  socket.on('send-message', message => {
+    console.log('message recieved! ', message)
+    io.emit('message', message);
+  });
+  socket.on('channel-join', id => {
+    console.log('channel joined!', id);
+    STATIC_CHANNELS.forEach(c => {
+      if (c.id === id) {
+        if (c.sockets.indexOf(socket.id) == (-1)) {
+          c.sockets.push(socket.id);
+          io.emit('channel', c);
+        }
+      } else {
+        let index = c.sockets.indexOf(socket.id);
+        if (index != (-1)) {
+          c.sockets.splice(index, 1);
+          io.emit('channel', c);
+        }
+      }
+    });
+    return id;
+  })
 })
 
-app.use(express.static(__dirname));
-
-app.get('/messages', (req, res) => {
-  MessageChannel.find({}, (err, messages) => {
-    res.send(messages);
-  })
+io.on('send-message', message => {
+  console.log('message recieved! ', message)
+  io.emit('message', message);
 });
 
-app.post('/messages', (req, res) => {
-  let message = new Message(req.body);
-  message.save((err) => {
-    if (err)
-    sendStatus(500);
-    res.sendStatus(200);
+app.get('/getChannels', (req, res) => {
+  res.json({
+    channels: STATIC_CHANNELS
   })
 })
+
+// Implement Join room event listener
+// user a / user b send emit 'join-room', job_id
+// socket. emit to one socket
+// io. emit to everyone
+// io.to ***** for connecting user-user 
+
+
+
 
