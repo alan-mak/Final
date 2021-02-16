@@ -1,12 +1,10 @@
 const express = require('express');
 const app = express();
 
-
+const useMessagingData = () => {
+  const messages = [];
 function sendMessage (message) {
-  app.post('/api/messages', (message) {
-    
-  })
-  getMessages();
+  messages.push(message);
 }
 
 function getMessages() {
@@ -16,7 +14,12 @@ function getMessages() {
 }
 
 function addMessage(message) {
-  render(); {
-   ' <p>{message}</p>'
-  }
+}
+
+return {
+  sendMessage,
+  getMessages,
+  addMessage
+}
+
 }

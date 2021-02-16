@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import socketClient from 'socket.io-client';
 
 import React from 'react';
 import Button from './components/Button';
@@ -10,6 +11,7 @@ import TaskListItem from './components/TaskListItem';
 // import Main from './components/TaskItem/Main';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
+import Chat from './components/Chat/Chat';
 
 import Index from './components/Landing/Index';
 
@@ -21,7 +23,14 @@ import useVisualMode from './hooks/useVisualMode';
 import './App.scss';
 import AfterLogin from './components/Landing/AfterLogin';
 
+
+const SERVER = "http://localhost:8080";
+
 const App = () => {
+  const socket = socketClient(SERVER);
+      socket.on('connection', () => {
+        console.log(`I'm connected with the back-end`);
+      });
 
   const { state, dispatch, createUser } = useApplicationData();
   const { mode, transition } = useVisualMode();
@@ -57,6 +66,9 @@ const App = () => {
           <Route path='/tasks'>
             {/* <Index transition={transition}/> */}
             <div className='task-list'>{parsedTaskList}</div>
+          </Route>
+          <Route path="/chat">
+            <Chat />
           </Route>
           <Route path='/'>
             <LogSign createUser={createUser}/>
