@@ -8,9 +8,13 @@ import './AfterLogin.scss';
 
 export default function AfterLogin() {
   return (
-    <div id='afterlogin'>
-      <Link to={'/tasks/new'}>Help Me!</Link>
-      <Link to={'/tasks'}>Help You!</Link>
+    <div id='after-login'>
+      <Link to={'/tasks/new'} className='after-login-link'>
+        Help Me!
+      </Link>
+      <Link to={'/tasks'} className='after-login-link'>
+        Help You!
+      </Link>
     </div>
   );
 }
