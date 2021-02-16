@@ -59,7 +59,7 @@ const App = () => {
             <div className='task-list'>{parsedTaskList}</div>
           </Route>
           <Route path='/'>
-            <LogSign />
+            <LogSign createUser={createUser}/>
           </Route>
         </Switch>
       </div>
