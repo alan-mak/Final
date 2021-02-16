@@ -16,6 +16,8 @@ import useApplicationData from './hooks/useApplicationData'
 import useVisualMode from './hooks/useVisualMode';
 
 const App = () => {
+  const LOGSIGN = "LOGSIGN";
+  const LANDING = "LANDING";
   const {
     state,
     dispatch,
@@ -28,7 +30,8 @@ const App = () => {
   return (
     <div className="App">
       <LogSign 
-      createUser={createUser}/>
+        createUser={createUser}
+      />
       <Index transition={transition}/>
     </div>
   );

@@ -25,6 +25,8 @@ export default function SignUp(props) {
     if (!input.name || !input.email || !input.password || !input.street || !input.city || !input.province || !input.post_code) {
       setError("ERROR: Cannot be blank")
       return
+    } else {
+      props.createUser(input)
     }
   };
 
@@ -100,7 +102,7 @@ export default function SignUp(props) {
             value={input.postCode}
             onChange={handleInput}/>
           </div>
-          <Button type="submit" message="Sign Up" onClick={() => props.createUser(input)}/>
+          <Button type="submit" message="Sign Up" onClick={validate}/>
         </form>
       </div>
     </div>
