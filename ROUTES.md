@@ -11,7 +11,6 @@ Login             -> /login
 Signup            -> /signup
 After Login       -> /choice
 New Task          -> /tasks/new
-Show Task         -> /tasks/show
 AboutMe           -> /:user_id/about
 Task              -> /tasks/:task_id
 Show all Task     -> /tasks
