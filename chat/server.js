@@ -4,8 +4,7 @@ const pgp = require('pg-promise');
 const app = require('express')();
 const http = require('http').createServer(app);
 const cors = require('cors');
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: false}));
+
 const PORT = 8080;
 
 const io = require('socket.io')(http,  {
