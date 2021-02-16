@@ -6,6 +6,7 @@ import "./sign-up.scss"
 export default function SignUp(props) {
 
   const [input, setInput] = useState({
+    name:"",
     email:"",
     password:"",
     street:"",
@@ -21,7 +22,7 @@ export default function SignUp(props) {
   });
 
   function validate() {
-    if (!input.email || !input.password || !input.street || !input.city || !input.province || !input.post_code) {
+    if (!input.name || !input.email || !input.password || !input.street || !input.city || !input.province || !input.post_code) {
       setError("ERROR: Cannot be blank")
       return
     }
@@ -33,6 +34,16 @@ export default function SignUp(props) {
       <div className="content">
         <form autoComplete="off" onSubmit={event => event.preventDefault()}>
           <section>{error}</section>
+          <div className="form-group">
+            <label>NAME: </label>
+            <input
+            type="text"
+            placeholder="Michael Scott"
+            name="name"
+            value={input.name}
+            onChange={handleInput}
+            />
+          </div>
           <div className="form-group">
             <label>EMAIL: </label>
             <input
