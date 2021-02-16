@@ -1,9 +1,20 @@
-import React from "react";
+import React, { userState } from "react";
 
 import Button from "../Button";
 import "./log-in.scss"
 
 export default function Login(props){
+
+  const [input, setInput] = useState({
+    email:"",
+    password:""
+  })
+  const [error, setError] = useState("");
+
+  const handleInput = event => setInput({
+    ...input,
+    [event.currentTarget.name]: event.currentTarget.value
+  });
 
   return (
     <div className="base-container">
