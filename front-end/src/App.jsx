@@ -11,8 +11,6 @@ import TaskListItem from './components/TaskListItem';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
 
-import Index from './components/Landing/Index';
-
 import { LogSign } from './components/Login';
 
 import useApplicationData from './hooks/useApplicationData';
@@ -22,7 +20,6 @@ import './App.scss';
 import AfterLogin from './components/Landing/AfterLogin';
 
 const App = () => {
-
   const { state, dispatch, createUser } = useApplicationData();
   const { mode, transition } = useVisualMode();
   const parsedTaskList = state.tasks.map(task => (
@@ -55,11 +52,10 @@ const App = () => {
             <Show />
           </Route>
           <Route path='/tasks'>
-            {/* <Index transition={transition}/> */}
             <div className='task-list'>{parsedTaskList}</div>
           </Route>
           <Route path='/'>
-            <LogSign createUser={createUser}/>
+            <LogSign createUser={createUser} />
           </Route>
         </Switch>
       </div>
