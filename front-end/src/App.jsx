@@ -23,7 +23,7 @@ import AfterLogin from './components/Landing/AfterLogin';
 
 const App = () => {
 
-  const { state, dispatch, createUser } = useApplicationData();
+  const { state, dispatch, createUser, loginUser } = useApplicationData();
   const { mode, transition } = useVisualMode();
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
@@ -59,7 +59,7 @@ const App = () => {
             <div className='task-list'>{parsedTaskList}</div>
           </Route>
           <Route path='/'>
-            <LogSign createUser={createUser}/>
+            <LogSign createUser={createUser} loginUser={loginUser}/>
           </Route>
         </Switch>
       </div>
