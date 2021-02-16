@@ -20,7 +20,7 @@ User.destroy_all
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.free_email,
-    password: "test",
+    password_digest: "test",
     street: "#{Faker::Address.building_number} #{Faker::Address.street_name} #{Faker::Address.street_suffix}",
     city: Faker::Address.city,
     province: Faker::Address.state_abbr,

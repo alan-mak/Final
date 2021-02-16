@@ -20,6 +20,8 @@ export default function Login(props){
     if (!input.email || !input.password) {
       setError("ERROR: Cannot be blank")
       return
+    } else {
+      props.loginUser(input)
     }
   }
 
