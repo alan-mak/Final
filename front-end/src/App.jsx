@@ -11,8 +11,6 @@ import TaskListItem from './components/TaskListItem';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
 
-import Index from './components/Landing/Index';
-
 import { LogSign } from './components/Login';
 
 import useApplicationData from './hooks/useApplicationData';
@@ -20,6 +18,7 @@ import useVisualMode from './hooks/useVisualMode';
 
 import './App.scss';
 import AfterLogin from './components/Landing/AfterLogin';
+import Nav from './components/Nav';
 
 const App = () => {
 
@@ -45,17 +44,22 @@ const App = () => {
       <div className='App'>
         <Switch>
           <Route path='/choice'>
+            <Nav />
             <AfterLogin />
           </Route>
           <Route path='/tasks/new'>
+            <Nav />
             <Create />
           </Route>
-          <Route path='/:user_id/about'></Route>
+          <Route path='/:user_id/about'>
+            <Nav />
+          </Route>
           <Route path='/tasks/:task_id'>
+            <Nav />
             <Show />
           </Route>
           <Route path='/tasks'>
-            {/* <Index transition={transition}/> */}
+            <Nav />
             <div className='task-list'>{parsedTaskList}</div>
           </Route>
           <Route path='/'>
