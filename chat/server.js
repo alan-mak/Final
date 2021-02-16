@@ -15,7 +15,7 @@ const io = require('socket.io')(http,  {
   }
 });
 
-const STATIC_CHANNELS = ['global_notifications', 'global_chat'];
+const STATIC_CHANNELS = [{name: 'global_notifications', id: 1}, {name: 'global_chat', id: 2}];
 
 app.use(cors());
 
@@ -33,6 +33,30 @@ http.listen(PORT, () => {
 io.on('connection', function(socket) {
   console.log('a user is connected');
   socket.emit('connection', null);
+  socket.on('channel-join', id => {
+    console.log('channel joined!', id);
+    STATIC_CHANNELS.forEach(c => {
+      if (c.id === id) {
+        if (c.sockets.indexOf(socket.id) == (-1)) {
+          c.sockets.push(socket.id);
+          io.emit('channel', c);
+        }
+      } else {
+        let index = c.sockets.indexOf(socket.id);
+        if (index != (-1)) {
+          c.sockets.splice(index, 1);
+          io.emit('channel', c);
+        }
+      }
+    });
+    return id;
+  })
+})
+
+app.get('/getChannels', (req, res) => {
+  res.json({
+    channels: STATIC_CHANNELS
+  })
 })
 
 

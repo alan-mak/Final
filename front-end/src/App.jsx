@@ -11,7 +11,7 @@ import TaskListItem from './components/TaskListItem';
 // import Main from './components/TaskItem/Main';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
-import Chat from './components/Chat/Chat';
+import { Chat } from './components/Chat/Chat';
 
 import Index from './components/Landing/Index';
 
