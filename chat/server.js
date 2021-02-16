@@ -15,7 +15,9 @@ const io = require('socket.io')(http,  {
   }
 });
 
-const STATIC_CHANNELS = [{name: 'global_notifications', id: 1, sockets: []}, {name: 'global_chat', id: 2, sockets: []}];
+const STATIC_CHANNELS = [{
+  name: 'global_notifications', id: 1, sockets: []},
+ {name: 'global_chat', id: 2, sockets: []}];
 
 app.use(cors());
 

@@ -34,7 +34,7 @@ export class Chat extends React.Component {
         this.setState({ channels });
     });
     socket.on('message', message => {
-      let channels = this.state.channels
+      let channels = [...this.state.channels]
       channels.forEach(c => {
         if (c.id === message.channel_id) {
           if (!c.messages) {
@@ -44,7 +44,7 @@ export class Chat extends React.Component {
           }
         }
       });
-      this.setState({ channels });
+      this.setState({ ...this.state, channels });
     });
     this.socket = socket;
   }

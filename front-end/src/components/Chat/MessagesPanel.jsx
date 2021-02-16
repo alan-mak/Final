@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Message } from './Message';
 import Button from '../Button';
 
@@ -17,16 +17,18 @@ export class MessagesPanel extends React.Component {
   
   render() {
     let list = <div>No messages available</div>
+    
     if (this.props.channel && this.props.channel.messages) {
-      list = this.props.channel.messages.map(m => <Message key={m.id} senderName={m.senderName} id={m.id} text={m.text} ></Message>);
+      list = this.props.channel.messages.map(m => <Message key={m.id} senderName={m.senderName} id={m.id} text={m.text} />);
     }
+  
     return (
       <div className="messages-panel">
       <div className="messages-list">{list}</div>
       {this.props.channel &&
       <div className="messages-input">
       <input type="text" onChange={this.handleInput} value ={this.state.input_value} />
-      <Button message="send" onClick={this.send} />
+      <button  onClick={this.send}>Send</button>
       </div>
     }
       </div>
