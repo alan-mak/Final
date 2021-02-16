@@ -52,13 +52,20 @@ const useApplicationData = () => {
   }, [])
   
   function createUser(user) {
-    return axios.post(`/api/users`, { user })
+    return axios.post(`/api/users/register`, { user })
+    .catch(err => console.log(err))
+  }
+
+  function loginUser(user) {
+    return axios.post(`/api/users/login`, { user })
+    .catch(err => console.log(err))
   }
 
   return {
       state,
       dispatch,
-      createUser
+      createUser,
+      loginUser
   };
 };
 
