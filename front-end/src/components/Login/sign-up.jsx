@@ -11,7 +11,7 @@ export default function SignUp(props) {
     street:"",
     city:"",
     province:"",
-    postCode:"",
+    post_code:"",
   });
   const [error, setError] = useState("");
 
@@ -21,7 +21,7 @@ export default function SignUp(props) {
   });
 
   function validate() {
-    if (!input.email || !input.password || !input.street || !input.city || !input.province || !input.postCode) {
+    if (!input.email || !input.password || !input.street || !input.city || !input.province || !input.post_code) {
       setError("ERROR: Cannot be blank")
       return
     }
@@ -85,7 +85,7 @@ export default function SignUp(props) {
             <input
             type="text"
             placeholder="A1B2C3"
-            name="postCode"
+            name="post_code"
             value={input.postCode}
             onChange={handleInput}/>
           </div>
