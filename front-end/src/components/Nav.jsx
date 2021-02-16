@@ -1,12 +1,13 @@
 import React from 'react';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 
 import './Nav.scss';
 
 export default function Nav(props) {
   return (
     <section>
-      <a href='#'>
+      <Link to={'/choice'}>
         <div className={classNames('logo')}>
           <div>
             <span className={classNames('logo-red')}>help</span>Me
@@ -15,10 +16,9 @@ export default function Nav(props) {
             help<span className={classNames('logo-red')}>You</span>
           </div>
         </div>
-      </a>
+      </Link>
       <div className={classNames('nav-right')}>
-        <a href='#'>Sign up</a>
-        <a href='#'>Log in</a>
+        <Link to={'/choice'}>Log in</Link>
       </div>
     </section>
   );

@@ -18,6 +18,7 @@ import useVisualMode from './hooks/useVisualMode';
 
 import './App.scss';
 import AfterLogin from './components/Landing/AfterLogin';
+import Nav from './components/Nav';
 
 const App = () => {
   const { state, dispatch, createUser } = useApplicationData();
@@ -42,16 +43,22 @@ const App = () => {
       <div className='App'>
         <Switch>
           <Route path='/choice'>
+            <Nav />
             <AfterLogin />
           </Route>
           <Route path='/tasks/new'>
+            <Nav />
             <Create />
           </Route>
-          <Route path='/:user_id/about'></Route>
+          <Route path='/:user_id/about'>
+            <Nav />
+          </Route>
           <Route path='/tasks/:task_id'>
+            <Nav />
             <Show />
           </Route>
           <Route path='/tasks'>
+            <Nav />
             <div className='task-list'>{parsedTaskList}</div>
           </Route>
           <Route path='/'>
