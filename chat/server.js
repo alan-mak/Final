@@ -35,6 +35,10 @@ http.listen(PORT, () => {
 io.on('connection', function(socket) {
   console.log('a user is connected');
   socket.emit('connection', null);
+  socket.on('send-message', message => {
+    console.log('message recieved! ', message)
+    io.emit('message', message);
+  });
   socket.on('channel-join', id => {
     console.log('channel joined!', id);
     STATIC_CHANNELS.forEach(c => {
@@ -56,6 +60,7 @@ io.on('connection', function(socket) {
 })
 
 io.on('send-message', message => {
+  console.log('message recieved! ', message)
   io.emit('message', message);
 });
 
@@ -65,6 +70,11 @@ app.get('/getChannels', (req, res) => {
   })
 })
 
+// Implement Join room event listener
+// user a / user b send emit 'join-room', job_id
+// socket. emit to one socket
+// io. emit to everyone
+// io.to ***** for connecting user-user 
 
 
 
