@@ -1,4 +1,4 @@
-import React, { userState } from "react";
+import React, { useState } from "react";
 
 import Button from "../Button";
 import "./log-in.scss"
@@ -16,20 +16,35 @@ export default function Login(props){
     [event.currentTarget.name]: event.currentTarget.value
   });
 
+  function validate() {
+    if (!input.email || !input.password) {
+      setError("ERROR: Cannot be blank")
+      return
+    }
+  }
+
   return (
     <div className="base-container">
       <h1>Login</h1>
       <div className="content">
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+          <section>{error}</section>
           <div className="form-group">
             <label>EMAIL: </label>
-            <input type="email"   placeholder="MScott@dunder.com"  name="email" />
+            <input
+            type="email"
+            placeholder="MScott@dunder.com"
+            name="email"
+            onChange={handleInput}/>
           </div>
           <div className="form-group">
             <label>PASSWORD: </label>
-            <input type="password" placeholder="Type Your Password" name="password" />
+            <input type="password"
+            placeholder="Type Your Password"
+            name="password"
+            onChange={handleInput}/>
           </div>
-          <Button type="submit" message="Log In"/>
+          <Button type="submit" message="Log In" onClick={validate}/>
         </form>
       </div>
     </div>
