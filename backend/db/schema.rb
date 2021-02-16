@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_033422) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", null: false
-    t.string "hashed_password", null: false
+    t.string "password_digest", null: false
     t.string "street", null: false
     t.string "city", null: false
     t.string "province", null: false
