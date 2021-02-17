@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ChannelList } from './ChannelList';
 import  { MessagesPanel } from './MessagesPanel';
 import socketClient from 'socket.io-client';
+import './Chat.scss';
 
 
 export class Chat extends React.Component {
@@ -35,7 +36,7 @@ export class Chat extends React.Component {
     });
     socket.on('message', message => {
       console.log("message is here: ", message);
-      let channels = [...this.state.channels]
+      let channels = [...this.props.rooms]
       channels.forEach(c => {
         if (c.id === message.channel_id) {
           if (!c.messages) {
@@ -62,21 +63,27 @@ export class Chat extends React.Component {
 }
 
 handleChannelSelect = id => {
-  let channel = this.state.channels.find(c => {
+  let channel = this.props.rooms.find(c => {
     return c.id === id
   })
   this.setState({ channel });
   this.socket.emit('channel-join', id, ack => {
-
   });
-  
+
+  const handleChannelCreate = (id, name) => {
+    let channels = [...this.state.channels]
+    let newChannel = {id: id, name: name, socket:[]}
+    channels.push(newChannel);
+    this.setState({ channels })
+    this.props.setRooms({ channels })
+  };
 
 
 }
   render() {
     return (
       <div className='chat-app'>
-      <ChannelList channels={this.state.channels} onselectchannel={this.handleChannelSelect} />
+      <ChannelList channels={this.props.rooms} onselectchannel={this.handleChannelSelect} />
       <MessagesPanel onsendmessage={this.handleSendMessage} channel={this.state.channel} />
       </div>
     )
