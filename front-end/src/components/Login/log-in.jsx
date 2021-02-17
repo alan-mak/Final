@@ -5,8 +5,14 @@ import './log-in.scss';
 
 export default function Login(props) {
   const [input, setInput] = useState({
-    email: '',
-    password: '',
+    email:"",
+    password:""
+  })
+  const [error, setError] = useState([]);
+
+  const handleInput = event => setInput({
+    ...input,
+    [event.currentTarget.name]: event.currentTarget.value
   });
   const [error, setError] = useState('');
 
@@ -17,17 +23,12 @@ export default function Login(props) {
     });
 
   function validate() {
-    if (!input.email || !input.password) {
-<<<<<<< HEAD
-      setError('ERROR: Cannot be blank');
-      return;
-=======
-      setError("ERROR: Cannot be blank")
-      return
-    } else {
-      props.loginUser(input)
->>>>>>> 9b57f728ccdfe0bdcac9d02c3d05a21f87522ab3
-    }
+    setError([])
+    props.loginUser(input).then(res => {
+      if (res.data.status === 500) {
+      setError(<li>{res.data.message}</li>)
+      }
+    }).catch(err => console.log(err))
   }
 
   return (

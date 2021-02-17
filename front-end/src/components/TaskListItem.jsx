@@ -11,7 +11,7 @@ export default function TaskListItem (props) {
         <p>{props.description}</p>
         <p>{props.setter}</p>
         <Button message="Accept!"/>
-        <Button message="Clarify!"/>
+        <Button message="Clarify!" onClick={() => props.onAccept(props.setter, props.name)}/>
       </li>
     </a>
     </div>
