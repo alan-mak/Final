@@ -14,13 +14,6 @@ export default function Login(props) {
     ...input,
     [event.currentTarget.name]: event.currentTarget.value
   });
-  const [error, setError] = useState('');
-
-  const handleInput = event =>
-    setInput({
-      ...input,
-      [event.currentTarget.name]: event.currentTarget.value,
-    });
 
   function validate() {
     setError([])
