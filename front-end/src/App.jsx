@@ -29,11 +29,6 @@ const App = () => {
   const socket = socketClient(SERVER);
       socket.on('connection', () => {
         console.log(`I'm connected with the back-end`);
-//         io.on("connection", socket => {
-//   socket.on("private message", (anotherSocketId, msg) => {
-//     socket.to(anotherSocketId).emit("private message", socket.id, msg);
-//   });
-// });
       });
       
   const handleChannelCreate = (id, name) => {
@@ -45,13 +40,12 @@ const App = () => {
       setRooms( channels );
     } else {
       let newChannel = {id: id, name: name, socket:[]}
-      // channels.push(newChannel);
       console.log('after Channel push: ', newChannel);
       setRooms([...rooms, newChannel ]);
     }
   }
 
-  const { state, dispatch, createUser, loginUser } = useApplicationData();
+  const { state, dispatch, createUser, loginUser, acceptTask } = useApplicationData();
   const { mode, transition } = useVisualMode();
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
@@ -61,6 +55,7 @@ const App = () => {
       setter={task.recipient_id}
       onAccept={handleChannelCreate}
       setRooms={setRooms}
+      onTake={acceptTask}
     />
   ));
   

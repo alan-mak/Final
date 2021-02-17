@@ -6,14 +6,12 @@ import '../components/tasks.scss';
 export default function TaskListItem (props) {
   return (
     <div className="task-item">
-    <a>
       <li>{props.name}
         <p>{props.description}</p>
         <p>{props.setter}</p>
-        <Button message="Accept!"/>
+        <Button message="Accept!" onClick={() => props.onTake(props.setter, 1)}/>
         <Button message="Clarify!" onClick={() => props.onAccept(props.setter, props.name)}/>
       </li>
-    </a>
     </div>
   )
 }
