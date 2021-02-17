@@ -40,7 +40,7 @@ export default function SignUp(props) {
 
   return (
     <div className='base-container'>
-      <h1>Sign Up</h1>
+      <h2>Sign Up</h2>
       <div className='content'>
         <form autoComplete='off' onSubmit={event => event.preventDefault()}>
           <section>{error}</section>
@@ -51,6 +51,7 @@ export default function SignUp(props) {
               name='name'
               value={input.name}
               onChange={handleInput}
+              autofocus='true'
             />
           </div>
           <div className='form-group'>
@@ -107,7 +108,12 @@ export default function SignUp(props) {
               onChange={handleInput}
             />
           </div>
-          <Button type='submit' message='Sign Up' onClick={validate} />
+          <Button
+            type='submit'
+            message='Sign Up'
+            onClick={validate}
+            buttonClass='sign-up-button'
+          />
         </form>
       </div>
     </div>

@@ -25,13 +25,18 @@ export default function Login(props) {
 
   return (
     <div className='base-container'>
-      <h1>Login</h1>
+      <h2>Login</h2>
       <div className='content'>
         <form autoComplete='off' onSubmit={event => event.preventDefault()}>
           <section>{error}</section>
           <div className='form-group'>
             <label>Email </label>
-            <input type='email' name='email' onChange={handleInput} />
+            <input
+              type='email'
+              name='email'
+              onChange={handleInput}
+              autofocus='true'
+            />
           </div>
           <div className='form-group'>
             <label>Password </label>
