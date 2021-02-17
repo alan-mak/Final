@@ -1,110 +1,115 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Button from "../Button";
-import "./sign-up.scss"
+import Button from '../Button';
+import './sign-up.scss';
 
 export default function SignUp(props) {
-
   const [input, setInput] = useState({
-    name:"",
-    email:"",
-    password:"",
-    street:"",
-    city:"",
-    province:"",
-    post_code:"",
+    name: '',
+    email: '',
+    password: '',
+    street: '',
+    city: '',
+    province: '',
+    post_code: '',
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
-  const handleInput = event => setInput({
-    ...input,
-    [event.currentTarget.name]: event.currentTarget.value
-  });
+  const handleInput = event =>
+    setInput({
+      ...input,
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
 
   function validate() {
-    if (!input.name || !input.email || !input.password || !input.street || !input.city || !input.province || !input.post_code) {
-      setError("ERROR: Cannot be blank")
-      return
+    if (
+      !input.name ||
+      !input.email ||
+      !input.password ||
+      !input.street ||
+      !input.city ||
+      !input.province ||
+      !input.post_code
+    ) {
+      setError('ERROR: Cannot be blank');
+      return;
     } else {
-      props.createUser(input)
+      props.createUser(input);
     }
-  };
+  }
 
   return (
-    <div className="base-container" >
+    <div className='base-container'>
       <h1>Sign Up</h1>
-      <div className="content">
-        <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+      <div className='content'>
+        <form autoComplete='off' onSubmit={event => event.preventDefault()}>
           <section>{error}</section>
-          <div className="form-group">
-            <label>NAME: </label>
+          <div className='form-group'>
+            <label>Name </label>
             <input
-            type="text"
-            placeholder="Michael Scott"
-            name="name"
-            value={input.name}
-            onChange={handleInput}
+              type='text'
+              name='name'
+              value={input.name}
+              onChange={handleInput}
             />
           </div>
-          <div className="form-group">
-            <label>EMAIL: </label>
+          <div className='form-group'>
+            <label>Email </label>
             <input
-            type="email"
-            placeholder="MScott@dunder.com"
-            name="email"
-            value={input.email}
-            onChange={handleInput}
+              type='email'
+              name='email'
+              value={input.email}
+              onChange={handleInput}
             />
           </div>
-          <div className="form-group">
-            <label>PASSWORD: </label>
+          <div className='form-group'>
+            <label>Password </label>
             <input
-            type="password"
-            placeholder="Type Your Password"
-            name="password"
-            value={input.password}
-            onChange={handleInput}
+              type='password'
+              name='password'
+              value={input.password}
+              onChange={handleInput}
             />
           </div>
-          <div className="form-group">
-            <label>STREET: </label>
+          <div className='form-group'>
+            <label>Street </label>
             <input
-            type="text"
-            placeholder="123 Street"
-            name="street"
-            value={input.street}
-            onChange={handleInput}
+              type='text'
+              name='street'
+              value={input.street}
+              onChange={handleInput}
             />
           </div>
-          <div className="form-group">
-            <label>CITY: </label>
+          <div className='form-group'>
+            <label>City </label>
             <input
-            type="text"
-            placeholder="Toronto"
-            name="city"
-            value={input.city}
-            onChange={handleInput}/>
+              type='text'
+              name='city'
+              value={input.city}
+              onChange={handleInput}
+            />
           </div>
-          <div className="form-group">
-            <label>PROVINCE: </label>
-            <input type="text"
-            placeholder="Ontario"
-            name="province"
-            value={input.province}
-            onChange={handleInput}/>
-          </div>
-          <div className="form-group">
-            <label>POSTAL CODE: </label>
+          <div className='form-group'>
+            <label>Province </label>
             <input
-            type="text"
-            placeholder="A1B2C3"
-            name="post_code"
-            value={input.postCode}
-            onChange={handleInput}/>
+              type='text'
+              name='province'
+              value={input.province}
+              onChange={handleInput}
+            />
           </div>
-          <Button type="submit" message="Sign Up" onClick={validate}/>
+          <div className='form-group'>
+            <label>Postal code </label>
+            <input
+              type='text'
+              name='post_code'
+              value={input.postCode}
+              onChange={handleInput}
+            />
+          </div>
+          <Button type='submit' message='Sign Up' onClick={validate} />
         </form>
       </div>
     </div>
-  )
+  );
 }

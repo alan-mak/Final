@@ -1,4 +1,8 @@
+@import '../../styles/variables.scss';
+
 .Title {
+  color: $primary-text-color;
+
   h1 {
     display: flex;
     justify-content: center;
@@ -8,56 +12,54 @@
     display: flex;
     justify-content: center;
     .login {
-      width: 40%;
-      height: 40em;
-      min-height: 44em;
+      width: 500px;
+      height: 750px;
       display: flex;
       justify-content: center;
       align-items: center;
       margin-top: 5px;
       position: relative;
       z-index: 99;
+
       .container {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #BFE4DE;
+        background-color: $primary-color;
         box-shadow: 0px 0px 5px 2px rgba(15, 15, 15, 0.2);
-        border-radius: 4px;
+        border-radius: 20px;
         position: relative;
         z-index: 99;
         width: 100%;
         height: 100%;
-        z-index: 99;
-        padding: 1em 1em;
       }
       .right-side {
         display: flex;
         flex-direction: column;
         justify-content: center;
         height: 90%;
-        background-color: #966E60;
+        background-color: $accent-color;
         width: 100%;
         position: absolute;
         right: -34%;
-        border-radius: 6px;
+        border-radius: 20px;
         z-index: 1;
         transition: all 400ms ease-in-out;
         cursor: pointer;
         box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.281);
-    
+
         &.right {
-          right: -40%;
+          right: -45%;
           align-items: flex-end;
           &:hover {
-            right: -45%;
+            right: -50%;
           }
         }
         &.left {
-          right: 40%;
+          right: 45%;
           align-items: flex-start;
           &:hover {
-            right: 45%;
+            right: 50%;
           }
         }
         .option {
