@@ -14,7 +14,7 @@ export default function SignUp(props) {
     province:"",
     post_code:"",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState([]);
 
   const handleInput = event => setInput({
     ...input,
@@ -22,20 +22,15 @@ export default function SignUp(props) {
   });
   
   function validate() {
-    // if (!input.name || !input.email || !input.password || !input.street || !input.city || !input.province || !input.post_code) {
-    //   setError("ERROR: Cannot be blank")
-    //   return
-    // } else {
       props.createUser(input).then(res => {
+        // console.log(res.data.errors)
         if (res.data.status === 500) {
-          console.log("H",JSON.stringify(res.data.errors))
-          for (let [key, value] of Object.entries(res.data.errors)) {
-            console.log(key, value)
+          console.log(res.data.errors)
+          for (let [key, value] of Object.entries(res.data.errors)){
+            setError(prev => ([...prev, value.map(x => <li>{(key.toUpperCase() + " " + x)}</li>)]))
           }
-          // setError(res.data.errors)
         }
       }).catch(err => console.log(err))
-    // }
   };
 
   return (

@@ -13,7 +13,7 @@ class Api::UsersController < ApplicationController
       @user.save
       render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
     else
-      render json: {status: 500, errors: @user.errors }
+      render json: { status: 500, errors: @user.errors }
     end
   end
 
