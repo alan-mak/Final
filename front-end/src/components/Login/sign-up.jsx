@@ -14,20 +14,22 @@ export default function SignUp(props) {
     province:"",
     post_code:"",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState([]);
 
   const handleInput = event => setInput({
     ...input,
     [event.currentTarget.name]: event.currentTarget.value
   });
-
+  
   function validate() {
-    if (!input.name || !input.email || !input.password || !input.street || !input.city || !input.province || !input.post_code) {
-      setError("ERROR: Cannot be blank")
-      return
-    } else {
-      props.createUser(input)
-    }
+      props.createUser(input).then(res => {
+        setError([])
+        if (res.data.status === 500) {
+          for (let [key, value] of Object.entries(res.data.errors)){
+            setError(prev => ([...prev, value.map(x => <li>{(key.toUpperCase() + " " + x)}</li>)]))
+          }
+        }
+      }).catch(err => console.log(err))
   };
 
   return (

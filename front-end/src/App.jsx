@@ -25,7 +25,6 @@ import Nav from './components/Nav';
 
 const SERVER = "http://localhost:8080";
 const App = () => {
-
   const [rooms, setRooms ] = useState([]);
   const socket = socketClient(SERVER);
       socket.on('connection', () => {
@@ -64,7 +63,7 @@ const App = () => {
       setRooms={setRooms}
     />
   ));
-
+  
   const userList = state.users.map(user => (
     <li key={user.id}>
       {' '}
