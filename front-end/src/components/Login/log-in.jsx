@@ -18,8 +18,15 @@ export default function Login(props) {
 
   function validate() {
     if (!input.email || !input.password) {
+<<<<<<< HEAD
       setError('ERROR: Cannot be blank');
       return;
+=======
+      setError("ERROR: Cannot be blank")
+      return
+    } else {
+      props.loginUser(input)
+>>>>>>> 9b57f728ccdfe0bdcac9d02c3d05a21f87522ab3
     }
   }
 

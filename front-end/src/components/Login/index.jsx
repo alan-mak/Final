@@ -28,12 +28,25 @@ export class LogSign extends React.Component {
 
   render() {
     const { isLogin } = this.state;
+<<<<<<< HEAD
     const current = isLogin ? 'Sign Up Here' : 'Log In Here';
     const currentActive = isLogin ? 'login' : 'signUp';
     const body = (
       <div className='login'>
         <div className='container' ref={ref => (this.container = ref)}>
           {isLogin && <Login baseRef={ref => (this.current = ref)} />}
+=======
+    const current = isLogin ? "Sign Up Here" : "Log In Here";
+    const currentActive = isLogin ? "login" : "signUp"
+    return (
+      <div className="Title"><h1>Help Me Help You</h1>
+      <div className="App">
+        <div className="login">
+          <div className="container" ref={ref => (this.container = ref)}>
+          {isLogin && (
+            <Login loginUser={this.props.loginUser} baseRef={ref => (this.current = ref)}/>
+          )}
+>>>>>>> 9b57f728ccdfe0bdcac9d02c3d05a21f87522ab3
           {!isLogin && (
             <SignUp
               createUser={this.props.createUser}
