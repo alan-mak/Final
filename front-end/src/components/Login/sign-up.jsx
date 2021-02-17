@@ -112,7 +112,7 @@ export default function SignUp(props) {
             type='submit'
             message='Sign Up'
             onClick={validate}
-            buttonClass='sign-up-button'
+            classes='sign-up-button'
           />
         </form>
       </div>

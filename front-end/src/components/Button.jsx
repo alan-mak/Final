@@ -4,7 +4,7 @@ import './Button.scss';
 const classNames = require('classnames');
 
 export default function Button(props) {
-  let buttonClass = classNames('button');
+  let buttonClass = classNames('button', props.classes);
   return (
     <button
       className={buttonClass}

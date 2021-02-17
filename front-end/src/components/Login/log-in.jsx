@@ -42,7 +42,12 @@ export default function Login(props) {
             <label>Password </label>
             <input type='password' name='password' onChange={handleInput} />
           </div>
-          <Button type='submit' message='Log In' onClick={validate} />
+          <Button
+            type='submit'
+            message='Log In'
+            onClick={validate}
+            classes={'sign-up-button'}
+          />
         </form>
       </div>
     </div>
