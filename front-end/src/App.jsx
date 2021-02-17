@@ -43,14 +43,12 @@ const App = () => {
       let channels = [];
       let newChannel = {id: id, name: name, socket:[]}
       channels.push(newChannel);
-      setRooms(channels);
+      setRooms( channels );
     } else {
-      let channels = [];
-      console.log('channels in else: ', channels);
       let newChannel = {id: id, name: name, socket:[]}
-      channels.push(newChannel);
-      console.log('after Channel push: ', channels);
-      setRooms([...rooms, channels]);
+      // channels.push(newChannel);
+      console.log('after Channel push: ', newChannel);
+      setRooms([...rooms, newChannel ]);
     }
   }
 
@@ -95,7 +93,7 @@ const App = () => {
           <Route path='/tasks'>
             <Nav />
             <div className='task-list'>{parsedTaskList}</div>
-            <Chat setRooms={setRooms} />
+            <Chat setRooms={setRooms} rooms={rooms}/>
           </Route>
           <Route path='/'>
             <LogSign createUser={createUser} loginUser={loginUser}/>

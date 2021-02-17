@@ -15,9 +15,7 @@ const io = require('socket.io')(http,  {
 });
  const rooms = {};
 
-const STATIC_CHANNELS = [{
-  name: 'Frank', id: 1, sockets: []},
- {name: 'Mr. Clean', id: 2, sockets: []}];
+const STATIC_CHANNELS = [];
 
 app.use(cors());
 
