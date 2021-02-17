@@ -40,7 +40,7 @@ export default function SignUp(props) {
 
   return (
     <div className='base-container'>
-      <h2>Sign Up</h2>
+      <h1>Sign Up</h1>
       <div className='content'>
         <form autoComplete='off' onSubmit={event => event.preventDefault()}>
           <section>{error}</section>

@@ -25,7 +25,7 @@ export default function Login(props) {
 
   return (
     <div className='base-container'>
-      <h2>Login</h2>
+      <h1>Login</h1>
       <div className='content'>
         <form autoComplete='off' onSubmit={event => event.preventDefault()}>
           <section>{error}</section>
