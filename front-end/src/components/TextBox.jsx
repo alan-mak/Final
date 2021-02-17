@@ -1,10 +1,3 @@
-import "./TextBox.scss"
-
-export default function TextBox (props) {
-  return (
-
-    <h1>{props.message}</h1>
-
-
-  )
+export default function TextBox(props) {
+  return <h1>{props.message}</h1>;
 }
