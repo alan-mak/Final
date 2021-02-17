@@ -23,9 +23,8 @@ export default function SignUp(props) {
   
   function validate() {
       props.createUser(input).then(res => {
-        // console.log(res.data.errors)
+        setError([])
         if (res.data.status === 500) {
-          console.log(res.data.errors)
           for (let [key, value] of Object.entries(res.data.errors)){
             setError(prev => ([...prev, value.map(x => <li>{(key.toUpperCase() + " " + x)}</li>)]))
           }

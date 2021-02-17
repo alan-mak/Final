@@ -9,7 +9,7 @@ export default function Login(props){
     email:"",
     password:""
   })
-  const [error, setError] = useState("");
+  const [error, setError] = useState([]);
 
   const handleInput = event => setInput({
     ...input,
@@ -17,12 +17,12 @@ export default function Login(props){
   });
 
   function validate() {
-    if (!input.email || !input.password) {
-      setError("ERROR: Cannot be blank")
-      return
-    } else {
-      props.loginUser(input)
-    }
+      setError([])
+      props.loginUser(input).then(res => {
+        if (res.data.status === 500) {
+        setError(<li>{res.data.message}</li>)
+        }
+      }).catch(err => console.log(err))
   }
 
   return (

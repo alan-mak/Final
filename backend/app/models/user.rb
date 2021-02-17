@@ -4,7 +4,7 @@ class User < ApplicationRecord
   
   validates :name, presence: true
   validates :email, uniqueness: { case_sensitive: false }
-  validates :password, length: { is: 4 }
+  validates :password, length: { minimum: 4 }
   validates :street, presence: true
   validates :city, presence: true
   validates :province, presence: true
