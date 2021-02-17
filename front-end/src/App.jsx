@@ -26,10 +26,10 @@ import Nav from './components/Nav';
 const SERVER = "http://localhost:8080";
 
 const App = () => {
-  const socket = socketClient(SERVER);
-      socket.on('connection', () => {
-        console.log(`I'm connected with the back-end`);
-      });
+  // const socket = socketClient(SERVER);
+  //     socket.on('connection', () => {
+  //       console.log(`I'm connected with the back-end`);
+  //     });
 
   const { state, dispatch, createUser, loginUser } = useApplicationData();
   const { mode, transition } = useVisualMode();
@@ -41,7 +41,7 @@ const App = () => {
       setter={task.recipient_id}
     />
   ));
-
+  
   const userList = state.users.map(user => (
     <li key={user.id}>
       {' '}

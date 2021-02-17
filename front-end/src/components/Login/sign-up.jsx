@@ -20,14 +20,22 @@ export default function SignUp(props) {
     ...input,
     [event.currentTarget.name]: event.currentTarget.value
   });
-
+  
   function validate() {
-    if (!input.name || !input.email || !input.password || !input.street || !input.city || !input.province || !input.post_code) {
-      setError("ERROR: Cannot be blank")
-      return
-    } else {
-      props.createUser(input)
-    }
+    // if (!input.name || !input.email || !input.password || !input.street || !input.city || !input.province || !input.post_code) {
+    //   setError("ERROR: Cannot be blank")
+    //   return
+    // } else {
+      props.createUser(input).then(res => {
+        if (res.data.status === 500) {
+          console.log("H",JSON.stringify(res.data.errors))
+          for (let [key, value] of Object.entries(res.data.errors)) {
+            console.log(key, value)
+          }
+          // setError(res.data.errors)
+        }
+      }).catch(err => console.log(err))
+    // }
   };
 
   return (
