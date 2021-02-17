@@ -10,14 +10,12 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 230px;
+  margin-top: 190px;
   position: relative;
   z-index: 99;
 
   .container {
     display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: $primary-color;
     box-shadow: 0 5px 7px 2px #3a3a3a;
     border-radius: 20px;
