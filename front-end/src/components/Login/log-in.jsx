@@ -44,7 +44,7 @@ export default function Login(props) {
           </div>
           <Button
             type='submit'
-            message='Log In'
+            message='Log in'
             onClick={validate}
             classes={'sign-up-button'}
           />
