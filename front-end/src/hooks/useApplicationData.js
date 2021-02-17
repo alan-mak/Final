@@ -8,11 +8,7 @@ import dataReducer, {
   SET_TASKS
 } from '../reducer/data_reducer';
 import axios from 'axios';
-const cors = require('cors');
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-
-
-//axios.use(cors());
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
