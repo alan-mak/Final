@@ -17,7 +17,7 @@ export default function Nav(props) {
         </div>
       </Link>
       <div className='nav-right'>
-        <Link to={'/'}>Log in</Link>
+        <Link to={'/'}>Log out</Link>
       </div>
     </section>
   );

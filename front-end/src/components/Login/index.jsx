@@ -31,27 +31,22 @@ export class LogSign extends React.Component {
     const current = isLogin ? 'Sign Up Here' : 'Log In Here';
     const currentActive = isLogin ? 'login' : 'signUp';
     const body = (
-      <div className='Title'>
-        <h1>Help Me Help You</h1>
-        <div className='App'>
-          <div className='login'>
-            <div className='container' ref={ref => (this.container = ref)}>
-              {isLogin && <Login baseRef={ref => (this.current = ref)} />}
-              {!isLogin && (
-                <SignUp
-                  createUser={this.props.createUser}
-                  baseRef={ref => (this.current = ref)}
-                />
-              )}
-            </div>
-            <Side
-              current={current}
-              currentActive={currentActive}
-              baseRef={ref => (this.side = ref)}
-              onClick={this.changeState.bind(this)}
+      <div className='login'>
+        <div className='container' ref={ref => (this.container = ref)}>
+          {isLogin && <Login baseRef={ref => (this.current = ref)} />}
+          {!isLogin && (
+            <SignUp
+              createUser={this.props.createUser}
+              baseRef={ref => (this.current = ref)}
             />
-          </div>
+          )}
         </div>
+        <Side
+          current={current}
+          currentActive={currentActive}
+          baseRef={ref => (this.side = ref)}
+          onClick={this.changeState.bind(this)}
+        />
       </div>
     );
     return <Background body={body} />;
