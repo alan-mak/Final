@@ -67,9 +67,15 @@ handleChannelSelect = id => {
   })
   this.setState({ channel });
   this.socket.emit('channel-join', id, ack => {
-
   });
-  
+
+  const handleChannelCreate = (id, name) => {
+    let channels = [...this.state.channels]
+    let newChannel = {id: id, name: name, socket:[]}
+    channels.push(newChannel);
+    this.setState({ channels })
+    this.props.setRooms({ channels })
+  };
 
 
 }

@@ -13,10 +13,11 @@ const io = require('socket.io')(http,  {
     methods: ['GET', 'POST']
   }
 });
+ const rooms = {};
 
 const STATIC_CHANNELS = [{
-  name: 'global_notifications', id: 1, sockets: []},
- {name: 'global_chat', id: 2, sockets: []}];
+  name: 'Frank', id: 1, sockets: []},
+ {name: 'Mr. Clean', id: 2, sockets: []}];
 
 app.use(cors());
 
@@ -29,6 +30,10 @@ app.use(function(req, res, next) {
 http.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
 });
+
+app.post('/room', (req, res) => {
+  rooms[req.body.room] = { users: {} };
+})
 
 
 io.on('connection', function(socket) {
@@ -58,6 +63,13 @@ io.on('connection', function(socket) {
   })
 })
 
+// io.on("connection", socket => {
+//   console.log('testing private rooms')
+//   socket.on("private message", (anotherSocketId, msg) => {
+//     socket.to(anotherSocketId).emit("private message", socket.id, msg);
+//   });
+// });
+
 io.on('send-message', message => {
   console.log('message recieved! ', message)
   io.emit('message', message);
@@ -74,6 +86,11 @@ app.get('/getChannels', (req, res) => {
 // socket. emit to one socket
 // io. emit to everyone
 // io.to ***** for connecting user-user 
+
+
+
+
+
 
 
 
