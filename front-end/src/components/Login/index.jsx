@@ -1,4 +1,5 @@
 import React from 'react';
+import Background from '../Background';
 
 import Login from './log-in';
 import SignUp from './sign-up';
@@ -29,7 +30,7 @@ export class LogSign extends React.Component {
     const { isLogin } = this.state;
     const current = isLogin ? 'Sign Up Here' : 'Log In Here';
     const currentActive = isLogin ? 'login' : 'signUp';
-    return (
+    const body = (
       <div className='Title'>
         <h1>Help Me Help You</h1>
         <div className='App'>
@@ -53,6 +54,7 @@ export class LogSign extends React.Component {
         </div>
       </div>
     );
+    return <Background body={body} />;
   }
 }
 
