@@ -1,19 +1,23 @@
 @import '../styles/variables.scss';
 
 .task-list {
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 70vh;
   margin-top: 160px;
-  margin-left: 20px;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .task-item {
   font-family: $font-family;
   margin-bottom: 30px;
   border: 1px solid black;
-  width: 40vw;
+  width: 600px;
   display: flex;
   flex-direction: column;
   padding: 20px 50px;
@@ -37,6 +41,19 @@
 
   p.task-list-item-description {
     font-size: 18px;
+  }
+
+  .task-list-item-distance,
+  p.task-list-item-accepted-message {
+    margin: 0 0 8px;
+  }
+
+  p.task-list-item-accepted-message {
+    align-self: center;
+    padding: 8px 92px;
+    border: 2px solid black;
+    border-radius: 7px;
+    background-color: lightblue;
   }
 
   div.task-list-item-buttons {
