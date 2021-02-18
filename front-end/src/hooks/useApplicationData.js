@@ -26,7 +26,6 @@ const useApplicationData = () => {
           .then(({
               data
           }) => {
-              console.log(data);
               dispatch({
                   type: SET_USERS,
                   users: data
@@ -43,7 +42,6 @@ const useApplicationData = () => {
   .then(({
       data
   }) => {
-      console.log(data);
       dispatch({
           type: SET_TASKS,
           tasks: data
