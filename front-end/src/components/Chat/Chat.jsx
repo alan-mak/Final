@@ -18,7 +18,7 @@ export class Chat extends React.Component {
   }
 
   configureSocket = () => {
-    const SERVER = "http://localhost:8080"
+    const SERVER = "http://localhost:3005"
     const socket = socketClient(SERVER);
     socket.on('connection', () => {
       if (this.state.channel) {
@@ -55,7 +55,7 @@ export class Chat extends React.Component {
     this.socket.emit('send-message', {channel_id, text, senderName: this.socket.id, id: Date.now() })
   }
 
-  loadChannels = async () => {fetch('http://localhost:8080/getChannels')
+  loadChannels = async () => {fetch('http://localhost:3005/getChannels')
   .then(async response => {
     let data = await response.json();
       this.setState({channels: data.channels});

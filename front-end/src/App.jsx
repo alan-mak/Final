@@ -25,7 +25,7 @@ import './components/tasks.scss';
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
 
-const SERVER = 'http://localhost:8080';
+const SERVER = 'http://localhost:3005';
 const App = () => {
   const [rooms, setRooms] = useState([]);
   const socket = socketClient(SERVER);
