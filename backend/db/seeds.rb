@@ -16,17 +16,117 @@ puts "Re-creating Users ..."
 
 User.destroy_all
 
-100.times do
-  User.create!(
-    name: Faker::Name.name,
-    email: Faker::Internet.free_email,
-    password_digest: "test",
-    street: "#{Faker::Address.building_number} #{Faker::Address.street_name} #{Faker::Address.street_suffix}",
-    city: Faker::Address.city,
-    province: Faker::Address.state_abbr,
-    post_code: Faker::Address.postcode
-  )
-end
+# 100.times do
+#   User.create!(
+#     name: Faker::Name.name,
+#     email: Faker::Internet.free_email,
+#     password_digest: "test",
+#     street: "#{Faker::Address.building_number} #{Faker::Address.street_name} #{Faker::Address.street_suffix}",
+#     city: Faker::Address.city,
+#     province: Faker::Address.state_abbr,
+#     post_code: Faker::Address.postcode
+#   )
+# end
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "100 Queen Street West",
+  city: "Toronto",
+  province: "Ontario",
+  post_code: "M5H 2N1"
+)
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "69 Kensington Avenue",
+  city: "Toronto",
+  province: "Ontario",
+  post_code: "M5T 2K2" 
+)
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "431 College Street",
+  city: "Toronto",
+  province: "Ontario",
+  post_code: "M5T 1T1"
+)
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "1 Austin Terrace",
+  city: "Toronto",
+  province: "Ontario",
+  post_code: "M5R 1X8"
+)
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "770 Don Mills Rd",
+  city: "North York",
+  province: "Ontario",
+  post_code: "M3C 1T3 "
+)
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "290 Bremner Blvd",
+  city: "Toronto",
+  province: "Ontario",
+  post_code: "M5V 3L9"
+)
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "924 Queen Street West",
+  city: "Toronto",
+  province: "Ontario",
+  post_code: "M6J 1G6"
+)
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "147 Spadina Avenue",
+  city: "Toronto",
+  province: "Ontario",
+  post_code: "M5V 2L7"
+)
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "198 Baldwin Street",
+  city: "Toronto",
+  province: "Ontario",
+  post_code: "M5T 1L8"
+)
+
+User.create!(
+  name: Faker::Name.name,
+  email: Faker::Internet.free_email,
+  password_digest: "test",
+  street: "253 Spadina Avenue",
+  city: "Toronto",
+  province: "Ontario",
+  post_code: "M5T 2E3"
+)
 
 ## TASKS
 
