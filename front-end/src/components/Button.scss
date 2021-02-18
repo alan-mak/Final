@@ -38,4 +38,8 @@
     background-color: $accent-color-dark;
     color: white;
   }
+
+  &:focus {
+    outline: none;
+  }
 }
