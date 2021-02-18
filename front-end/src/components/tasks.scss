@@ -1,18 +1,49 @@
+@import '../styles/variables.scss';
+
 .task-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 70vh;
+  margin-top: 160px;
   margin-left: 20px;
 }
 
 .task-item {
-  margin: 2px;
+  font-family: $font-family;
+  margin-bottom: 30px;
   border: 1px solid black;
   width: 40vw;
-}
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px;
+  background-color: $primary-color;
+  box-shadow: 0 5px 7px 2px #3a3a3a;
+  border-radius: 20px;
 
-.task-item:hover {
-  background-color: #F0EAD6;
-  -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+  h2.task-list-item-title {
+    margin: 0;
+  }
+
+  p.task-list-item-description {
+    margin: 0 0 15px;
+  }
+
+  .task-list-item-title-underline {
+    margin: 10px 0;
+    width: 400px;
+    border-bottom: 3px solid black;
+  }
+
+  p.task-list-item-description {
+    font-size: 18px;
+  }
+
+  div.task-list-item-buttons {
+    align-self: center;
+
+    button {
+      margin: 0 15px;
+    }
+  }
 }

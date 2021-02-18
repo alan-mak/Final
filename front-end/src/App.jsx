@@ -19,6 +19,8 @@ import useApplicationData from './hooks/useApplicationData';
 import useVisualMode from './hooks/useVisualMode';
 
 import './App.scss';
+import './components/tasks.scss';
+
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
 
