@@ -22,34 +22,33 @@ import './App.scss';
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
 
-
-const SERVER = "http://localhost:8080";
+const SERVER = 'http://localhost:8080';
 const App = () => {
-  const [rooms, setRooms ] = useState([]);
+  const [rooms, setRooms] = useState([]);
   const socket = socketClient(SERVER);
-      socket.on('connection', () => {
-        console.log(`I'm connected with the back-end`);
-//         io.on("connection", socket => {
-//   socket.on("private message", (anotherSocketId, msg) => {
-//     socket.to(anotherSocketId).emit("private message", socket.id, msg);
-//   });
-// });
-      });
-      
+  socket.on('connection', () => {
+    console.log(`I'm connected with the back-end`);
+    //         io.on("connection", socket => {
+    //   socket.on("private message", (anotherSocketId, msg) => {
+    //     socket.to(anotherSocketId).emit("private message", socket.id, msg);
+    //   });
+    // });
+  });
+
   const handleChannelCreate = (id, name) => {
     console.log('clicked');
     if (rooms.length < 1) {
       let channels = [];
-      let newChannel = {id: id, name: name, socket:[]}
+      let newChannel = { id: id, name: name, socket: [] };
       channels.push(newChannel);
-      setRooms( channels );
+      setRooms(channels);
     } else {
-      let newChannel = {id: id, name: name, socket:[]}
+      let newChannel = { id: id, name: name, socket: [] };
       // channels.push(newChannel);
       console.log('after Channel push: ', newChannel);
-      setRooms([...rooms, newChannel ]);
+      setRooms([...rooms, newChannel]);
     }
-  }
+  };
 
   const { state, dispatch, createUser, loginUser } = useApplicationData();
   const { mode, transition } = useVisualMode();
@@ -63,7 +62,7 @@ const App = () => {
       setRooms={setRooms}
     />
   ));
-  
+
   const userList = state.users.map(user => (
     <li key={user.id}>
       {' '}
@@ -79,21 +78,18 @@ const App = () => {
             <AfterLogin />
           </Route>
           <Route path='/tasks/new'>
-            {/* <Nav /> */}
             <Create />
           </Route>
-          <Route path='/:user_id/about'>{/* <Nav /> */}</Route>
+          <Route path='/:user_id/about'></Route>
           <Route path='/tasks/:task_id'>
-            {/* <Nav /> */}
             <Show />
           </Route>
           <Route path='/tasks'>
-            {/* <Nav /> */}
             <div className='task-list'>{parsedTaskList}</div>
-            <Chat setRooms={setRooms} rooms={rooms}/>
+            <Chat setRooms={setRooms} rooms={rooms} />
           </Route>
           <Route path='/'>
-            <LogSign createUser={createUser} loginUser={loginUser}/>
+            <LogSign createUser={createUser} loginUser={loginUser} />
           </Route>
         </Switch>
       </div>
