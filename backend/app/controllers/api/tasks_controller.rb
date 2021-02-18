@@ -1,7 +1,5 @@
 class Api::TasksController < ApplicationController
- skip_before_action :authorized
-
-  
+  skip_before_action :authorized
   def index
     tasks = Task.all
     render json: tasks

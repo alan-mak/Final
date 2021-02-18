@@ -1,36 +1,46 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import haversine_distance from "./straightLine"
+import axios from 'axios';
 
-const containerStyle = {
-  width: '25vw',
-  height: '25vh'
-};
-
-const center = {
-  lat: 43.46325,
-  lng: -79.383186
-};
 const libraries = ["places"]
 
 export default function Maps() {
+  const [addresses, setAddresses] = useState([]);
+  const [distance, setDistance] = useState();
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries
   })
-  if (loadError) return "ERROR"
-  if (!isLoaded) return "LOADING MAPS"
   
-  const point1 = {lat: 40.7767644, lng: -73.9761399};
-  const point2 = {lat: 40.771209, lng: -73.9673991};
-  const D = haversine_distance(point1, point2)
+  
+  const findCoord = async (incData) => {
+    return axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+      params:{
+        address: incData,
+        key:process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+      }
+    }
+    ).then((res) => {
+      // console.log("HELLO", res.data.results[0].geometry.location)
+      return res.data.results[0].geometry.location;
+    })
+  }
+
+  useEffect(() => {
+    // Good!
+    Promise.all([
+      findCoord('1600 Amphitheatre Pkwy'),
+      findCoord('1 Hacker Way')
+    ]).then( addresses => 
+      setDistance(haversine_distance({lat: addresses[0].lat, lng: addresses[0].lng}, {lat: addresses[1].lat, lng: addresses[1].lng}))
+      )
+    
+    // Side-effect!
+  }, []);
+
+
   return (
-    <div>{Math.round(D * 100) / 100} KM away</div>
-      // <GoogleMap
-      //   mapContainerStyle={containerStyle}
-      //   center={center}
-      //   zoom={10}
-      // >
-      // </GoogleMap>
+    <div>{Math.round(distance * 100) / 100} KM away</div>
   )
 }
