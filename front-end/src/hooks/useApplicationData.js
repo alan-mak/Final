@@ -8,11 +8,9 @@ import dataReducer, {
   SET_TASKS
 } from '../reducer/data_reducer';
 import axios from 'axios';
-const cors = require('cors');
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 
-//axios.use(cors());
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
@@ -69,7 +67,6 @@ const useApplicationData = () => {
 function getTaskById (id) {
   let tasks = [...state.tasks]
   for (let task in tasks) {
-    console.log(tasks[task].recipient_id)
     if (tasks[task].recipient_id === id) {
       return tasks[task];
     }
