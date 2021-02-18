@@ -68,24 +68,22 @@ const App = () => {
   return (
     <Router>
       <div className='App'>
+        <Nav />
         <Switch>
           <Route path='/choice'>
-            <Nav />
             <AfterLogin />
           </Route>
           <Route path='/tasks/new'>
-            <Nav />
+            {/* <Nav /> */}
             <Create />
           </Route>
-          <Route path='/:user_id/about'>
-            <Nav />
-          </Route>
+          <Route path='/:user_id/about'>{/* <Nav /> */}</Route>
           <Route path='/tasks/:task_id'>
-            <Nav />
+            {/* <Nav /> */}
             <Show />
           </Route>
           <Route path='/tasks'>
-            <Nav />
+            {/* <Nav /> */}
             <div className='task-list'>{parsedTaskList}</div>
             <Chat setRooms={setRooms} rooms={rooms}/>
           </Route>

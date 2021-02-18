@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 
 import './Nav.scss';
@@ -18,7 +17,7 @@ export default function Nav(props) {
         </div>
       </Link>
       <div className='nav-right'>
-        <Link to={'/choice'}>Log in</Link>
+        <Link to={'/'}>Log out</Link>
       </div>
     </section>
   );

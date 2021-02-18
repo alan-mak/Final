@@ -10,8 +10,6 @@ import dataReducer, {
 import axios from 'axios';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-
-
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
       users: [],

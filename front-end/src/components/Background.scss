@@ -1,0 +1,39 @@
+@import '../styles/variables.scss';
+
+#background {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+
+  #color-overlay::before {
+    position: absolute;
+    z-index: 2;
+    content: '';
+    background-color: $primary-color;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: block;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.2;
+  }
+}
+
+#background::before {
+  position: absolute;
+  z-index: 1;
+  content: '';
+  background-image: url('https://www.theglobeandmail.com/resizer/1XsjX2j2TyYZxW4xzSfyOxWakb4=/2500x0/filters:quality(80)/arc-anglerfish-tgam-prod-tgam.s3.amazonaws.com/public/RXH4DSVMIJETVL6IUI4W5A6TNM.JPG');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.5;
+}
