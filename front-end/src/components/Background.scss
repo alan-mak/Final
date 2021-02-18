@@ -6,6 +6,7 @@
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  overflow-x: hidden;
 
   #color-overlay::before {
     position: absolute;
@@ -20,6 +21,8 @@
     bottom: 0px;
     left: 0px;
     opacity: 0.2;
+    position: fixed;
+    overflow-y: scroll;
   }
 }
 
@@ -36,4 +39,7 @@
   bottom: 0px;
   left: 0px;
   opacity: 0.5;
+  position: fixed;
+  overflow-y: scroll;
+  overflow: hidden;
 }

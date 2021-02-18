@@ -56,7 +56,7 @@ const useApplicationData = () => {
   }
 
   function loginUser(user) {
-    return axios.post(`/api/users/login`, { user })
+   return axios.post(`/api/users/login`, { user })
     .catch(err => console.log(err))
   }
 // getTaskById and AcceptTask register helpers to posted tasks

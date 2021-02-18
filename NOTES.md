@@ -1,9 +1,11 @@
-Useful Commands
+## Useful Commands
 
 Start Rails Server `rails s -b 0.0.0.0`
-Start React `npm start`
+Start React Server `npm start`
+Start Chat Server  `npm start`
 
-Database
+## Database
+
 Step the database back one `rails db:rollback`
 Push the database changes `rails db:migrate`
 Reset and re-seed the database `rails db:reset`

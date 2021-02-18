@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Button from '../Button';
 import './log-in.scss';
@@ -9,6 +10,7 @@ export default function Login(props) {
     password: '',
   });
   const [error, setError] = useState([]);
+  let history = useHistory();
 
   const handleInput = event =>
     setInput({
@@ -23,6 +25,9 @@ export default function Login(props) {
       .then(res => {
         if (res.data.status === 500) {
           setError(<li>{res.data.message}</li>);
+        } else {
+          console.log('redirect');
+          return history.push('/choice');
         }
       })
       .catch(err => console.log(err));
