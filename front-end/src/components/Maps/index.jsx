@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const libraries = ["places"]
 
-export default function Maps() {
+export default function Maps(props) {
   const [addresses, setAddresses] = useState([]);
   const [distance, setDistance] = useState();
   const { isLoaded, loadError } = useLoadScript({
@@ -13,7 +13,10 @@ export default function Maps() {
     libraries
   })
   
-  
+  const showAddress = () => {
+    let x = props.userList[props.setter]
+    return x.props.children[2] + x.props.children[4] + x.props.children[6]
+  }
   const findCoord = async (incData) => {
     return axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
       params:{
@@ -22,7 +25,6 @@ export default function Maps() {
       }
     }
     ).then((res) => {
-      // console.log("HELLO", res.data.results[0].geometry.location)
       return res.data.results[0].geometry.location;
     })
   }
@@ -30,15 +32,14 @@ export default function Maps() {
   useEffect(() => {
     // Good!
     Promise.all([
-      findCoord('1600 Amphitheatre Pkwy'),
-      findCoord('1 Hacker Way')
+      findCoord('759 Candlestick Circle Mississauga'),
+      findCoord(showAddress()),
     ]).then( addresses => 
       setDistance(haversine_distance({lat: addresses[0].lat, lng: addresses[0].lng}, {lat: addresses[1].lat, lng: addresses[1].lng}))
       )
     
     // Side-effect!
   }, []);
-
 
   return (
     <div>{Math.round(distance * 100) / 100} KM away</div>
