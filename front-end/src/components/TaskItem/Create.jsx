@@ -7,7 +7,7 @@ import './Create.scss';
 export default function Create() {
   const body = (
     <div id='create-container'>
-      <h1>Fill out this simple form and we'll find people to help!</h1>
+      <h1>What would you like help with?</h1>
       <form id='task-wrapper'>
         <div className='form-group'>
           <label for='task-title'>Title of Task</label>
@@ -23,7 +23,7 @@ export default function Create() {
           <label for='task-time'>Estimate of task duration in minutes</label>
           <input id='task-time' type='number' name='task-time' />
         </div>
-        <Button message='Post Task!' />
+        <Button message='Post Task!' classes='create-button' />
       </form>
     </div>
   );

@@ -1,16 +1,13 @@
 @import '../../styles/variables.scss';
 
-$container-width: 650px;
-$container-side-padding: 50px;
-
 #create-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 160px;
-  padding: 20px $container-side-padding;
-  width: $container-width;
-  height: 600px;
+  padding: 20px 50px;
+  width: 500px;
+  height: 550px;
   background-color: $primary-color;
   box-shadow: 0 5px 7px 2px #3a3a3a;
   border-radius: 20px;
@@ -18,7 +15,6 @@ $container-side-padding: 50px;
   z-index: 99;
 
   h1 {
-    width: 450px;
     text-align: center;
   }
 
@@ -41,7 +37,7 @@ $container-side-padding: 50px;
 
       input,
       textarea {
-        width: $container-width;
+        width: 500px;
         padding: 4px 6px;
         font-size: 18px;
         outline: none;
@@ -65,9 +61,9 @@ $container-side-padding: 50px;
       }
     }
 
-    .sign-up-button {
-      padding: 0.6em 2.8em;
-      margin-top: 20px;
+    .create-button {
+      padding: 0.6em 2.4em;
+      margin-top: 5px;
       border-radius: 0.7em;
     }
   }
