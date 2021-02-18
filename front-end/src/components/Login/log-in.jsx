@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import Button from '../Button';
 import './log-in.scss';
@@ -23,6 +24,9 @@ export default function Login(props) {
       .then(res => {
         if (res.data.status === 500) {
           setError(<li>{res.data.message}</li>);
+        } else {
+          console.log('redirect');
+         return <Redirect to="/choice" />
         }
       })
       .catch(err => console.log(err));
