@@ -8,6 +8,7 @@ import DropDown from './components/DropDown';
 import TextBox from './components/TextBox';
 import TaskList from './components/TaskList';
 import TaskListItem from './components/TaskListItem';
+import Background from './components/Background';
 // import Main from './components/TaskItem/Main';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
@@ -71,6 +72,14 @@ const App = () => {
       {user.first_name} {user.last_name} {user.email}{' '}
     </li>
   ));
+
+  const taskListBody = (
+    <>
+      <div className='task-list'>{parsedTaskList}</div>
+      <Chat setRooms={setRooms} rooms={rooms} />
+    </>
+  );
+
   return (
     <Router>
       <div className='app'>
@@ -87,8 +96,7 @@ const App = () => {
             <Show />
           </Route>
           <Route path='/tasks'>
-            <div className='task-list'>{parsedTaskList}</div>
-            <Chat setRooms={setRooms} rooms={rooms} />
+            <Background body={taskListBody} />
           </Route>
           <Route path='/'>
             <LogSign createUser={createUser} loginUser={loginUser} />
