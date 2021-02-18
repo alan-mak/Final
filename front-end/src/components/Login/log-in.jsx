@@ -5,28 +5,32 @@ import './log-in.scss';
 
 export default function Login(props) {
   const [input, setInput] = useState({
-    email:"",
-    password:""
-  })
+    email: '',
+    password: '',
+  });
   const [error, setError] = useState([]);
 
-  const handleInput = event => setInput({
-    ...input,
-    [event.currentTarget.name]: event.currentTarget.value
-  });
+  const handleInput = event =>
+    setInput({
+      ...input,
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
 
   function validate() {
-    setError([])
-    props.loginUser(input).then(res => {
-      if (res.data.status === 500) {
-      setError(<li>{res.data.message}</li>)
-      }
-    }).catch(err => console.log(err))
+    setError([]);
+    props
+      .loginUser(input)
+      .then(res => {
+        if (res.data.status === 500) {
+          setError(<li>{res.data.message}</li>);
+        }
+      })
+      .catch(err => console.log(err));
   }
 
   return (
     <div className='base-container'>
-      <h1>Login</h1>
+      <h1>Log in</h1>
       <div className='content'>
         <form autoComplete='off' onSubmit={event => event.preventDefault()}>
           <section>{error}</section>
