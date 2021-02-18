@@ -8,7 +8,7 @@ import DropDown from './components/DropDown';
 import TextBox from './components/TextBox';
 import TaskList from './components/TaskList';
 import TaskListItem from './components/TaskListItem';
-// import Main from './components/TaskItem/Main';
+import Maps from './components/Maps';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
 import { Chat } from './components/Chat/Chat';
@@ -88,7 +88,8 @@ const App = () => {
             <Chat setRooms={setRooms} rooms={rooms}/>
           </Route>
           <Route path='/'>
-            <LogSign createUser={createUser} loginUser={loginUser}/>
+            <Maps />
+            {/* <LogSign createUser={createUser} loginUser={loginUser}/> */}
           </Route>
         </Switch>
       </div>
