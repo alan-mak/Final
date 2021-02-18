@@ -31,7 +31,8 @@
     border-radius: 0.8em;
 
     &:hover {
-      background-color: $accent-color;
+      background-color: $accent-color-dark;
+      color: white;
     }
   }
 }
