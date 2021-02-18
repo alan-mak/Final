@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import Button from '../Button';
-import './sign-up.scss';
 
 export default function SignUp(props) {
   const [input, setInput] = useState({
@@ -15,25 +14,32 @@ export default function SignUp(props) {
   });
   const [error, setError] = useState([]);
 
-  const handleInput = event => setInput({
-    ...input,
-    [event.currentTarget.name]: event.currentTarget.value
-  });
-  
+  const handleInput = event =>
+    setInput({
+      ...input,
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
+
   function validate() {
-      props.createUser(input).then(res => {
-        setError([])
+    props
+      .createUser(input)
+      .then(res => {
+        setError([]);
         if (res.data.status === 500) {
-          for (let [key, value] of Object.entries(res.data.errors)){
-            setError(prev => ([...prev, value.map(x => <li>{(key.toUpperCase() + " " + x)}</li>)]))
+          for (let [key, value] of Object.entries(res.data.errors)) {
+            setError(prev => [
+              ...prev,
+              value.map(x => <li>{key.toUpperCase() + ' ' + x}</li>),
+            ]);
           }
         }
-      }).catch(err => console.log(err))
-  };
+      })
+      .catch(err => console.log(err));
+  }
 
   return (
     <div className='base-container'>
-      <h1>Sign Up</h1>
+      <h1>Sign up</h1>
       <div className='content'>
         <form autoComplete='off' onSubmit={event => event.preventDefault()}>
           <section>{error}</section>

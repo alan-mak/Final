@@ -1,0 +1,72 @@
+@import '../../styles/variables.scss';
+
+#create-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 160px;
+  padding: 20px 50px;
+  width: 500px;
+  height: 550px;
+  background-color: $primary-color;
+  background-image: $background-texture;
+  box-shadow: 0 5px 7px 2px #3a3a3a;
+  border-radius: 20px;
+  position: relative;
+  z-index: 99;
+
+  h1 {
+    text-align: center;
+  }
+
+  #task-wrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      width: fit-content;
+      margin-top: 12px;
+
+      label {
+        font-size: 24px;
+      }
+
+      input,
+      textarea {
+        width: 500px;
+        padding: 4px 6px;
+        font-size: 18px;
+        outline: none;
+        border: 2px solid black;
+        border-radius: 10px;
+
+        &:focus {
+          outline: none;
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+          box-shadow: 0 0 0 0 white;
+          -webkit-box-shadow: 0 0 0 0 white;
+          transition: background-color 5000s ease-in-out 0s;
+        }
+      }
+
+      textarea {
+        resize: none;
+      }
+    }
+
+    .create-button {
+      padding: 0.6em 2.4em;
+      margin-top: 5px;
+      border-radius: 0.7em;
+    }
+  }
+}

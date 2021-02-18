@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   .content {
@@ -19,14 +20,16 @@
         flex-direction: column;
         align-items: flex-start;
         width: fit-content;
-        margin-top: 1rem;
+        margin-top: 12px;
 
         label {
-          font-size: 1.7rem;
+          font-size: 24px;
         }
 
         input {
-          font-size: 1.5rem;
+          width: 360px;
+          padding: 4px 6px;
+          font-size: 18px;
           outline: none;
           border-radius: 10px;
 
@@ -37,6 +40,7 @@
           &:-webkit-autofill,
           &:-webkit-autofill:hover,
           &:-webkit-autofill:focus {
+            box-shadow: 0 0 0 0 white;
             -webkit-box-shadow: 0 0 0 0 white;
             transition: background-color 5000s ease-in-out 0s;
           }
@@ -44,7 +48,9 @@
       }
 
       .sign-up-button {
+        padding: 0.6em 2.8em;
         margin-top: 20px;
+        border-radius: 0.7em;
       }
     }
   }

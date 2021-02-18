@@ -8,6 +8,8 @@ import DropDown from './components/DropDown';
 import TextBox from './components/TextBox';
 import TaskList from './components/TaskList';
 import TaskListItem from './components/TaskListItem';
+import Background from './components/Background';
+// import Main from './components/TaskItem/Main';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
 import { Chat } from './components/Chat/Chat';
@@ -18,13 +20,14 @@ import useApplicationData from './hooks/useApplicationData';
 import useVisualMode from './hooks/useVisualMode';
 
 import './App.scss';
+import './components/tasks.scss';
+
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
 
-
-const SERVER = "http://localhost:8080";
+const SERVER = 'http://localhost:8080';
 const App = () => {
-  const [rooms, setRooms ] = useState([]);
+  const [rooms, setRooms] = useState([]);
   const socket = socketClient(SERVER);
       socket.on('connection', () => {
         console.log(`I'm connected with the back-end`);
@@ -34,15 +37,15 @@ const App = () => {
     console.log('clicked');
     if (rooms.length < 1) {
       let channels = [];
-      let newChannel = {id: id, name: name, socket:[]}
+      let newChannel = { id: id, name: name, socket: [] };
       channels.push(newChannel);
-      setRooms( channels );
+      setRooms(channels);
     } else {
       let newChannel = {id: id, name: name, socket:[]}
       console.log('after Channel push: ', newChannel);
-      setRooms([...rooms, newChannel ]);
+      setRooms([...rooms, newChannel]);
     }
-  }
+  };
 
   const { state, dispatch, createUser, loginUser, acceptTask } = useApplicationData();
   const { mode, transition } = useVisualMode();
@@ -57,37 +60,41 @@ const App = () => {
       onTake={acceptTask}
     />
   ));
-  
+
   const userList = state.users.map(user => (
     <li key={user.id}>
       {' '}
       {user.first_name} {user.last_name} {user.email}{' '}
     </li>
   ));
+
+  const taskListBody = (
+    <>
+      <div className='task-list'>{parsedTaskList}</div>
+      <Chat setRooms={setRooms} rooms={rooms} />
+    </>
+  );
+
   return (
     <Router>
-      <div className='App'>
+      <div className='app'>
         <Nav />
         <Switch>
           <Route path='/choice'>
             <AfterLogin />
           </Route>
           <Route path='/tasks/new'>
-            {/* <Nav /> */}
             <Create />
           </Route>
-          <Route path='/:user_id/about'>{/* <Nav /> */}</Route>
+          <Route path='/:user_id/about'></Route>
           <Route path='/tasks/:task_id'>
-            {/* <Nav /> */}
             <Show />
           </Route>
           <Route path='/tasks'>
-            {/* <Nav /> */}
-            <div className='task-list'>{parsedTaskList}</div>
-            <Chat setRooms={setRooms} rooms={rooms}/>
+            <Background body={taskListBody} />
           </Route>
           <Route path='/'>
-            <LogSign createUser={createUser} loginUser={loginUser}/>
+            <LogSign createUser={createUser} loginUser={loginUser} />
           </Route>
         </Switch>
       </div>
