@@ -21,15 +21,16 @@ export default function Maps() {
   if (loadError) return "ERROR"
   if (!isLoaded) return "LOADING MAPS"
   
-  const dakota = {lat: 40.7767644, lng: -73.9761399};
-  const frick = {lat: 40.771209, lng: -73.9673991};
-  console.log("D", haversine_distance(dakota, frick))
+  const point1 = {lat: 40.7767644, lng: -73.9761399};
+  const point2 = {lat: 40.771209, lng: -73.9673991};
+  const D = haversine_distance(point1, point2)
   return (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-      >
-      </GoogleMap>
+    <div>{Math.round(D * 100) / 100} KM away</div>
+      // <GoogleMap
+      //   mapContainerStyle={containerStyle}
+      //   center={center}
+      //   zoom={10}
+      // >
+      // </GoogleMap>
   )
 }
