@@ -61,16 +61,15 @@ const useApplicationData = () => {
     return axios.post(`/api/users/login`, { user })
     .catch(err => console.log(err))
   }
-//////////////////////////
-function getTaskById (id) {
-  let tasks = [...state.tasks]
-  for (let task in tasks) {
-    console.log(tasks[task].recipient_id)
-    if (tasks[task].recipient_id === id) {
-      return tasks[task];
-    }
-  } return null;
-}
+// getTaskById and AcceptTask register helpers to posted tasks
+  function getTaskById(id) {
+    let tasks = [...state.tasks]
+    for (let task in tasks) {
+      if (tasks[task].recipient_id === id) {
+        return tasks[task];
+      }
+    } return null;
+  }
 
   function acceptTask(recipient_id, helper_id) {
     let task = getTaskById(recipient_id);
@@ -80,7 +79,7 @@ function getTaskById (id) {
     .catch(err => console.log(err));
  
   }
-///////////////////////////////////////////
+
   return {
       state,
       dispatch,
