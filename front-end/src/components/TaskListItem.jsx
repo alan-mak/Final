@@ -18,8 +18,6 @@ export default function TaskListItem (props) {
         <p>{props.description}</p>
         <p>{props.setter}</p>
         <Maps />
-        <Button message="Accept!" onClick={() => props.onTake(props.setter, 1)}/>
-        <Button message="Clarify!" onClick={() => props.onAccept(props.setter, props.name)}/>
         {accepted && <Textbox message="You accepted this task! Click Clarify to contact the poster!"/>}
         {!accepted &&  <Button message="Accept!" onClick={takeTask}/> }
         <Button message="Clarify!" onClick={() => props.onAccept(props.setter, props.name)}/> 
