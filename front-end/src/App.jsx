@@ -13,6 +13,7 @@ import Background from './components/Background';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
 import { Chat } from './components/Chat/Chat';
+import ShowAccepted from './components/ShowAccepted';
 
 import { LogSign } from './components/Login';
 
@@ -47,8 +48,9 @@ const App = () => {
     }
   };
 
-  const { state, dispatch, createUser, loginUser, acceptTask } = useApplicationData();
+  const { state, dispatch, createUser, loginUser, acceptTask, accepted } = useApplicationData();
   const { mode, transition } = useVisualMode();
+
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
       key={task.id}
@@ -72,6 +74,7 @@ const App = () => {
     <>
       <div className='task-list'>{parsedTaskList}</div>
       <Chat setRooms={setRooms} rooms={rooms} />
+      <ShowAccepted tasks={accepted} />
     </>
   );
 

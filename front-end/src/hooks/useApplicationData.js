@@ -18,6 +18,7 @@ const useApplicationData = () => {
   });
 
   const [tasks, setTasks] = useState([]);
+  const [accepted, setAccepted] = useState([]);
   useEffect(() => {
       axios({
               method: 'GET',
@@ -71,21 +72,34 @@ const useApplicationData = () => {
     } return null;
   }
 
+  function addToAccepted(task) {
+    if (accepted.length < 1) {
+      let taskList = [];
+      let newTask = task;
+      taskList.push(newTask);
+      setAccepted(taskList);
+    } else {
+      let newTask = task;
+      setAccepted([...accepted, newTask]);
+    } 
+  }
+
   function acceptTask(recipient_id, helper_id) {
     let task = getTaskById(recipient_id);
     task.helper_id = helper_id;
-    console.log(task);
+    addToAccepted(task);
     return axios({method: 'put', url: `/api/tasks/${task.id}`, data: { task }})
     .catch(err => console.log(err));
- 
   }
+
 
   return {
       state,
       dispatch,
       createUser,
       loginUser,
-      acceptTask
+      acceptTask,
+      accepted
   };
 };
 
