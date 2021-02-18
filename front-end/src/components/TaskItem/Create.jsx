@@ -10,7 +10,7 @@ export default function Create() {
       <h1>What would you like help with?</h1>
       <form id='task-wrapper'>
         <div className='form-group'>
-          <label for='task-title'>Title of Task</label>
+          <label for='task-title'>Title of task</label>
           <input id='task-title' type='text' name='task-title' />
         </div>
         <div className='form-group'>
