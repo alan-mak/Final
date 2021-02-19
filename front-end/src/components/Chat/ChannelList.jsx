@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Channel } from './Channel';
 export class ChannelList extends React.Component {
-
+  
   handleClick = id => {
     this.props.onselectchannel(id);
   }
