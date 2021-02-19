@@ -60,6 +60,7 @@ const App = () => {
       onAccept={handleChannelCreate}
       setRooms={setRooms}
       onTake={acceptTask}
+      accepted={task.helper_id ? true : false}
     />
   ));
 

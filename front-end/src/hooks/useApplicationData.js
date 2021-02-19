@@ -51,7 +51,7 @@ const useApplicationData = () => {
       });
   })
   .catch((err) => console.log(err));
-  }, [])
+  }, []);
   
   function createUser(user) {
     return axios.post(`/api/users/register`, { user })
@@ -87,7 +87,9 @@ const useApplicationData = () => {
   function acceptTask(recipient_id, helper_id) {
     let task = getTaskById(recipient_id);
     task.helper_id = helper_id;
+    task.accepted_at = Date.now();
     addToAccepted(task);
+    console.log(task);
     return axios({method: 'put', url: `/api/tasks/${task.id}`, data: { task }})
     .catch(err => console.log(err));
   }
