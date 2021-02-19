@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import Button from '../components/Button';
 import Maps from './Maps';
 import '../components/tasks.scss';
+import useApplicationData from '../hooks/useApplicationData';
+import jwt_decode from 'jwt-decode'
+
 
 export default function TaskListItem(props) {
   const [accepted, setAccepted] = useState(false);
+  const token = sessionStorage.getItem('token')
+  const userID = jwt_decode(token)
   const takeTask = function () {
     // setAccepted(true);
-    props.onTake(props.setter, 1);
+    props.onTake(props.setter, userID.user_id);
   };
   return (
     <div className='task-item'>

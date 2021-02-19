@@ -32,6 +32,8 @@ export default function SignUp(props) {
               value.map(x => <li>{key.toUpperCase() + ' ' + x}</li>),
             ]);
           }
+        } else {
+          sessionStorage.setItem("token", res.data.jwt)
         }
       })
       .catch(err => console.log(err));

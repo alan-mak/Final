@@ -26,6 +26,7 @@ export default function Login(props) {
         if (res.data.status === 500) {
           setError(<li>{res.data.message}</li>);
         } else {
+          sessionStorage.setItem("token", res.data.jwt)
           console.log('redirect');
           return history.push('/choice');
         }
