@@ -1,29 +1,66 @@
 import React from 'react';
+import { useState } from 'react';
+
 import Button from '../Button';
 import Background from '../Background';
 
 import './Create.scss';
 
-export default function Create() {
+export default function Create(props) {
+  const [state, setState] = useState({
+    title: '',
+    description: '',
+    duration: 0,
+  });
+
   const body = (
     <div id='create-container'>
       <h1>What would you like help with?</h1>
-      <form id='task-wrapper'>
+      <form id='task-wrapper' onSubmit={event => event.preventDefault()}>
         <div className='form-group'>
           <label for='task-title'>Title of task</label>
-          <input id='task-title' type='text' name='task-title' />
+          <input
+            id='task-title'
+            type='text'
+            name='name'
+            value={state.title}
+            onChange={event =>
+              setState(prev => ({ ...prev, title: event.target.value }))
+            }
+          />
         </div>
         <div className='form-group'>
           <label for='task-description'>
             Please fill out any details concerning your task
           </label>
-          <textarea id='task-description' />
+          <textarea
+            id='task-description'
+            value={state.description}
+            name='description'
+            onChange={event =>
+              setState(prev => ({ ...prev, description: event.target.value }))
+            }
+          />
         </div>
         <div className='form-group'>
           <label for='task-time'>Estimate of task duration in minutes</label>
-          <input id='task-time' type='number' name='task-time' />
+          <input
+            id='task-time'
+            type='number'
+            name='time'
+            // value={state.duration}
+            onChange={event =>
+              setState(prev => ({ ...prev, duration: event.target.value }))
+            }
+          />
         </div>
-        <Button message='Post Task!' classes='create-button' />
+        <Button
+          message='Post Task!'
+          classes='create-button'
+          onClick={() =>
+            props.createTask(state.title, state.description, state.duration)
+          }
+        />
       </form>
     </div>
   );
