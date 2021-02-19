@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-
+import jwt_decode from 'jwt-decode';
 import Button from '../Button';
 import Background from '../Background';
 
 import './Create.scss';
+import { useHistory } from 'react-router-dom';
 
 export default function Create(props) {
   const [state, setState] = useState({
@@ -12,6 +13,11 @@ export default function Create(props) {
     description: '',
     duration: 0,
   });
+
+  const token = sessionStorage.getItem('token')
+  const userID = jwt_decode(token)
+
+  let history = useHistory();
 
   const body = (
     <div id='create-container'>
@@ -58,7 +64,8 @@ export default function Create(props) {
           message='Post Task!'
           classes='create-button'
           onClick={() =>
-            props.createTask(state.title, state.description, state.duration)
+            props.createTask(state.title, state.description, state.duration, userID.user_id)
+            .then(() => history.push('/choice'))
           }
         />
       </form>

@@ -16,7 +16,6 @@ class Api::TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.recipient_id = 1
     if @task.valid?
       @task.save
     end
@@ -28,7 +27,8 @@ class Api::TasksController < ApplicationController
     params.require(:task).permit(
       :name,
       :description,
-      :duration
+      :duration,
+      :recipient_id
     )
   end
 end
