@@ -40,6 +40,7 @@ export class LogSign extends React.Component {
             <SignUp
               createUser={this.props.createUser}
               baseRef={ref => (this.current = ref)}
+              loginUser={this.props.loginUser}
             />
           )}
         </div>

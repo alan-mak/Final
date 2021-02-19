@@ -41,6 +41,7 @@ const useApplicationData = () => {
   }, []);
 
   function createUser(user) {
+    console.log(user);
     return axios.post(`/api/users/register`, { user })
   }
 
