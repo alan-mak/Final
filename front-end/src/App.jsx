@@ -74,7 +74,7 @@ const App = () => {
     <>
       <div className='task-list'>{parsedTaskList}</div>
       <Chat setRooms={setRooms} rooms={rooms} />
-      <ShowAccepted tasks={accepted} />
+      <ShowAccepted tasks={state.tasks} />
     </>
   );
 

@@ -12,7 +12,19 @@
 }
 .channel-item {
   border: 0.2px solid black;
+  border-radius: 5px;
+  background-color: #cbe66a;
 }
 .channel-item:hover {
-  background-color: #cbe66a;;
+  background-color: $accent-color-dark;
+  color: white;
+}
+
+#channel-name {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#send-button {
+  // background-color:#cbe66a;
 }
