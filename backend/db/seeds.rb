@@ -203,7 +203,7 @@ Task.create!(
  Task.create!(
   name: "Read me a book",
   description: "My eyesight isn't what it used to be in my younger years. I'd love to have someone come read with me this weekend.",
-  recipient_id: 0,
+  recipient_id: 5,
 )
 
 puts "DONE!"

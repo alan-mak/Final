@@ -85,11 +85,12 @@ const useApplicationData = () => {
     }).catch(err => console.log(err));
   }
 
-  function createTask(title, description, duration) {
+  function createTask(title, description, duration, recipient_id) {
     const task = {
       name: title,
       description: description,
-      recipient_id: 1,
+      duration: duration,
+      recipient_id: recipient_id
     };
 
     return axios({
