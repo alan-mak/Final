@@ -32,8 +32,8 @@ export default function Maps(props) {
   useEffect(() => {
     // Good!
     Promise.all([
-      findCoord('759 Candlestick Circle Mississauga'),
       findCoord(showAddress()),
+      findCoord('759 Candlestick Circle Mississauga'),
     ]).then( addresses => 
       setDistance(haversine_distance({lat: addresses[0].lat, lng: addresses[0].lng}, {lat: addresses[1].lat, lng: addresses[1].lng}))
       )
