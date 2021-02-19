@@ -7,12 +7,12 @@ import jwt_decode from 'jwt-decode'
 
 
 export default function TaskListItem(props) {
-  const [accepted, setAccepted] = useState(false);
+  const [chat, setChat] = useState(false);
   const token = sessionStorage.getItem('token')
   const userID = jwt_decode(token)
   const takeTask = function () {
-    // setAccepted(true);
     props.onTake(props.setter, userID.user_id);
+    setChat(true);
   };
   return (
     <div className='task-item'>
@@ -30,10 +30,13 @@ export default function TaskListItem(props) {
       )}
       <div className='task-list-item-buttons'>
         {!props.accepted && <Button message='Accept!' onClick={takeTask} />}
-        <Button
+        {chat && <p className='task-list-item-accepted-message'>
+          View your chatlog in the "chats" tab
+        </p>}
+        {!chat && <Button
           message='Clarify!'
           onClick={() => props.onAccept(props.setter, props.name)}
-        />
+        />}
       </div>
     </div>
   );
