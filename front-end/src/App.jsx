@@ -29,10 +29,10 @@ const SERVER = 'http://localhost:3005';
 const App = () => {
   const [rooms, setRooms] = useState([]);
   const socket = socketClient(SERVER);
-      socket.on('connection', () => {
-        console.log(`I'm connected with the back-end`);
-      });
-      
+  socket.on('connection', () => {
+    console.log(`I'm connected with the back-end`);
+  });
+
   const handleChannelCreate = (id, name) => {
     console.log('clicked');
     if (rooms.length < 1) {
@@ -41,13 +41,20 @@ const App = () => {
       channels.push(newChannel);
       setRooms(channels);
     } else {
-      let newChannel = {id: id, name: name, socket:[]}
+      let newChannel = { id: id, name: name, socket: [] };
       console.log('after Channel push: ', newChannel);
       setRooms([...rooms, newChannel]);
     }
   };
 
-  const { state, dispatch, createUser, loginUser, acceptTask } = useApplicationData();
+  const {
+    state,
+    dispatch,
+    createUser,
+    loginUser,
+    acceptTask,
+    createTask,
+  } = useApplicationData();
   const { mode, transition } = useVisualMode();
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
@@ -84,7 +91,7 @@ const App = () => {
             <AfterLogin />
           </Route>
           <Route path='/tasks/new'>
-            <Create />
+            <Create createTask={createTask} />
           </Route>
           <Route path='/:user_id/about'></Route>
           <Route path='/tasks/:task_id'>
