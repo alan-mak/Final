@@ -72,14 +72,11 @@ const useApplicationData = () => {
   }
 
   function createTask(title, description, duration) {
-    console.log('Line 75: TESTESTEST');
-
     const task = {
       name: title,
       description: description,
+      recipient_id: 1,
     };
-
-    console.log('Line 79: TESTESTEST', task);
 
     return axios({
       method: 'post',

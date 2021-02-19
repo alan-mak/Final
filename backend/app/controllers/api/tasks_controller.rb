@@ -13,4 +13,22 @@ class Api::TasksController < ApplicationController
       render json: {}, status: 500
     end
   end
+
+  def create
+    @task = Task.new(task_params)
+    @task.recipient_id = 1
+    if @task.valid?
+      @task.save
+    end
+  end
+
+  private
+  
+  def task_params
+    params.require(:task).permit(
+      :name,
+      :description,
+      :duration
+    )
+  end
 end

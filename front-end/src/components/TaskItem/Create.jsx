@@ -22,7 +22,7 @@ export default function Create(props) {
           <input
             id='task-title'
             type='text'
-            name='task-title'
+            name='name'
             value={state.title}
             onChange={event =>
               setState(prev => ({ ...prev, title: event.target.value }))
@@ -36,6 +36,7 @@ export default function Create(props) {
           <textarea
             id='task-description'
             value={state.description}
+            name='description'
             onChange={event =>
               setState(prev => ({ ...prev, description: event.target.value }))
             }
@@ -46,7 +47,7 @@ export default function Create(props) {
           <input
             id='task-time'
             type='number'
-            name='task-time'
+            name='time'
             // value={state.duration}
             onChange={event =>
               setState(prev => ({ ...prev, duration: event.target.value }))
