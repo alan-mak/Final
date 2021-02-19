@@ -41,8 +41,7 @@ const useApplicationData = () => {
   }, []);
 
   function createUser(user) {
-    return axios.post(`/api/users/register`, { user });
-    // .catch(err => console.log("HI 57",err))
+    return axios.post(`/api/users/register`, { user })
   }
 
   function loginUser(user) {

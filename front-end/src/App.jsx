@@ -52,6 +52,12 @@ const App = () => {
   const { state, dispatch, createUser, loginUser, acceptTask, accepted, createTask } = useApplicationData();
   const { mode, transition } = useVisualMode();
 
+  const userList = state.users.map(user => (
+    <li key={user.id}>
+      {user.name} {user.street} {user.city} {user.province} {user.country} {user.email}
+    </li>
+  ));
+
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
       key={task.id}
@@ -61,15 +67,9 @@ const App = () => {
       onAccept={handleChannelCreate}
       setRooms={setRooms}
       onTake={acceptTask}
+      userList={userList}
       accepted={task.helper_id ? true : false}
     />
-  ));
-
-  const userList = state.users.map(user => (
-    <li key={user.id}>
-      {' '}
-      {user.first_name} {user.last_name} {user.email}{' '}
-    </li>
   ));
 
   const taskListBody = (
