@@ -53,9 +53,7 @@ const App = () => {
   const { mode, transition } = useVisualMode();
 
   const userList = state.users.map(user => (
-    <li key={user.id}>
-      {user.name} {user.street} {user.city} {user.province} {user.country} {user.email}
-    </li>
+    user
   ));
 
   const parsedTaskList = state.tasks.map(task => (
