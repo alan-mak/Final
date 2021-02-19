@@ -1,7 +1,5 @@
 class Api::TasksController < ApplicationController
- skip_before_action :authorized
-
-  
+  skip_before_action :authorized
   def index
     tasks = Task.all
     render json: tasks
@@ -14,5 +12,23 @@ class Api::TasksController < ApplicationController
     else
       render json: {}, status: 500
     end
+  end
+
+  def create
+    @task = Task.new(task_params)
+    @task.recipient_id = 1
+    if @task.valid?
+      @task.save
+    end
+  end
+
+  private
+  
+  def task_params
+    params.require(:task).permit(
+      :name,
+      :description,
+      :duration
+    )
   end
 end

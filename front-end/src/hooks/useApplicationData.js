@@ -1,75 +1,64 @@
-import {
-  useEffect,
-  useReducer,
-  useState
-} from 'react';
-import dataReducer, {
-  SET_USERS,
-  SET_TASKS
-} from '../reducer/data_reducer';
+import { useEffect, useReducer, useState } from 'react';
+import dataReducer, { SET_USERS, SET_TASKS } from '../reducer/data_reducer';
 import axios from 'axios';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 const useApplicationData = () => {
   const [state, dispatch] = useReducer(dataReducer, {
-      users: [],
-      loading: true,
-      tasks: []
+    users: [],
+    loading: true,
+    tasks: [],
   });
 
   const [tasks, setTasks] = useState([]);
   const [accepted, setAccepted] = useState([]);
   useEffect(() => {
-      axios({
-              method: 'GET',
-              url: '/api/users',
-          })
-          .then(({
-              data
-          }) => {
-              console.log(data);
-              dispatch({
-                  type: SET_USERS,
-                  users: data
-              });
-          })
-          .catch((err) => console.log(err));
+    axios({
+      method: 'GET',
+      url: '/api/users',
+    })
+      .then(({ data }) => {
+        dispatch({
+          type: SET_USERS,
+          users: data,
+        });
+      })
+      .catch(err => console.log(err));
   }, []);
 
   useEffect(() => {
     axios({
       method: 'GET',
       url: '/api/tasks',
-  })
-  .then(({
-      data
-  }) => {
-      console.log(data);
-      dispatch({
+    })
+      .then(({ data }) => {
+        dispatch({
           type: SET_TASKS,
-          tasks: data
-      });
-  })
-  .catch((err) => console.log(err));
+          tasks: data,
+        });
+      })
+      .catch(err => console.log(err));
   }, []);
-  
+
   function createUser(user) {
-    return axios.post(`/api/users/register`, { user })
+    return axios.post(`/api/users/register`, { user });
     // .catch(err => console.log("HI 57",err))
   }
 
   function loginUser(user) {
-   return axios.post(`/api/users/login`, { user })
-    .catch(err => console.log(err))
+    return axios
+      .post(`/api/users/login`, { user })
+      .catch(err => console.log(err));
   }
-// getTaskById and AcceptTask register helpers to posted tasks
+  // getTaskById and AcceptTask register helpers to posted tasks
   function getTaskById(id) {
-    let tasks = [...state.tasks]
+    let tasks = [...state.tasks];
     for (let task in tasks) {
       if (tasks[task].recipient_id === id) {
         return tasks[task];
       }
-    } return null;
+    }
+    return null;
   }
 
   function addToAccepted(task) {
@@ -90,18 +79,36 @@ const useApplicationData = () => {
     task.accepted_at = Date.now();
     addToAccepted(task);
     console.log(task);
-    return axios({method: 'put', url: `/api/tasks/${task.id}`, data: { task }})
-    .catch(err => console.log(err));
+    return axios({
+      method: 'put',
+      url: `/api/tasks/${task.id}`,
+      data: { task },
+    }).catch(err => console.log(err));
+  }
+
+  function createTask(title, description, duration) {
+    const task = {
+      name: title,
+      description: description,
+      recipient_id: 1,
+    };
+
+    return axios({
+      method: 'post',
+      url: `/api/tasks`,
+      data: { task },
+    }).catch(err => console.log(err));
   }
 
 
   return {
-      state,
-      dispatch,
-      createUser,
-      loginUser,
-      acceptTask,
-      accepted
+    state,
+    dispatch,
+    createUser,
+    loginUser,
+    acceptTask,
+    createTask,
+    accepted
   };
 };
 
