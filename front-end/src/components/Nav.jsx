@@ -17,7 +17,7 @@ export default function Nav(props) {
         </div>
       </Link>
       <div className='nav-right'>
-        <Link to={'/'}>Log out</Link>
+        <Link to={'/'} onClick={() => {sessionStorage.removeItem("token")}}>Log out</Link>
       </div>
     </section>
   );

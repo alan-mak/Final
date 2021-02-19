@@ -65,7 +65,7 @@ export default function Create(props) {
           classes='create-button'
           onClick={() =>
             props.createTask(state.title, state.description, state.duration, userID.user_id)
-            .then(() => history.push('/choice'))
+            .then(() => history.push('/tasks'))
           }
         />
       </form>
