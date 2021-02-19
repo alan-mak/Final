@@ -33,9 +33,6 @@ export default function Maps(props) {
         return (turtle.street.split(" ").join("+") +","+ turtle.city.split(" ").join("+") +","+ turtle.province.split(" ").join("+"))
       }
     }
-
-    console.log("SETTER", props.setter)
-    console.log("user", userID.user_id)
     Promise.all([
       findCoord(showAddress(props.setter)),
       findCoord(showAddress(userID.user_id)),

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 
@@ -43,6 +43,8 @@ export default function SignUp(props) {
       .catch(err => console.log(err));
   }
 
+  const autoFocus = useCallback(el => (el ? el.focus() : null), []);
+
   return (
     <div className='base-container'>
       <h1>Sign up</h1>
@@ -56,7 +58,7 @@ export default function SignUp(props) {
               name='name'
               value={input.name}
               onChange={handleInput}
-              autofocus='true'
+              ref={autoFocus}
             />
           </div>
           <div className='form-group'>

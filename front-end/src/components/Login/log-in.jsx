@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Button from '../Button';
@@ -26,13 +26,15 @@ export default function Login(props) {
         if (res.data.status === 500) {
           setError(<li>{res.data.message}</li>);
         } else {
-          sessionStorage.setItem("token", res.data.jwt)
+          sessionStorage.setItem('token', res.data.jwt);
           console.log('redirect');
           return history.push('/choice');
         }
       })
       .catch(err => console.log(err));
   }
+
+  const autoFocus = useCallback(el => (el ? el.focus() : null), []);
 
   return (
     <div className='base-container'>
@@ -46,7 +48,7 @@ export default function Login(props) {
               type='email'
               name='email'
               onChange={handleInput}
-              autofocus='true'
+              ref={autoFocus}
             />
           </div>
           <div className='form-group'>
