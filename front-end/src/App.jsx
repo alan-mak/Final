@@ -53,7 +53,7 @@ const App = () => {
   };
 
 
-  const { state, dispatch, createUser, loginUser, acceptTask, accepted, createTask } = useApplicationData();
+  const { state, dispatch, createUser, loginUser, acceptTask, createTask } = useApplicationData();
   const { mode, transition } = useVisualMode();
 
   const userList = state.users.map(user => (
