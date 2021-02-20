@@ -10,8 +10,8 @@ export default function TaskListItem(props) {
   const [chat, setChat] = useState(false);
   const token = sessionStorage.getItem('token')
   const userID = jwt_decode(token)
-  const takeTask = function () {
-    props.onTake(props.setter, userID.user_id);
+  const clarifyTask = function () {
+    props.onClarify(props.setter, props.name);
     setChat(true);
   };
   return (
@@ -24,7 +24,7 @@ export default function TaskListItem(props) {
       </div>
    
       <div className='task-list-item-buttons'>
-        {!props.accepted && <Button message='Accept!' onClick={takeTask} />}
+        {!props.accepted && <Button message='Accept!' onClick={() => props.onAccept(props.setter, userID.user_id)} />}
         {props.accepted && (
         <p className='task-list-item-accepted-message'>
           You accepted this task! Click <strong>Clarify</strong> to contact the
@@ -36,7 +36,7 @@ export default function TaskListItem(props) {
         </p>}
         {!chat && <Button
           message='Clarify!'
-          onClick={() => props.onAccept(props.setter, props.name)}
+          onClick={clarifyTask}
         />}
         
       </div>

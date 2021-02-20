@@ -66,9 +66,9 @@ const App = () => {
       name={task.name}
       description={task.description}
       setter={task.recipient_id}
-      onAccept={handleChannelCreate}
+      onClarify={handleChannelCreate}
       setRooms={setRooms}
-      onTake={acceptTask}
+      onAccept={acceptTask}
       userList={userList}
       accepted={task.helper_id ? true : false}
     />
