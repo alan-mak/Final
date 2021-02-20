@@ -8,12 +8,17 @@ import jwt_decode from 'jwt-decode'
 
 export default function TaskListItem(props) {
   const [chat, setChat] = useState(false);
+  const [accepted, setAccepted] = useState(false);
   const token = sessionStorage.getItem('token')
   const userID = jwt_decode(token)
   const clarifyTask = function () {
     props.onClarify(props.setter, props.name);
     setChat(true);
   };
+  const acceptTask = function () {
+    props.onAccept(props.setter, userID.user_id)
+    setAccepted(true);
+  }
   return (
     <div className='task-item'>
       <h2 className='task-list-item-title'>{props.name}</h2>
@@ -24,13 +29,14 @@ export default function TaskListItem(props) {
       </div>
    
       <div className='task-list-item-buttons'>
-        {!props.accepted && <Button message='Accept!' onClick={() => props.onAccept(props.setter, userID.user_id)} />}
-        {props.accepted && (
+      {(props.accepted || accepted) && (
         <p className='task-list-item-accepted-message'>
           You accepted this task! Click <strong>Clarify</strong> to contact the
           poster!
         </p>
       )}
+        {(!props.accepted && !accepted) && <Button message='Accept!' onClick={acceptTask} />}
+      
         {chat && <p className='task-list-item-accepted-message'>
           View your chatlog in the "chats" tab
         </p>}
