@@ -20,8 +20,7 @@ export default function TaskListItem(props) {
       <div className='task-list-item-title-underline'></div>
       <p className='task-list-item-description'>{props.description}</p>
       <div className='task-list-item-distance'>
-        {props.setter &&
-        <Maps setter={props.setter} userList={props.userList}/>}
+        {/* {props.setter && <Maps setter={props.setter} userList={props.userList}/>} */}
       </div>
       {props.accepted && (
         <p className='task-list-item-accepted-message'>

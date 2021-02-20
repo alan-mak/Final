@@ -16,7 +16,7 @@ export default function ShowAccepted (props) {
     <div id="task-div">
       {taskList.length > 0 && <p>Thank's for helping out, here's what you promised to do!</p>}
       <ul>
-      { taskList }
+      {/* { taskList } */}
       </ul>
     </div>
   )
