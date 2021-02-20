@@ -33,9 +33,13 @@ export class LogSign extends React.Component {
     const body = (
       <div className='login'>
         <div className='container' ref={ref => (this.container = ref)}>
-          {isLogin && <Login 
-          loginUser={this.props.loginUser}
-          baseRef={ref => (this.current = ref)} />}
+          {isLogin && (
+            <Login
+              loginUser={this.props.loginUser}
+              baseRef={ref => (this.current = ref)}
+              setLoggedIn={this.props.setLoggedIn}
+            />
+          )}
           {!isLogin && (
             <SignUp
               createUser={this.props.createUser}

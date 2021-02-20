@@ -3,19 +3,28 @@
 #nav-section {
   z-index: 4;
   position: absolute;
-  padding-top: 20px;
+  padding: 15px 0 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
 
+  .link-disabled {
+    cursor: default;
+  }
+
   .logo {
+    text-align: center;
     font-family: $font-logo;
     font-size: 50px;
     font-weight: 900;
+    padding: 5px 12px;
+    border-radius: 10px;
+    box-shadow: 0 2px 2px 1px #3a3a3a;
+    background-color: $primary-color;
   }
 
-  .logo-red {
+  .logo-accent {
     color: $accent-color-dark;
   }
 
@@ -28,12 +37,19 @@
     color: inherit;
   }
 
-  .nav-right {
+  #nav-right {
     position: absolute;
-    right: 70px;
+    right: 50px;
+    display: flex;
+    align-items: center;
+
+    #nav-logged-in {
+      font-size: 24px;
+    }
 
     a {
       font-size: 28px;
+      margin-left: 30px;
       padding: 5px 10px;
       border: 3px solid black;
       border-radius: 0.3em;

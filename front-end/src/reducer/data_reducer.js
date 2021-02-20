@@ -1,5 +1,6 @@
 export const SET_USERS = 'SET_USERS';
 export const SET_TASKS = 'SET_TASKS';
+export const SET_LOGGEDIN = 'SET_LOGGEDIN';
 export const SET_MESSAGES = 'SET_MESSAGES';
 export const SET_CHANNELS = 'SET_CHANNELS';
 
@@ -28,7 +29,14 @@ const dataReducer = (state, action) => {
                     ...state,
                     messages: action.messages,
                     loading: false,
-                };
+            };
+        
+            case SET_LOGGEDIN:
+              return {
+                ...state,
+                loggedIn: action.loggedIn,
+                loading: false,
+            };
         default:
             return state;
     }

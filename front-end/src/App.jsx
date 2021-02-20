@@ -31,10 +31,12 @@ import Nav from './components/Nav';
 
 
 const SERVER = 'http://localhost:3005';
+
 const App = () => {
   const [rooms, setRooms] = useState([ {id: 45, name: "Global Chat", socket: []} ]);
   // let channels = state.channels;
   const socket = socketClient(SERVER);
+
   socket.on('connection', () => {
     console.log(`I'm connected with the back-end`);
   });
@@ -54,17 +56,21 @@ const App = () => {
     }
   };
 
+  const {
+    state,
+    dispatch,
+    createUser,
+    loginUser,
+    acceptTask,
+    accepted,
+    createTask,
+    setLoggedIn,
+    createChannel
+  } = useApplicationData();
 
-
-
-
-
-  const { state, dispatch, createUser, loginUser, acceptTask, createTask, createChannel } = useApplicationData();
   const { mode, transition } = useVisualMode();
 
-  const userList = state.users.map(user => (
-    user
-  ));
+  const userList = state.users.map(user => user);
 
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
@@ -91,7 +97,7 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
-        <Nav />
+        <Nav setLoggedIn={setLoggedIn} state={state} />
         <Switch>
           <Route path='/choice'>
             <AfterLogin />
@@ -107,7 +113,11 @@ const App = () => {
             <Background body={taskListBody} />
           </Route>
           <Route path='/'>
-            <LogSign createUser={createUser} loginUser={loginUser} />
+            <LogSign
+              createUser={createUser}
+              loginUser={loginUser}
+              setLoggedIn={setLoggedIn}
+            />
           </Route>
         </Switch>
       </div>

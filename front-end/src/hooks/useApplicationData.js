@@ -1,6 +1,14 @@
 import { useEffect, useReducer, useState } from 'react';
-import dataReducer, { SET_USERS, SET_TASKS, SET_CHANNELS } from '../reducer/data_reducer';
+
+import dataReducer, {
+  SET_USERS,
+  SET_TASKS,
+  SET_LOGGEDIN,
+  SET_CHANNELS
+} from '../reducer/data_reducer';
+
 import axios from 'axios';
+
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 const useApplicationData = () => {
@@ -8,7 +16,17 @@ const useApplicationData = () => {
     users: [],
     loading: true,
     tasks: [],
+    loggedIn: sessionStorage.token,
   });
+
+  const setLoggedIn = data => {
+    dispatch({
+      type: SET_LOGGEDIN,
+      loggedIn: data,
+    });
+  };
+
+  const [accepted, setAccepted] = useState([]);
 
   useEffect(() => {
     axios({
@@ -98,6 +116,18 @@ const useApplicationData = () => {
   }
 
 
+  function addToAccepted(task) {
+    if (accepted.length < 1) {
+      let taskList = [];
+      let newTask = task;
+      taskList.push(newTask);
+      setAccepted(taskList);
+    } else {
+      let newTask = task;
+      setAccepted([...accepted, newTask]);
+    }
+  }
+  
   function acceptTask(recipient_id, helper_id) {
     console.log("you are ", helper_id);
     let task = getTaskById(recipient_id);
@@ -117,7 +147,7 @@ const useApplicationData = () => {
       name: title,
       description: description,
       duration: duration,
-      recipient_id: recipient_id
+      recipient_id: recipient_id,
     };
 
     return axios({
@@ -127,7 +157,6 @@ const useApplicationData = () => {
     }).catch(err => console.log(err));
   }
 
-
   return {
     state,
     dispatch,
@@ -135,6 +164,8 @@ const useApplicationData = () => {
     loginUser,
     acceptTask,
     createTask,
+    accepted,
+    setLoggedIn,
     createChannel
   };
 };
