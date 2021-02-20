@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from 'react';
-import dataReducer, { SET_USERS, SET_TASKS } from '../reducer/data_reducer';
+import dataReducer, { SET_USERS, SET_TASKS, SET_CHANNELS } from '../reducer/data_reducer';
 import axios from 'axios';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
@@ -37,6 +37,25 @@ const useApplicationData = () => {
       })
       .catch(err => console.log(err));
   }, []);
+
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: '/api/channels',
+    })
+      .then(({ data }) => {
+        dispatch({
+          type: SET_CHANNELS,
+          channels: data,
+        });
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  function createChannel(channel) {
+    console.log("CREATINGGGG! ", channel);
+    return axios.post('/api/channels',  channel)
+  }
 
   function createUser(user) {
     console.log(user);
@@ -94,7 +113,8 @@ const useApplicationData = () => {
     createUser,
     loginUser,
     acceptTask,
-    createTask
+    createTask,
+    createChannel
   };
 };
 

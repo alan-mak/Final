@@ -15,7 +15,7 @@ class Api::MessagesController < ApplicationController
   private 
 
   def message_params
-    params.require(:task).permit(
+    params.require(:message).permit(
       :channel_id,
       :sender_id,
       :text

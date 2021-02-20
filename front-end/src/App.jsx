@@ -32,7 +32,8 @@ import Nav from './components/Nav';
 
 const SERVER = 'http://localhost:3005';
 const App = () => {
-  const [rooms, setRooms] = useState([ {id: 3, name: "Global Chat", socket: []} ]);
+  const [rooms, setRooms] = useState([ {id: 45, name: "Global Chat", socket: []} ]);
+  // let channels = state.channels;
   const socket = socketClient(SERVER);
   socket.on('connection', () => {
     console.log(`I'm connected with the back-end`);
@@ -48,12 +49,17 @@ const App = () => {
     } else {
       let newChannel = { id: id, name: name, socket: [] };
       console.log('after Channel push: ', newChannel);
+      createChannel(newChannel);
       setRooms([...rooms, newChannel]);
     }
   };
 
 
-  const { state, dispatch, createUser, loginUser, acceptTask, createTask } = useApplicationData();
+
+
+
+
+  const { state, dispatch, createUser, loginUser, acceptTask, createTask, createChannel } = useApplicationData();
   const { mode, transition } = useVisualMode();
 
   const userList = state.users.map(user => (
