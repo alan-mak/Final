@@ -35,7 +35,9 @@ User.create!(
   street: "100 Queen Street West",
   city: "Toronto",
   province: "Ontario",
-  post_code: "M5H 2N1"
+  post_code: "M5H 2N1",
+  lat: 43.652569,
+  lng: -79.383713
 )
 
 User.create!(
@@ -45,7 +47,9 @@ User.create!(
   street: "69 Kensington Avenue",
   city: "Toronto",
   province: "Ontario",
-  post_code: "M5T 2K2" 
+  post_code: "M5T 2K2",
+  lat: 43.654419,
+  lng: -79.400459
 )
 
 User.create!(
@@ -55,7 +59,9 @@ User.create!(
   street: "431 College Street",
   city: "Toronto",
   province: "Ontario",
-  post_code: "M5T 1T1"
+  post_code: "M5T 1T1",
+  lat: 43.656250,
+  lng: -79.407440
 )
 
 User.create!(
@@ -65,7 +71,10 @@ User.create!(
   street: "1 Austin Terrace",
   city: "Toronto",
   province: "Ontario",
-  post_code: "M5R 1X8"
+  post_code: "M5R 1X8",
+  lat: 43.6781015,
+  lng: -79.4094158
+
 )
 
 User.create!(
@@ -75,7 +84,9 @@ User.create!(
   street: "770 Don Mills Rd",
   city: "North York",
   province: "Ontario",
-  post_code: "M3C 1T3 "
+  post_code: "M3C 1T3 ",
+  lat: 43.71767044067383,
+  lng: -79.33784484863281
 )
 
 User.create!(
@@ -85,7 +96,9 @@ User.create!(
   street: "290 Bremner Blvd",
   city: "Toronto",
   province: "Ontario",
-  post_code: "M5V 3L9"
+  post_code: "M5V 3L9",
+  lat: 43.641877,
+  lng: -79.3862941
 )
 
 User.create!(
@@ -95,7 +108,9 @@ User.create!(
   street: "924 Queen Street West",
   city: "Toronto",
   province: "Ontario",
-  post_code: "M6J 1G6"
+  post_code: "M6J 1G6",
+  lat: 43.6449002,
+  lng: -79.4159094
 )
 
 User.create!(
@@ -105,7 +120,9 @@ User.create!(
   street: "147 Spadina Avenue",
   city: "Toronto",
   province: "Ontario",
-  post_code: "M5V 2L7"
+  post_code: "M5V 2L7",
+  lat: 43.6478385925293,
+  lng: -79.39608001708984
 )
 
 User.create!(
@@ -115,7 +132,9 @@ User.create!(
   street: "198 Baldwin Street",
   city: "Toronto",
   province: "Ontario",
-  post_code: "M5T 1L8"
+  post_code: "M5T 1L8",
+  lat: 43.65469741821289,
+  lng: -79.40111541748047
 )
 
 User.create!(
@@ -125,7 +144,9 @@ User.create!(
   street: "253 Spadina Avenue",
   city: "Toronto",
   province: "Ontario",
-  post_code: "M5T 2E3"
+  post_code: "M5T 2E3",
+  lat: 43.6424053,
+  lng: -79.3938782
 )
 
 ## TASKS

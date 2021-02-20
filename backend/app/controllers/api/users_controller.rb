@@ -9,6 +9,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # raise @user.inspect
     if @user.valid?
       @token = encode_token(user_id: @user.id)
       @user.save
@@ -28,7 +29,9 @@ class Api::UsersController < ApplicationController
       :street,
       :city,
       :province,
-      :post_code
+      :post_code,
+      :lat,
+      :lng
     )
   end
 end
