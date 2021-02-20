@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import useApplicationData from '../hooks/useApplicationData';
+import jwt_decode from 'jwt-decode';
 
 import './Nav.scss';
 
@@ -16,9 +16,15 @@ export default function Nav(props) {
     </div>
   );
 
+  const userName = () => {
+    const userID = jwt_decode(props.state.loggedIn).user_id;
+    const user = props.state.users.find(user => user.id === userID);
+    return user && user.name;
+  };
+
   return (
     <section id='nav-section'>
-      {props.loggedIn ? (
+      {props.state.loggedIn ? (
         <Link to={'/choice'}>{body}</Link>
       ) : (
         <Link to={'#'} className='link-disabled'>
@@ -26,16 +32,23 @@ export default function Nav(props) {
         </Link>
       )}
       <div className='nav-right'>
-        {props.loggedIn && (
-          <Link
-            to={'/'}
-            onClick={() => {
-              props.setLoggedIn(null);
-              sessionStorage.removeItem('token');
-            }}
-          >
-            Log out
-          </Link>
+        {props.state.loggedIn && (
+          <>
+            <h2>User ID: {userName()}</h2>
+            <Link
+              to={'/'}
+              onClick={() => {
+                console.log(
+                  '***State***',
+                  jwt_decode(props.state.loggedIn).user_id
+                );
+                props.setLoggedIn(null);
+                sessionStorage.removeItem('token');
+              }}
+            >
+              Log out
+            </Link>
+          </>
         )}
       </div>
     </section>
