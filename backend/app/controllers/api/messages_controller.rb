@@ -1,4 +1,6 @@
 class Api::MessagesController < ApplicationController
+  skip_before_action :authorized
+
   def index
     messages = Message.all
     render Json: messages
