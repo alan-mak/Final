@@ -57,9 +57,28 @@ const useApplicationData = () => {
     return axios.post('/api/channels',  channel)
   }
 
-  function createUser(user) {
-    console.log(user);
-    return axios.post(`/api/users/register`, { user })
+  async function createUser(user) {
+    const turtle = (user.street.split(" ").join("+") + "," + user.city.split(" ").join("+") + "," + user.province.split(" ").join("+"))
+    
+    const findCoord = (incData) => {
+      return axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
+        params:{
+          address: incData,
+          key:process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+        }
+      }
+      ).then((res) => {
+        return res.data.results[0].geometry.location;
+      }).catch((err) => console.log(err))
+    }
+    
+    const dinosaur = await findCoord(turtle)
+    .then((data) => {
+      user.lat = (data.lat);
+      user.lng = (data.lng);
+      return user;
+    })    
+    return axios.post(`/api/users/register`, {user})
   }
 
   function loginUser(user) {
