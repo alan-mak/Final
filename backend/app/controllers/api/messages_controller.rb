@@ -14,8 +14,11 @@ class Api::MessagesController < ApplicationController
 
   def message_params
     params.require(:task).permit(
-      :channel_id
+      :channel_id,
+      :sender_id,
       :text
     )
+  end
+
 
 end
