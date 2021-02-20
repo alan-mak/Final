@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
 
@@ -16,6 +16,7 @@ export default function Nav(props) {
     </div>
   );
 
+  // Get user's name from the token of logged in user
   const userName = () => {
     const userID = jwt_decode(props.state.loggedIn).user_id;
     const user = props.state.users.find(user => user.id === userID);
@@ -31,17 +32,14 @@ export default function Nav(props) {
           {body}
         </Link>
       )}
-      <div className='nav-right'>
+
+      <div id='nav-right'>
         {props.state.loggedIn && (
           <>
-            <h2>User ID: {userName()}</h2>
+            <div id='nav-logged-in'>Welcome {userName()}</div>
             <Link
               to={'/'}
               onClick={() => {
-                console.log(
-                  '***State***',
-                  jwt_decode(props.state.loggedIn).user_id
-                );
                 props.setLoggedIn(null);
                 sessionStorage.removeItem('token');
               }}
