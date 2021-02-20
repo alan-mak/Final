@@ -1,5 +1,30 @@
+@import '../../styles/variables.scss';
+
 .chat-app {
   position: absolute;
   right: 100px;
   bottom: 0;
+  background-color: white;
+  box-shadow: 0 5px 7px 2px #3a3a3a;
+  border-radius: 15px 15px 0px 0px;
+  padding: 2px;
+  text-align: center;
+}
+.channel-item {
+  border: 0.2px solid black;
+  border-radius: 5px;
+  background-color: #cbe66a;
+}
+.channel-item:hover {
+  background-color: $accent-color-dark;
+  color: white;
+}
+
+#channel-name {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#send-button {
+  // background-color:#cbe66a;
 }

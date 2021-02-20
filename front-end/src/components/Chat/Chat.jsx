@@ -83,6 +83,7 @@ handleChannelSelect = id => {
   render() {
     return (
       <div className='chat-app'>
+        <p>View your chats with other users here!</p>
       <ChannelList channels={this.props.rooms} onselectchannel={this.handleChannelSelect} />
       <MessagesPanel onsendmessage={this.handleSendMessage} channel={this.state.channel} />
       </div>
