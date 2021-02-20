@@ -15,7 +15,7 @@ export default function Create(props) {
   });
 
   const token = sessionStorage.getItem('token')
-  const userID = jwt_decode(token)
+  const userID = jwt_decode(token, { header: true })
 
   let history = useHistory();
 

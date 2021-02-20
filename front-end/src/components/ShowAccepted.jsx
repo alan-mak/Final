@@ -3,7 +3,7 @@ import './ShowAccepted.scss';
 import jwt_decode from 'jwt-decode'
 export default function ShowAccepted (props) {
   const token = sessionStorage.getItem('token')
-  const userID = jwt_decode(token);
+  const userID = jwt_decode(token, {header: true });
   console.log(userID);
 
   let taskList = props.tasks

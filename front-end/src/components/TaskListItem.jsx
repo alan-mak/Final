@@ -10,7 +10,7 @@ export default function TaskListItem(props) {
   const [chat, setChat] = useState(false);
   const [accepted, setAccepted] = useState(false);
   const token = sessionStorage.getItem('token')
-  const userID = jwt_decode(token)
+  const userID = jwt_decode(token, { header: true });
   const clarifyTask = function () {
     props.onClarify(props.setter, props.name);
     setChat(true);
