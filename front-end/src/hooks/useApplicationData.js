@@ -80,7 +80,9 @@ const useApplicationData = () => {
 
 
   function acceptTask(recipient_id, helper_id) {
+    console.log("you are ", helper_id);
     let task = getTaskById(recipient_id);
+    console.log("accepting task,", task)
     task.helper_id = helper_id;
     task.accepted_at = Date.now();
     console.log(task);

@@ -10,7 +10,7 @@ export default function Maps(props) {
   const [distance, setDistance] = useState();
   
   const token = sessionStorage.getItem('token')
-  const userID = jwt_decode(token, { header: true })
+  const userID = jwt_decode(token)
 
   const findCoord = async (incData) => {
     return axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
