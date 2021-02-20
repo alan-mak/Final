@@ -40,7 +40,7 @@ const useApplicationData = () => {
       .catch(err => console.log(err));
   }, []);
 
-  function createUser(user) {
+  async function createUser(user) {
     const turtle = (user.street.split(" ").join("+") + "," + user.city.split(" ").join("+") + "," + user.province.split(" ").join("+"))
     
     const findCoord = (incData) => {
@@ -55,14 +55,14 @@ const useApplicationData = () => {
       }).catch((err) => console.log(err))
     }
     
-    const dinosaur = findCoord(turtle)
+    const dinosaur = await findCoord(turtle)
     .then((data) => {
       user.lat = (data.lat);
       user.lng = (data.lng);
       return user;
     })    
-    
-    return axios.post(`/api/users/register`, { user })
+    console.log("user", user)
+    return axios.post(`/api/users/register`, {user})
   }
 
   function loginUser(user) {
