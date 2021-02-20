@@ -3,7 +3,7 @@ import './ShowAccepted.scss';
 import jwt_decode from 'jwt-decode'
 export default function ShowAccepted (props) {
   const token = sessionStorage.getItem('token')
-  const userID = jwt_decode(token)
+  const userID = jwt_decode(token);
   console.log(userID);
 
   let taskList = props.tasks
@@ -16,7 +16,7 @@ export default function ShowAccepted (props) {
     <div id="task-div">
       {taskList.length > 0 && <p>Thank's for helping out, here's what you promised to do!</p>}
       <ul>
-      {/* { taskList } */}
+      { taskList }
       </ul>
     </div>
   )

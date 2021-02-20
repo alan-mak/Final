@@ -22,14 +22,15 @@ export default function TaskListItem(props) {
       <div className='task-list-item-distance'>
         {/* {props.setter && <Maps setter={props.setter} userList={props.userList}/>} */}
       </div>
-      {props.accepted && (
+   
+      <div className='task-list-item-buttons'>
+        {!props.accepted && <Button message='Accept!' onClick={takeTask} />}
+        {props.accepted && (
         <p className='task-list-item-accepted-message'>
           You accepted this task! Click <strong>Clarify</strong> to contact the
           poster!
         </p>
       )}
-      <div className='task-list-item-buttons'>
-        {!props.accepted && <Button message='Accept!' onClick={takeTask} />}
         {chat && <p className='task-list-item-accepted-message'>
           View your chatlog in the "chats" tab
         </p>}
