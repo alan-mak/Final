@@ -16,19 +16,21 @@ export class MessagesPanel extends React.Component {
 
   
   render() {
-    let list = <div>No messages available</div>
-    
-    if (this.props.channel && this.props.channel.messages) {
+    let list = <div>Click "Clarify!" to message the poster!</div>
+    if (this.props.channel && !this.props.channel.messages) {
+      list = <div>No messages currently available, send one!</div>
+    } else if (this.props.channel && this.props.channel.messages) {
       list = this.props.channel.messages.map(m => <Message key={m.id} senderName={m.senderName} id={m.id} text={m.text} />);
     }
   
     return (
       <div className="messages-panel">
+        {this.props.channel &&<p id="channel-name" >Messages for "{this.props.channel.name}"</p>}
       <div className="messages-list">{list}</div>
       {this.props.channel &&
       <div className="messages-input">
       <input type="text" onChange={this.handleInput} value ={this.state.input_value} />
-      <button  onClick={this.send}>Send</button>
+      <button id="send-button" onClick={this.send}>Send</button>
       </div>
     }
       </div>

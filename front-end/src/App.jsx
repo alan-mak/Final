@@ -25,11 +25,16 @@ import './components/tasks.scss';
 
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
+// import jwt_decode from 'jwt-decode';
+// const token = sessionStorage.getItem('token');
+// const userID = jwt_decode(token, {header: true});
+
 
 const SERVER = 'http://localhost:3005';
 
 const App = () => {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState([ {id: 45, name: "Global Chat", socket: []} ]);
+  // let channels = state.channels;
   const socket = socketClient(SERVER);
 
   socket.on('connection', () => {
@@ -46,6 +51,7 @@ const App = () => {
     } else {
       let newChannel = { id: id, name: name, socket: [] };
       console.log('after Channel push: ', newChannel);
+      createChannel(newChannel);
       setRooms([...rooms, newChannel]);
     }
   };
@@ -59,7 +65,9 @@ const App = () => {
     accepted,
     createTask,
     setLoggedIn,
+    createChannel
   } = useApplicationData();
+
   const { mode, transition } = useVisualMode();
 
   const userList = state.users.map(user => user);
@@ -70,9 +78,9 @@ const App = () => {
       name={task.name}
       description={task.description}
       setter={task.recipient_id}
-      onAccept={handleChannelCreate}
+      onClarify={handleChannelCreate}
       setRooms={setRooms}
-      onTake={acceptTask}
+      onAccept={acceptTask}
       userList={userList}
       accepted={task.helper_id ? true : false}
     />
@@ -82,7 +90,7 @@ const App = () => {
     <>
       <div className='task-list'>{parsedTaskList}</div>
       <Chat setRooms={setRooms} rooms={rooms} />
-      <ShowAccepted tasks={accepted} />
+      <ShowAccepted tasks={state.tasks} />
     </>
   );
 

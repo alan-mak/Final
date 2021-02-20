@@ -5,6 +5,7 @@ import socketClient from 'socket.io-client';
 import './Chat.scss';
 
 
+
 export class Chat extends React.Component {
   state = {
     channels: null,
@@ -52,7 +53,8 @@ export class Chat extends React.Component {
   }
 
   handleSendMessage = (channel_id, text) => {
-    this.socket.emit('send-message', {channel_id, text, senderName: this.socket.id, id: Date.now() })
+    let id = Date.now();
+    this.socket.emit('send-message', {channel_id, text, senderName: this.socket.id, id: id })
   }
 
   loadChannels = async () => {fetch('http://localhost:3005/getChannels')
@@ -83,6 +85,7 @@ handleChannelSelect = id => {
   render() {
     return (
       <div className='chat-app'>
+        <p>View your chats with other users here!</p>
       <ChannelList channels={this.props.rooms} onselectchannel={this.handleChannelSelect} />
       <MessagesPanel onsendmessage={this.handleSendMessage} channel={this.state.channel} />
       </div>

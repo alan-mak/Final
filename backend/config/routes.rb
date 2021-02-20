@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     post '/users/login', to: 'auth#create'
     post '/users/register', to: 'users#create'
     resources :tasks
+    resources :messages
+    resources :channels
   end
   
 end

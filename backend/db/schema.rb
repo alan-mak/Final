@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_164443) do
+
+ActiveRecord::Schema.define(version: 2021_02_20_175900) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "channels", force: :cascade do |t|
+    t.string "name"
+    t.integer "task_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer "channel_id"
+    t.string "channel_name"
+    t.integer "sender_id"
+    t.integer "recipient_id"
+    t.string "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
@@ -41,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_02_19_164443) do
     t.string "city", null: false
     t.string "province", null: false
     t.string "post_code", null: false
+    t.decimal "lat", default: "0.0"
+    t.decimal "lng", default: "0.0"
   end
 
 end
