@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from 'react';
-import dataReducer, { SET_USERS, SET_TASKS } from '../reducer/data_reducer';
+import dataReducer, { SET_USERS, SET_TASKS, SET_CHANNELS } from '../reducer/data_reducer';
 import axios from 'axios';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
@@ -38,6 +38,25 @@ const useApplicationData = () => {
       .catch(err => console.log(err));
   }, []);
 
+  useEffect(() => {
+    axios({
+      method: 'GET',
+      url: '/api/channels',
+    })
+      .then(({ data }) => {
+        dispatch({
+          type: SET_CHANNELS,
+          channels: data,
+        });
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  function createChannel(channel) {
+    console.log("CREATINGGGG! ", channel);
+    return axios.post('/api/channels',  channel)
+  }
+
   async function createUser(user) {
     const turtle = (user.street.split(" ").join("+") + "," + user.city.split(" ").join("+") + "," + user.province.split(" ").join("+"))
     
@@ -59,7 +78,6 @@ const useApplicationData = () => {
       user.lng = (data.lng);
       return user;
     })    
-    console.log("user", user)
     return axios.post(`/api/users/register`, {user})
   }
 
@@ -81,7 +99,9 @@ const useApplicationData = () => {
 
 
   function acceptTask(recipient_id, helper_id) {
+    console.log("you are ", helper_id);
     let task = getTaskById(recipient_id);
+    console.log("accepting task,", task)
     task.helper_id = helper_id;
     task.accepted_at = Date.now();
     console.log(task);
@@ -114,7 +134,8 @@ const useApplicationData = () => {
     createUser,
     loginUser,
     acceptTask,
-    createTask
+    createTask,
+    createChannel
   };
 };
 

@@ -149,6 +149,8 @@ User.create!(
   lng: -79.3938782
 )
 
+
+
 ## TASKS
 
 puts "Re-creating Tasks ..."
@@ -225,6 +227,14 @@ Task.create!(
   name: "Read me a book",
   description: "My eyesight isn't what it used to be in my younger years. I'd love to have someone come read with me this weekend.",
   recipient_id: 5,
+)
+
+puts "Re-creating Channels"
+
+Channel.destroy_all
+
+Channel.create!(
+  name: "Global chat"
 )
 
 puts "DONE!"

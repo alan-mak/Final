@@ -4,7 +4,6 @@ import jwt_decode from 'jwt-decode'
 export default function ShowAccepted (props) {
   const token = sessionStorage.getItem('token')
   const userID = jwt_decode(token);
-  console.log(userID);
 
   let taskList = props.tasks
   .filter(task => task.helper_id === userID.user_id)

@@ -25,14 +25,15 @@ import './components/tasks.scss';
 
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
-import jwt_decode from 'jwt-decode';
-const token = sessionStorage.getItem('token');
-const userID = jwt_decode(token);
+// import jwt_decode from 'jwt-decode';
+// const token = sessionStorage.getItem('token');
+// const userID = jwt_decode(token, {header: true});
 
 
 const SERVER = 'http://localhost:3005';
 const App = () => {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState([ {id: 45, name: "Global Chat", socket: []} ]);
+  // let channels = state.channels;
   const socket = socketClient(SERVER);
   socket.on('connection', () => {
     console.log(`I'm connected with the back-end`);
@@ -48,12 +49,17 @@ const App = () => {
     } else {
       let newChannel = { id: id, name: name, socket: [] };
       console.log('after Channel push: ', newChannel);
+      createChannel(newChannel);
       setRooms([...rooms, newChannel]);
     }
   };
 
 
-  const { state, dispatch, createUser, loginUser, acceptTask, createTask } = useApplicationData();
+
+
+
+
+  const { state, dispatch, createUser, loginUser, acceptTask, createTask, createChannel } = useApplicationData();
   const { mode, transition } = useVisualMode();
 
   const userList = state.users.map(user => (
@@ -77,7 +83,7 @@ const App = () => {
   const taskListBody = (
     <>
       <div className='task-list'>{parsedTaskList}</div>
-      <Chat setRooms={setRooms} rooms={rooms} sender={userID}/>
+      <Chat setRooms={setRooms} rooms={rooms} />
       <ShowAccepted tasks={state.tasks} />
     </>
   );
