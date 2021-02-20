@@ -37,6 +37,7 @@ export default function TaskListItem(props) {
           message='Clarify!'
           onClick={() => props.onAccept(props.setter, props.name)}
         />}
+        
       </div>
     </div>
   );
