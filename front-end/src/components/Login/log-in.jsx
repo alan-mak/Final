@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
+import useApplicationData from '../../hooks/useApplicationData';
 
 import Button from '../Button';
 import './log-in.scss';
@@ -26,8 +27,9 @@ export default function Login(props) {
         if (res.data.status === 500) {
           setError(<li>{res.data.message}</li>);
         } else {
+          props.setLoggedIn(res.data.jwt);
+          console.log('Token:', res.data.jwt);
           sessionStorage.setItem('token', res.data.jwt);
-          console.log('redirect');
           return history.push('/choice');
         }
       })

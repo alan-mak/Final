@@ -1,6 +1,11 @@
 import { useEffect, useReducer, useState } from 'react';
-import dataReducer, { SET_USERS, SET_TASKS } from '../reducer/data_reducer';
+import dataReducer, {
+  SET_USERS,
+  SET_TASKS,
+  SET_LOGGEDIN,
+} from '../reducer/data_reducer';
 import axios from 'axios';
+
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 const useApplicationData = () => {
@@ -8,10 +13,22 @@ const useApplicationData = () => {
     users: [],
     loading: true,
     tasks: [],
+    loggedIn: null,
+    helloWorld: 'Hello World',
   });
 
-  const [tasks, setTasks] = useState([]);
+  const setLoggedIn = data => {
+    console.log('***DATA - Set_LoggedIn***', data);
+    dispatch({
+      type: SET_LOGGEDIN,
+      loggedIn: data,
+    });
+    console.log('***state***', state);
+  };
+
+  // const [tasks, setTasks] = useState([]);
   const [accepted, setAccepted] = useState([]);
+
   useEffect(() => {
     axios({
       method: 'GET',
@@ -42,7 +59,7 @@ const useApplicationData = () => {
 
   function createUser(user) {
     console.log(user);
-    return axios.post(`/api/users/register`, { user })
+    return axios.post(`/api/users/register`, { user });
   }
 
   function loginUser(user) {
@@ -70,7 +87,7 @@ const useApplicationData = () => {
     } else {
       let newTask = task;
       setAccepted([...accepted, newTask]);
-    } 
+    }
   }
 
   function acceptTask(recipient_id, helper_id) {
@@ -91,7 +108,7 @@ const useApplicationData = () => {
       name: title,
       description: description,
       duration: duration,
-      recipient_id: recipient_id
+      recipient_id: recipient_id,
     };
 
     return axios({
@@ -101,7 +118,6 @@ const useApplicationData = () => {
     }).catch(err => console.log(err));
   }
 
-
   return {
     state,
     dispatch,
@@ -109,7 +125,8 @@ const useApplicationData = () => {
     loginUser,
     acceptTask,
     createTask,
-    accepted
+    accepted,
+    setLoggedIn,
   };
 };
 

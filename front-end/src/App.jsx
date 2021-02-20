@@ -27,9 +27,11 @@ import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
 
 const SERVER = 'http://localhost:3005';
+
 const App = () => {
   const [rooms, setRooms] = useState([]);
   const socket = socketClient(SERVER);
+
   socket.on('connection', () => {
     console.log(`I'm connected with the back-end`);
   });
@@ -48,13 +50,19 @@ const App = () => {
     }
   };
 
-
-  const { state, dispatch, createUser, loginUser, acceptTask, accepted, createTask } = useApplicationData();
+  const {
+    state,
+    dispatch,
+    createUser,
+    loginUser,
+    acceptTask,
+    accepted,
+    createTask,
+    setLoggedIn,
+  } = useApplicationData();
   const { mode, transition } = useVisualMode();
 
-  const userList = state.users.map(user => (
-    user
-  ));
+  const userList = state.users.map(user => user);
 
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
@@ -81,7 +89,7 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
-        <Nav />
+        <Nav setLoggedIn={setLoggedIn} token={state.loggedIn} />
         <Switch>
           <Route path='/choice'>
             <AfterLogin />
@@ -97,7 +105,11 @@ const App = () => {
             <Background body={taskListBody} />
           </Route>
           <Route path='/'>
-            <LogSign createUser={createUser} loginUser={loginUser} />
+            <LogSign
+              createUser={createUser}
+              loginUser={loginUser}
+              setLoggedIn={setLoggedIn}
+            />
           </Route>
         </Switch>
       </div>
