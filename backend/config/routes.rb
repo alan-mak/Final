@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     post '/users/register', to: 'users#create'
     resources :tasks
     resources :messages
+    resources :channels
   end
   
 end

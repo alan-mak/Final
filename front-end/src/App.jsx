@@ -32,7 +32,7 @@ import Nav from './components/Nav';
 
 const SERVER = 'http://localhost:3005';
 const App = () => {
-  const [rooms, setRooms] = useState([]);
+  const [rooms, setRooms] = useState([ {id: 3, name: "Global Chat", socket: []} ]);
   const socket = socketClient(SERVER);
   socket.on('connection', () => {
     console.log(`I'm connected with the back-end`);
