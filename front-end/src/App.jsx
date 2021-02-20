@@ -25,6 +25,10 @@ import './components/tasks.scss';
 
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
+import jwt_decode from 'jwt-decode';
+const token = sessionStorage.getItem('token');
+const userID = jwt_decode(token);
+
 
 const SERVER = 'http://localhost:3005';
 const App = () => {
@@ -49,7 +53,7 @@ const App = () => {
   };
 
 
-  const { state, dispatch, createUser, loginUser, acceptTask, accepted, createTask } = useApplicationData();
+  const { state, dispatch, createUser, loginUser, acceptTask, createTask } = useApplicationData();
   const { mode, transition } = useVisualMode();
 
   const userList = state.users.map(user => (
@@ -62,9 +66,9 @@ const App = () => {
       name={task.name}
       description={task.description}
       setter={task.recipient_id}
-      onAccept={handleChannelCreate}
+      onClarify={handleChannelCreate}
       setRooms={setRooms}
-      onTake={acceptTask}
+      onAccept={acceptTask}
       userList={userList}
       accepted={task.helper_id ? true : false}
     />
@@ -73,7 +77,7 @@ const App = () => {
   const taskListBody = (
     <>
       <div className='task-list'>{parsedTaskList}</div>
-      <Chat setRooms={setRooms} rooms={rooms} />
+      <Chat setRooms={setRooms} rooms={rooms} sender={userID}/>
       <ShowAccepted tasks={state.tasks} />
     </>
   );
