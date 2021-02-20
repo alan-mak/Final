@@ -89,7 +89,7 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
-        <Nav setLoggedIn={setLoggedIn} token={state.loggedIn} />
+        <Nav setLoggedIn={setLoggedIn} loggedIn={state.loggedIn} />
         <Switch>
           <Route path='/choice'>
             <AfterLogin />

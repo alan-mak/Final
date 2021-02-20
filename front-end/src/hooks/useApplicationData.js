@@ -13,20 +13,16 @@ const useApplicationData = () => {
     users: [],
     loading: true,
     tasks: [],
-    loggedIn: null,
-    helloWorld: 'Hello World',
+    loggedIn: sessionStorage.token,
   });
 
   const setLoggedIn = data => {
-    console.log('***DATA - Set_LoggedIn***', data);
     dispatch({
       type: SET_LOGGEDIN,
       loggedIn: data,
     });
-    console.log('***state***', state);
   };
 
-  // const [tasks, setTasks] = useState([]);
   const [accepted, setAccepted] = useState([]);
 
   useEffect(() => {

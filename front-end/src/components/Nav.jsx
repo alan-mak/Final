@@ -5,9 +5,6 @@ import useApplicationData from '../hooks/useApplicationData';
 import './Nav.scss';
 
 export default function Nav(props) {
-  const { loggedIn, setLoggedIn, state } = useApplicationData();
-  const token = sessionStorage.getItem('token');
-
   const body = (
     <div className='logo'>
       <div>
@@ -21,7 +18,7 @@ export default function Nav(props) {
 
   return (
     <section id='nav-section'>
-      {props.token ? (
+      {props.loggedIn ? (
         <Link to={'/choice'}>{body}</Link>
       ) : (
         <Link to={'#'} className='link-disabled'>
@@ -29,13 +26,11 @@ export default function Nav(props) {
         </Link>
       )}
       <div className='nav-right'>
-        {props.token && (
+        {props.loggedIn && (
           <Link
             to={'/'}
             onClick={() => {
-              console.log('LoggedIn:', state.loggedIn);
               props.setLoggedIn(null);
-              console.log('LoggedIn:', state.loggedIn);
               sessionStorage.removeItem('token');
             }}
           >

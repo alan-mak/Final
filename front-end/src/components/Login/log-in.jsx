@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import useApplicationData from '../../hooks/useApplicationData';
 
 import Button from '../Button';
 import './log-in.scss';
@@ -28,7 +27,6 @@ export default function Login(props) {
           setError(<li>{res.data.message}</li>);
         } else {
           props.setLoggedIn(res.data.jwt);
-          console.log('Token:', res.data.jwt);
           sessionStorage.setItem('token', res.data.jwt);
           return history.push('/choice');
         }
@@ -45,7 +43,7 @@ export default function Login(props) {
         <form autoComplete='off' onSubmit={event => event.preventDefault()}>
           <section>{error}</section>
           <div className='form-group'>
-            <label>Email </label>
+            <label>Email</label>
             <input
               type='email'
               name='email'
@@ -54,7 +52,7 @@ export default function Login(props) {
             />
           </div>
           <div className='form-group'>
-            <label>Password </label>
+            <label>Password</label>
             <input type='password' name='password' onChange={handleInput} />
           </div>
           <Button
