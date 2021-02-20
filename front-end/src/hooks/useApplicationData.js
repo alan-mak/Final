@@ -41,8 +41,9 @@ const useApplicationData = () => {
   }, []);
 
   function createUser(user) {
-    console.log(user);
-    return axios.post(`/api/users/register`, { user })
+    const turtle = (user.street.split(" ").join("+") + "," + user.city.split(" ").join("+") + "," + user.province.split(" ").join("+"))
+    console.log(turtle);
+    // return axios.post(`/api/users/register`, { user })
   }
 
   function loginUser(user) {

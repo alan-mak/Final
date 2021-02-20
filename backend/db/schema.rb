@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_220006) do
     t.string "province", null: false
     t.string "post_code", null: false
     t.decimal "lat"
-    t.decimal "long"
+    t.decimal "lng"
   end
 
 end

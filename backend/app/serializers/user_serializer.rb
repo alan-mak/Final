@@ -8,5 +8,5 @@ class UserSerializer < ActiveModel::Serializer
   :province,
   :post_code,
   :lat,
-  :long
+  :lng
 end
