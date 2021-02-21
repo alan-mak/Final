@@ -20,7 +20,7 @@ export class MessagesPanel extends React.Component {
     if (this.props.channel && !this.props.channel.messages) {
       list = <div>No messages currently available, send one!</div>
     } else if (this.props.channel && this.props.channel.messages) {
-      list = this.props.channel.messages.map(m => <Message key={m.id} senderName={m.senderName} id={m.id} text={m.text} />);
+      list = this.props.channel.messages.map(m => <Message key={m.id} senderID={this.props.userID} senderName={m.senderName} id={m.id} text={m.text} />);
     }
   
     return (
