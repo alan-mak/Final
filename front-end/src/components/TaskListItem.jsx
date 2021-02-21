@@ -25,12 +25,11 @@ export default function TaskListItem(props) {
       <div className='task-list-item-title-underline'></div>
       <p className='task-list-item-description'>{props.description}</p>
       <div className='task-list-item-distance'>
-        {props.setter && 
-          <Maps setter={props.setter} userList={props.userList}/>}
+        {props.setter && <Maps setter={props.setter} userList={props.userList}/>}
       </div>
    
       <div className='task-list-item-buttons'>
-      {(props.accepted || accepted) && (
+      {((props.accepted || accepted) && !chat) && (
         <p className='task-list-item-accepted-message'>
           You accepted this task! Click <strong>Clarify</strong> to contact the
           poster!
