@@ -75,6 +75,16 @@ const useApplicationData = () => {
     return axios.post('/api/channels',  channel)
   }
 
+  function completeTask(task) {
+    let time = Date.now();
+    task.completed_at = time;
+    return axios({
+      method: 'put',
+      url: `/api/tasks/${task.id}`,
+      data: { task },
+    }).catch(err => console.log(err));
+  }
+
   async function createUser(user) {
     const turtle = (user.street.split(" ").join("+") + "," + user.city.split(" ").join("+") + "," + user.province.split(" ").join("+"))
     
@@ -167,7 +177,8 @@ const useApplicationData = () => {
     createTask,
     accepted,
     setLoggedIn,
-    createChannel
+    createChannel,
+    completeTask
   };
 };
 
