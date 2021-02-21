@@ -29,11 +29,12 @@ import Nav from './components/Nav';
 // const token = sessionStorage.getItem('token');
 // const userID = jwt_decode(token, {header: true});
 
-
 const SERVER = 'http://localhost:3005';
 
 const App = () => {
-  const [rooms, setRooms] = useState([ {id: 45, name: "Global Chat", socket: []} ]);
+  const [rooms, setRooms] = useState([
+    { id: 45, name: 'Global Chat', socket: [] },
+  ]);
   // let channels = state.channels;
   const socket = socketClient(SERVER);
 
@@ -65,7 +66,7 @@ const App = () => {
     accepted,
     createTask,
     setLoggedIn,
-    createChannel
+    createChannel,
   } = useApplicationData();
 
   const { mode, transition } = useVisualMode();
@@ -107,7 +108,7 @@ const App = () => {
           </Route>
           <Route path='/:user_id/about'></Route>
           <Route path='/tasks/:task_id'>
-            <Show />
+            <Background body={<Show state={state} />} />
           </Route>
           <Route path='/tasks'>
             <Background body={taskListBody} />

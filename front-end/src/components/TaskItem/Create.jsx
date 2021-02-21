@@ -14,8 +14,8 @@ export default function Create(props) {
     duration: 0,
   });
 
-  const token = sessionStorage.getItem('token')
-  const userID = jwt_decode(token)
+  const token = sessionStorage.getItem('token');
+  const userID = jwt_decode(token);
 
   let history = useHistory();
 
@@ -64,8 +64,16 @@ export default function Create(props) {
           message='Post Task!'
           classes='create-button'
           onClick={() =>
-            props.createTask(state.title, state.description, state.duration, userID.user_id)
-            .then(() => history.push('/tasks'))
+            props
+              .createTask(
+                state.title,
+                state.description,
+                state.duration,
+                userID.user_id
+              )
+              .then(res => {
+                history.push(`/tasks/${res.data.id}`);
+              })
           }
         />
       </form>

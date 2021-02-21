@@ -7,6 +7,7 @@ class Api::TasksController < ApplicationController
   def update
     @task = Task.find_by(id: params[:task][:id])
     @task.helper_id = params[:task][:helper_id]
+    
     if @task.save
       render json: {}, status: 200
     else
@@ -14,10 +15,15 @@ class Api::TasksController < ApplicationController
     end
   end
 
+  def show
+    @task = Task.find_by(id: params[:task][:id])
+  end
+
   def create
     @task = Task.new(task_params)
     if @task.valid?
       @task.save
+      render json: @task, status: 200
     end
   end
 
