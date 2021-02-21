@@ -25,9 +25,7 @@ import './components/tasks.scss';
 
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
-// import jwt_decode from 'jwt-decode';
-// const token = sessionStorage.getItem('token');
-// const userID = jwt_decode(token, {header: true});
+
 
 
 const SERVER = 'http://localhost:3005';
@@ -89,7 +87,7 @@ const App = () => {
   const taskListBody = (
     <>
       <div className='task-list'>{parsedTaskList}</div>
-      <Chat setRooms={setRooms} rooms={rooms} />
+      <Chat setRooms={setRooms} rooms={rooms} state={state}/>
       <ShowAccepted tasks={state.tasks} />
     </>
   );

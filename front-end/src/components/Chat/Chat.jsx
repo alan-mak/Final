@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ChannelList } from './ChannelList';
 import  { MessagesPanel } from './MessagesPanel';
 import socketClient from 'socket.io-client';
+import jwt_decode from 'jwt-decode';
 import './Chat.scss';
 
 
@@ -17,6 +18,8 @@ export class Chat extends React.Component {
     this.loadChannels();
     this.configureSocket();
   }
+
+
 
   configureSocket = () => {
     const SERVER = "http://localhost:3005"
@@ -87,7 +90,7 @@ handleChannelSelect = id => {
       <div className='chat-app'>
         <p>View your chats with other users here!</p>
       <ChannelList channels={this.props.rooms} onselectchannel={this.handleChannelSelect} />
-      <MessagesPanel onsendmessage={this.handleSendMessage} channel={this.state.channel} />
+      <MessagesPanel onsendmessage={this.handleSendMessage} userID={this.props.state.loggedIn} users={this.props.state.users} channel={this.state.channel} />
       </div>
     )
   }

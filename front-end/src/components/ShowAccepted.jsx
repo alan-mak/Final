@@ -4,11 +4,14 @@ import jwt_decode from 'jwt-decode'
 export default function ShowAccepted (props) {
   const token = sessionStorage.getItem('token')
   const userID = jwt_decode(token);
-
+useEffect(() => {
+  document.title = { taskList };
+}, []);
   let taskList = props.tasks
   .filter(task => task.helper_id === userID.user_id)
   .map(item => {
   return <li key={item.id} id={item.id}>{item.name}</li>});
+
   
   return (
 
