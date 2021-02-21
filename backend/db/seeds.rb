@@ -149,6 +149,30 @@ User.create!(
   lng: -79.3938782
 )
 
+User.create!(
+  name: "Connor",
+  email: "connor.mackay@gmail.com",
+  password_digest: "$2a$12$z0y7JkhT4hmmMStXriGi4eOt/zEmqdewzBee/Mgt4HzwtRCD.WtjC",
+  street: "326 Spadina avenue",
+  city: "toronto",
+  province: "ontario",
+  post_code: "m5t2e7",
+  lat: 43.653771,
+  lng: -79.398849
+)
+
+User.create!(
+  name: "Frank",
+  email: "Frank@test.com",
+  password_digest: "$2a$12$JcDBH439/pkg8oHJpIDSZ.Cm45EABW2EdeqyT47dSO7vFNT7dN3pK",
+  street: "test",
+  city: "test",
+  province: "test",
+  post_code: "test123",
+  lat: 44.95515049999999,
+  lng: -93.37788669999999
+)
+
 
 
 ## TASKS
@@ -227,6 +251,25 @@ Task.create!(
   name: "Read me a book",
   description: "My eyesight isn't what it used to be in my younger years. I'd love to have someone come read with me this weekend.",
   recipient_id: 5,
+)
+
+Task.create!(
+  name: "Fix my final project",
+  description: "I took a programming course and I'm too tired for finals",
+  recipient_id: 11,
+  helper_id: 12
+)
+
+Task.create!(
+  name: "Pick up my mail, I'm in quarantine!",
+  description: "Tested positive for the big Rona, now I can't go get my packages",
+  recipient_id: 11
+)
+Task.create!(
+  name: "First job! Can anyone read my resume?",
+  description: "I don't know what these are supposed to look like",
+  recipient_id: 11,
+  helper_id: 12
 )
 
 puts "Re-creating Channels"

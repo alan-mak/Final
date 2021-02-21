@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2021_02_20_175900) do
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.datetime "accepted_at"
-    t.datetime "completed_at"
+    t.bigint "accepted_at"
+    t.bigint "completed_at"
     t.integer "recipient_id", null: false
     t.integer "helper_id"
     t.integer "rating_of_recipient"
