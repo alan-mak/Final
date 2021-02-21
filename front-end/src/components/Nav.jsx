@@ -26,6 +26,11 @@ export default function Nav(props) {
 
   return (
     <section id='nav-section'>
+      {
+        props.state.users.length > 0 &&
+        <Weather state={props.state} getWeather={props.getWeather}/>
+      }
+
       {props.state.loggedIn ? (
         <Link to={'/choice'}>{body}</Link>
         ) : (
@@ -50,10 +55,6 @@ export default function Nav(props) {
           </>
         )}
       </div>
-      {
-        props.state.users.length > 0 &&
-        <Weather state={props.state} getWeather={props.getWeather}/>
-      }
     </section>
   );
 }
