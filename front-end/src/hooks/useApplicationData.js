@@ -75,6 +75,18 @@ const useApplicationData = () => {
     return axios.post('/api/channels',  channel)
   }
 
+  function completeTask(task) {
+    console.log(task);
+    let time = Date.now();
+    task.completed_at = time;
+    console.log(task.completed_at);
+    return axios({
+      method: 'put',
+      url: `/api/tasks/${task.id}`,
+      data: { task },
+    }).catch(err => console.log(err));
+  }
+
   async function createUser(user) {
     const turtle = (user.street.split(" ").join("+") + "," + user.city.split(" ").join("+") + "," + user.province.split(" ").join("+"))
     
@@ -176,7 +188,8 @@ const useApplicationData = () => {
     accepted,
     setLoggedIn,
     createChannel,
-    getWeather
+    getWeather,
+    completeTask
   };
 };
 
