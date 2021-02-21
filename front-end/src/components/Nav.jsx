@@ -19,12 +19,15 @@ export default function Nav(props) {
   // Get user's name from the token of logged in user
   const userName = () => {
     const userID = jwt_decode(props.state.loggedIn).user_id;
-    console.log(userID);
-    console.log(props.state.users);
     const user = props.state.users.find(user => user.id === userID);
-    console.log(user);
     return user && user.name;
   };
+  const latlong = () => {
+    const userID = jwt_decode(props.state.loggedIn).user_id;
+    const user = props.state.users.find(user => user.id === userID);
+    return user && { lat: user.lat , lng: user.lng };
+  };
+  console.log(props.state)
 
   return (
     <section id='nav-section'>
@@ -49,6 +52,13 @@ export default function Nav(props) {
             >
               Log out
             </Link>
+          </>
+        )}
+      </div>
+      <div id='nav-left'>
+        {props.state.users.length > 0 && (
+          <>
+          {JSON.stringify(props.getWeather(latlong()))}
           </>
         )}
       </div>

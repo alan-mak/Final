@@ -158,6 +158,15 @@ const useApplicationData = () => {
     }).catch(err => console.log(err));
   }
 
+  function getWeather(obj) {
+    console.log("OOO", obj)
+    return axios
+      .get(`http://api.openweathermap.org/data/2.5/weather?lat=${obj.lat}&lon=${obj.lng}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`)
+      .then(res => res.data.main.feels_like
+      )
+      .catch(err => console.log(err))
+  }
+
   return {
     state,
     dispatch,
@@ -167,7 +176,8 @@ const useApplicationData = () => {
     createTask,
     accepted,
     setLoggedIn,
-    createChannel
+    createChannel,
+    getWeather
   };
 };
 
