@@ -6,8 +6,6 @@ export default function Weather(props) {
   const userID = jwt_decode(props.state.loggedIn).user_id;
   const user = props.state.users.find(user => user.id === userID);
 
-  console.log(props.state)
-
   useEffect(() => {
     props.getWeather({lat: user.lat, lng: user.lng})
     .then(res => setTemp(res.data.main.temp))
