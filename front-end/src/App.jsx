@@ -56,6 +56,7 @@ const App = () => {
     createTask,
     setLoggedIn,
     createChannel,
+    getWeather,
     completeTask
   } = useApplicationData();
 
@@ -86,7 +87,7 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
-        <Nav setLoggedIn={setLoggedIn} state={state} />
+        <Nav setLoggedIn={setLoggedIn} state={state} getWeather={getWeather}/>
         <Switch>
           <Route path='/choice'>
             <AfterLogin />
