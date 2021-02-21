@@ -12,7 +12,7 @@ export default function ShowPosted(props) {
     setCompleted(true);
   }
 
-  const acceptedTasks = props.state.tasks
+  const postedTasks = props.state.tasks
   .filter(task => task.recipient_id === userID.user_id)
   .map(task => <div className="posted-item" 
                    key={task.id} 
@@ -27,7 +27,7 @@ export default function ShowPosted(props) {
   
   const body = (
     <div id="posted-container">
-      {acceptedTasks}
+      {postedTasks}
     </div>
   )
   return (
