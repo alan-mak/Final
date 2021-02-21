@@ -27,7 +27,7 @@ export default function Nav(props) {
   return (
     <section id='nav-section'>
       {
-        props.state.users.length > 0 &&
+        (props.state.users.length > 0 && props.state.loggedIn) &&
         <Weather state={props.state} getWeather={props.getWeather}/>
       }
 

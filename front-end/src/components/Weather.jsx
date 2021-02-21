@@ -8,12 +8,14 @@ export default function Weather(props) {
   const user = props.state.users.find(user => user.id === userID);
 
   useEffect(() => {
-    props.getWeather({lat: user.lat, lng: user.lng})
-    .then(res => {
-      setTemp(res.data.main.temp)
-      const iconCode = res.data.weather[0].icon
-      setIcon(`http://openweathermap.org/img/wn/${iconCode}@2x.png`)
-    })
+    if(user) {
+      props.getWeather({lat: user.lat, lng: user.lng})
+      .then(res => {
+        setTemp(res.data.main.temp)
+        const iconCode = res.data.weather[0].icon
+        setIcon(`http://openweathermap.org/img/wn/${iconCode}@2x.png`)
+      })
+    }
   }, [user])
   console.log(icon)
   return (
