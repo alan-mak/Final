@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Button from '../components/Button';
 import Maps from './Maps';
 import '../components/tasks.scss';
-import useApplicationData from '../hooks/useApplicationData';
 import jwt_decode from 'jwt-decode'
 
 
@@ -38,15 +37,13 @@ export default function TaskListItem(props) {
         </p>
       )}
         {(!props.accepted && !accepted) && <Button message='Accept!' onClick={handleAccept} />}
-      
         {chat && <p className='task-list-item-accepted-message'>
           View your chatlog in the "chats" tab
         </p>}
         {!chat && <Button
           message='Clarify!'
           onClick={clarifyTask}
-        />}
-        
+        />}  
       </div>
     </div>
   );

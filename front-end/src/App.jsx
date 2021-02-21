@@ -1,15 +1,9 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import socketClient from 'socket.io-client';
 
 import React, { useState } from 'react';
-import Button from './components/Button';
-import Image from './components/Image';
-import DropDown from './components/DropDown';
-import TextBox from './components/TextBox';
-import TaskList from './components/TaskList';
 import TaskListItem from './components/TaskListItem';
 import Background from './components/Background';
-// import Main from './components/TaskItem/Main';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
 import { Chat } from './components/Chat/Chat';
@@ -25,16 +19,11 @@ import './components/tasks.scss';
 
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
-// import jwt_decode from 'jwt-decode';
-// const token = sessionStorage.getItem('token');
-// const userID = jwt_decode(token, {header: true});
-
 
 const SERVER = 'http://localhost:3005';
 
 const App = () => {
   const [rooms, setRooms] = useState([ {id: 45, name: "Global Chat", socket: []} ]);
-  // let channels = state.channels;
   const socket = socketClient(SERVER);
 
   socket.on('connection', () => {
