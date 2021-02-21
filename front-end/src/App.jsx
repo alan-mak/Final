@@ -8,6 +8,7 @@ import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
 import { Chat } from './components/Chat/Chat';
 import ShowAccepted from './components/ShowAccepted';
+import ShowPosted from './components/ShowPosted';
 
 import { LogSign } from './components/Login';
 
@@ -100,6 +101,9 @@ const App = () => {
             {state.users.length > 0 &&
               <Background body={taskListBody} />
             }
+          </Route>
+          <Route path='/posted'>
+            <ShowPosted state={state} />
           </Route>
           <Route path='/'>
             <LogSign
