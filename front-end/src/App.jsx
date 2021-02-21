@@ -70,8 +70,6 @@ const App = () => {
 
   const { mode, transition } = useVisualMode();
 
-  const userList = state.users.map(user => user);
-
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
       key={task.id}
@@ -81,7 +79,7 @@ const App = () => {
       onClarify={handleChannelCreate}
       setRooms={setRooms}
       onAccept={acceptTask}
-      userList={userList}
+      userList={state.users}
       accepted={task.helper_id ? true : false}
     />
   ));
@@ -110,7 +108,9 @@ const App = () => {
             <Show />
           </Route>
           <Route path='/tasks'>
-            <Background body={taskListBody} />
+            {state.users.length > 0 &&
+              <Background body={taskListBody} />
+            }
           </Route>
           <Route path='/'>
             <LogSign
