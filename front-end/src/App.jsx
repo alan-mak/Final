@@ -107,9 +107,12 @@ const App = () => {
             <Create createTask={createTask} />
           </Route>
           <Route path='/:user_id/about'></Route>
-          <Route path='/tasks/:task_id'>
-            <Background body={<Show state={state} />} />
-          </Route>
+          <Route
+            path='/tasks/:task_id'
+            render={props => (
+              <Background body={<Show state={state} {...props} />} />
+            )}
+          />
           <Route path='/tasks'>
             <Background body={taskListBody} />
           </Route>

@@ -3,9 +3,9 @@ import { useState } from 'react';
 import jwt_decode from 'jwt-decode';
 import Button from '../Button';
 import Background from '../Background';
+import { useHistory } from 'react-router-dom';
 
 import './Create.scss';
-import { useHistory } from 'react-router-dom';
 
 export default function Create(props) {
   const [state, setState] = useState({
