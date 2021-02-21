@@ -76,8 +76,10 @@ const useApplicationData = () => {
   }
 
   function completeTask(task) {
+    console.log(task);
     let time = Date.now();
     task.completed_at = time;
+    console.log(task.completed_at);
     return axios({
       method: 'put',
       url: `/api/tasks/${task.id}`,
