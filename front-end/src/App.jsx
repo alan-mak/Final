@@ -1,15 +1,9 @@
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import socketClient from 'socket.io-client';
 
 import React, { useState } from 'react';
-import Button from './components/Button';
-import Image from './components/Image';
-import DropDown from './components/DropDown';
-import TextBox from './components/TextBox';
-import TaskList from './components/TaskList';
 import TaskListItem from './components/TaskListItem';
 import Background from './components/Background';
-// import Main from './components/TaskItem/Main';
 import Show from './components/TaskItem/Show';
 import Create from './components/TaskItem/Create';
 import { Chat } from './components/Chat/Chat';
@@ -26,13 +20,10 @@ import './components/tasks.scss';
 import AfterLogin from './components/Landing/AfterLogin';
 import Nav from './components/Nav';
 
-
-
 const SERVER = 'http://localhost:3005';
 
 const App = () => {
   const [rooms, setRooms] = useState([ {id: 45, name: "Global Chat", socket: []} ]);
-  // let channels = state.channels;
   const socket = socketClient(SERVER);
 
   socket.on('connection', () => {
@@ -68,8 +59,6 @@ const App = () => {
 
   const { mode, transition } = useVisualMode();
 
-  const userList = state.users.map(user => user);
-
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
       key={task.id}
@@ -79,7 +68,7 @@ const App = () => {
       onClarify={handleChannelCreate}
       setRooms={setRooms}
       onAccept={acceptTask}
-      userList={userList}
+      userList={state.users}
       accepted={task.helper_id ? true : false}
     />
   ));
@@ -108,7 +97,9 @@ const App = () => {
             <Show />
           </Route>
           <Route path='/tasks'>
-            <Background body={taskListBody} />
+            {state.users.length > 0 &&
+              <Background body={taskListBody} />
+            }
           </Route>
           <Route path='/'>
             <LogSign
