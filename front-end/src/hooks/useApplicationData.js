@@ -134,6 +134,7 @@ const useApplicationData = () => {
     console.log("accepting task,", task)
     task.helper_id = helper_id;
     task.accepted_at = Date.now();
+    addToAccepted(task);
     console.log(task);
     return axios({
       method: 'put',
