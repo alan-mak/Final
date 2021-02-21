@@ -29,14 +29,15 @@ $color-button-green: #5cb85c;
 }
 
 #task-accept:hover {
-  -webkit-box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23); 
-  box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23);
+  -webkit-box-shadow: 1px 1px 9px 5px rgba(0, 0, 0, 0.23);
+  box-shadow: 1px 1px 9px 5px rgba(0, 0, 0, 0.23);
 }
 
 #task-clarify:hover {
-  -webkit-box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23); 
-  box-shadow: 1px 1px 9px 5px rgba(0,0,0,0.23);
+  -webkit-box-shadow: 1px 1px 9px 5px rgba(0, 0, 0, 0.23);
+  box-shadow: 1px 1px 9px 5px rgba(0, 0, 0, 0.23);
 }
 
-
-
+section#show-section {
+  margin-top: 260px;
+}
