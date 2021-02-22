@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../Button';
+import { useHistory } from 'react-router-dom';
 
 import '../TaskItem/TaskItem.scss';
 import '../tasks.scss';
@@ -8,6 +9,8 @@ export default function Show(props) {
   const task = props.state.tasks.find(
     task => task.id === parseInt(props.match.params.task_id)
   );
+
+  let history = useHistory();
 
   return (
     <section id='show-section'>
@@ -19,6 +22,8 @@ export default function Show(props) {
           Estimated time: {task && task.duration}
         </p>
       </div>
+
+      <Button message='Go Back' onClick={() => history.push(`/choice`)} />
     </section>
   );
 }
