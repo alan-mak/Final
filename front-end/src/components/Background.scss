@@ -30,8 +30,9 @@
   position: absolute;
   z-index: -10;
   content: '';
-  background-image: url('https://www.theglobeandmail.com/resizer/1XsjX2j2TyYZxW4xzSfyOxWakb4=/2500x0/filters:quality(80)/arc-anglerfish-tgam-prod-tgam.s3.amazonaws.com/public/RXH4DSVMIJETVL6IUI4W5A6TNM.JPG');
-  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5)), url('../styles/1.png');
+  background-position-y: bottom;
+  background-size: contain;
   background-repeat: no-repeat;
   display: block;
   top: 0px;
