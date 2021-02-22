@@ -4,6 +4,7 @@ import jwt_decode from 'jwt-decode';
 import Button from '../Button';
 import Background from '../Background';
 import { useHistory } from 'react-router-dom';
+import { SlideDown } from 'react-slidedown';
 
 import './Create.scss';
 
@@ -44,7 +45,9 @@ export default function Create(props) {
   const body = (
     <div id='create-container'>
       <h1>What would you like help with?</h1>
-      {state.error && <h2 id='create-error-message'>{state.error}</h2>}
+      <SlideDown className={'my-dropdown-slidedown'}>
+        {state.error && <h2 id='create-error-message'>{state.error}</h2>}
+      </SlideDown>
       <form id='task-wrapper' onSubmit={event => event.preventDefault()}>
         <div className='form-group'>
           <label htmlFor='task-title'>Title of task</label>

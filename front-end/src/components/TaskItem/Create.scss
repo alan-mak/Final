@@ -7,7 +7,6 @@
   margin-top: 160px;
   padding: 20px 50px;
   width: 500px;
-  height: 570px;
   background-color: $primary-color;
   background-image: $background-texture;
   box-shadow: 0 5px 7px 2px #3a3a3a;
@@ -17,25 +16,40 @@
 
   h1 {
     text-align: center;
+    margin-top: 10px;
   }
 
-  h2#create-error-message {
-    position: absolute;
-    top: 46px;
-    text-align: center;
+  .react-slidedown {
     width: 78%;
-    padding: 2px 0;
-    background-color: rgb(167, 0, 0);
-    color: white;
-    border-radius: 8px;
+    height: 0;
+    transition-property: none;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+
+    &.transitioning {
+      overflow-y: hidden;
+    }
+
+    &.closed {
+      display: none;
+    }
+
+    h2#create-error-message {
+      text-align: center;
+      margin: 18px 0 0;
+      padding: 2px 0;
+      background-color: rgb(167, 0, 0);
+      color: white;
+      border-radius: 8px;
+    }
   }
 
   #task-wrapper {
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    height: 500px;
 
     .form-group {
       display: flex;
