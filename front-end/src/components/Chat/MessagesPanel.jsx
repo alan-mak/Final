@@ -29,7 +29,7 @@ export class MessagesPanel extends React.Component {
       <div className="messages-list">{list}</div>
       {this.props.channel &&
       <div className="messages-input">
-      <input type="text" onChange={this.handleInput} value ={this.state.input_value} />
+      <input type="text" onChange={this.handleInput} value={this.state.input_value} />
       <button id="send-button" onClick={this.send}>Send</button>
       </div>
     }
