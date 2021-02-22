@@ -9,6 +9,7 @@ class Api::TasksController < ApplicationController
     @task.helper_id = params[:task][:helper_id]
     @task.accepted_at = params[:task][:accepted_at]
     @task.completed_at = params[:task][:completed_at]
+    
     if @task.save
       render json: {}, status: 200
     else
@@ -16,10 +17,16 @@ class Api::TasksController < ApplicationController
     end
   end
 
+  def show
+    @task = Task.find_by(id: params[:id])
+    render json: @task, status: 200
+  end
+
   def create
     @task = Task.new(task_params)
     if @task.valid?
       @task.save
+      render json: @task, status: 200
     end
   end
 

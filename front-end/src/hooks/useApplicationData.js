@@ -4,7 +4,7 @@ import dataReducer, {
   SET_USERS,
   SET_TASKS,
   SET_LOGGEDIN,
-  SET_CHANNELS
+  SET_CHANNELS,
 } from '../reducer/data_reducer';
 
 import axios from 'axios';
@@ -23,6 +23,13 @@ const useApplicationData = () => {
     dispatch({
       type: SET_LOGGEDIN,
       loggedIn: data,
+    });
+  };
+
+  const setTasks = task => {
+    dispatch({
+      type: SET_TASKS,
+      tasks: [...state.tasks, task],
     });
   };
 
@@ -71,8 +78,8 @@ const useApplicationData = () => {
   }, []);
 
   function createChannel(channel) {
-    console.log("CREATINGGGG! ", channel);
-    return axios.post('/api/channels',  channel)
+    console.log('CREATINGGGG! ', channel);
+    return axios.post('/api/channels', channel);
   }
 
   function completeTask(task) {
@@ -88,27 +95,33 @@ const useApplicationData = () => {
   }
 
   async function createUser(user) {
-    const turtle = (user.street.split(" ").join("+") + "," + user.city.split(" ").join("+") + "," + user.province.split(" ").join("+"))
-    
-    const findCoord = (incData) => {
-      return axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
-        params:{
-          address: incData,
-          key:process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-        }
-      }
-      ).then((res) => {
-        return res.data.results[0].geometry.location;
-      }).catch((err) => console.log(err))
-    }
-    
-    const dinosaur = await findCoord(turtle)
-    .then((data) => {
-      user.lat = (data.lat);
-      user.lng = (data.lng);
+    const turtle =
+      user.street.split(' ').join('+') +
+      ',' +
+      user.city.split(' ').join('+') +
+      ',' +
+      user.province.split(' ').join('+');
+
+    const findCoord = incData => {
+      return axios
+        .get('https://maps.googleapis.com/maps/api/geocode/json', {
+          params: {
+            address: incData,
+            key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+          },
+        })
+        .then(res => {
+          return res.data.results[0].geometry.location;
+        })
+        .catch(err => console.log(err));
+    };
+
+    const dinosaur = await findCoord(turtle).then(data => {
+      user.lat = data.lat;
+      user.lng = data.lng;
       return user;
-    })    
-    return axios.post(`/api/users/register`, {user})
+    });
+    return axios.post(`/api/users/register`, { user });
   }
 
   function loginUser(user) {
@@ -127,7 +140,6 @@ const useApplicationData = () => {
     return null;
   }
 
-
   function addToAccepted(task) {
     if (accepted.length < 1) {
       let taskList = [];
@@ -139,11 +151,11 @@ const useApplicationData = () => {
       setAccepted([...accepted, newTask]);
     }
   }
-  
+
   function acceptTask(recipient_id, helper_id) {
-    console.log("you are ", helper_id);
+    console.log('you are ', helper_id);
     let task = getTaskById(recipient_id);
-    console.log("accepting task,", task)
+    console.log('accepting task,', task);
     task.helper_id = helper_id;
     task.accepted_at = Date.now();
     addToAccepted(task);
@@ -170,6 +182,13 @@ const useApplicationData = () => {
     }).catch(err => console.log(err));
   }
 
+  function getTask(taskID) {
+    return axios({
+      method: 'GET',
+      url: `/api/tasks/${taskID}`,
+    }).catch(err => console.log(err));
+  }
+
   function getWeather(obj) {
     return axios({
       method: 'get',
@@ -188,6 +207,8 @@ const useApplicationData = () => {
     accepted,
     setLoggedIn,
     createChannel,
+    getTask,
+    setTasks,
     getWeather,
     completeTask
   };

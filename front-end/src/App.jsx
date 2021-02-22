@@ -25,7 +25,9 @@ import Nav from './components/Nav';
 const SERVER = 'http://localhost:3005';
 
 const App = () => {
-  const [rooms, setRooms] = useState([ {id: 45, name: "Global Chat", socket: []} ]);
+  const [rooms, setRooms] = useState([
+    { id: 45, name: 'Global Chat', socket: [] },
+  ]);
   const socket = socketClient(SERVER);
 
   socket.on('connection', () => {
@@ -55,6 +57,7 @@ const App = () => {
     acceptTask,
     accepted,
     createTask,
+    setTasks,
     setLoggedIn,
     createChannel,
     getWeather,
@@ -94,12 +97,15 @@ const App = () => {
             <AfterLogin />
           </Route>
           <Route path='/tasks/new'>
-            <Create createTask={createTask} />
+            <Create createTask={createTask} setTasks={setTasks} />
           </Route>
           <Route path='/:user_id/about'></Route>
-          <Route path='/tasks/:task_id'>
-            <Show />
-          </Route>
+          <Route
+            path='/tasks/:task_id'
+            render={props => (
+              <Background body={<Show state={state} {...props} />} />
+            )}
+          />
           <Route path='/tasks'>
             {state.users.length > 0 &&
               <Background body={taskListBody} />

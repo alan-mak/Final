@@ -1,29 +1,6 @@
 @import '../styles/mixins.scss';
 @import '../styles/variables.scss';
 
-// .button {
-//   border-radius: 1rem;
-//   border: 0;
-//   font-size: 1.5rem;
-//   height: 2rem;
-//   line-height: 1.2rem;
-//   margin-right: 1rem;
-//   width: 8rem;
-//   border-width: 2px;
-//   border-style: solid;
-//   border-color: $black;
-//   color: $black;
-//   background-color: transparent;
-//   margin-top: 2rem;
-
-//   &:hover {
-//     background-color: #a5b6f2;
-//     color: #fff;
-//     border-color: #fff;
-//     text-shadow: #000 0px 0px 3px;
-//   }
-// }
-
 .button {
   padding: 0.8em 3.1em;
   text-decoration: none;
