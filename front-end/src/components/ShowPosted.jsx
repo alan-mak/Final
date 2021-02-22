@@ -12,7 +12,7 @@ export default function ShowPosted(props) {
     setCompleted(true);
   }
 
-  const postedTasks = props.state.tasks
+  const acceptedTasks = props.state.tasks
   .filter(task => task.recipient_id === userID.user_id)
   .map(task => <div className="posted-item" 
                    key={task.id} 
@@ -21,13 +21,13 @@ export default function ShowPosted(props) {
                    <p className="task-description" >{task.description}</p>
                    {(task.helper_id && !task.completed_at) && <Button message="mark completed!" onClick={() => completeTask(task)} />} 
                    {!task.helper_id && <p className="task-message">Nobody has accepted this task yet </p>}
-                   {(task.helper_id && task.completed_at) && <p className="task-message">Done! Thanks neighbor</p>}
+                   {(task.helper_id && task.completed_at) && <p className="task-message" >Done! Thanks neighbor</p>}
                    
                    </div>)
   
   const body = (
     <div id="posted-container">
-      {postedTasks}
+      {acceptedTasks}
     </div>
   )
   return (
