@@ -65,6 +65,7 @@ const App = () => {
     acceptTask,
     accepted,
     createTask,
+    setTasks,
     setLoggedIn,
     createChannel,
   } = useApplicationData();
@@ -104,7 +105,7 @@ const App = () => {
             <AfterLogin />
           </Route>
           <Route path='/tasks/new'>
-            <Create createTask={createTask} />
+            <Create createTask={createTask} setTasks={setTasks} />
           </Route>
           <Route path='/:user_id/about'></Route>
           <Route

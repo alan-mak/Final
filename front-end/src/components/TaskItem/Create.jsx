@@ -72,6 +72,7 @@ export default function Create(props) {
                 userID.user_id
               )
               .then(res => {
+                props.setTasks(res.data);
                 history.push(`/tasks/${res.data.id}`);
               })
           }

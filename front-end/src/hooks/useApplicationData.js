@@ -26,6 +26,13 @@ const useApplicationData = () => {
     });
   };
 
+  const setTasks = task => {
+    dispatch({
+      type: SET_TASKS,
+      tasks: [...state.tasks, task],
+    });
+  };
+
   const [accepted, setAccepted] = useState([]);
 
   useEffect(() => {
@@ -180,6 +187,7 @@ const useApplicationData = () => {
     setLoggedIn,
     createChannel,
     getTask,
+    setTasks,
   };
 };
 
