@@ -43,6 +43,8 @@ export default function Nav(props) {
         {props.state.loggedIn && (
           <>
             <div id='nav-logged-in'>Welcome {userName()}</div>
+            <Link to={'/posted'}>My Posted</Link>
+            <Link to={'/tasks'}>Help out!</Link>
             <Link
               to={'/'}
               onClick={() => {

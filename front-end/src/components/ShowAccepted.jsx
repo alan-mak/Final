@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './ShowAccepted.scss';
 import jwt_decode from 'jwt-decode'
 export default function ShowAccepted (props) {
@@ -14,12 +15,13 @@ useEffect(() => {
 
   
   return (
-
+    <Link to={'/Accepted'}>
     <div id="task-div">
       {taskList.length > 0 && <p>Thank's for helping out, here's what you promised to do!</p>}
       <ul>
       { taskList }
       </ul>
     </div>
+    </Link>
   )
 }
