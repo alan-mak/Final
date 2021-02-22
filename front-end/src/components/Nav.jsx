@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
+import Weather from './Weather'
 
 import './Nav.scss';
 
@@ -25,10 +26,15 @@ export default function Nav(props) {
 
   return (
     <section id='nav-section'>
+      {
+        (props.state.users.length > 0 && props.state.loggedIn) &&
+        <Weather state={props.state} getWeather={props.getWeather}/>
+      }
+
       {props.state.loggedIn ? (
         <Link to={'/choice'}>{body}</Link>
-      ) : (
-        <Link to={'#'} className='link-disabled'>
+        ) : (
+          <Link to={'#'} className='link-disabled'>
           {body}
         </Link>
       )}
@@ -37,13 +43,15 @@ export default function Nav(props) {
         {props.state.loggedIn && (
           <>
             <div id='nav-logged-in'>Welcome {userName()}</div>
+            <Link to={'/posted'}>My Posted</Link>
+            <Link to={'/tasks'}>Help out!</Link>
             <Link
               to={'/'}
               onClick={() => {
                 props.setLoggedIn(null);
                 sessionStorage.removeItem('token');
               }}
-            >
+              >
               Log out
             </Link>
           </>

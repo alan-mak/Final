@@ -37,6 +37,17 @@
     color: inherit;
   }
 
+  #nav-left {
+    position: absolute;
+    left: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 1.7rem;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-weight: 600;
+    color: #fff;
+  }
+
   #nav-right {
     position: absolute;
     right: 50px;
@@ -44,7 +55,10 @@
     align-items: center;
 
     #nav-logged-in {
-      font-size: 24px;
+      font-size: 1.7rem;
+      color: white;
+      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+      font-weight: 600;
     }
 
     a {

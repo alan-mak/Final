@@ -19,7 +19,6 @@ export default function Maps(props) {
       setDistance(haversine_distance(point1, point2))
   }, [userID])
 
-
   return (
     <div>{Math.round(distance * 100) / 100} KM away</div>
   )

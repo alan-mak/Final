@@ -82,6 +82,18 @@ const useApplicationData = () => {
     return axios.post('/api/channels', channel);
   }
 
+  function completeTask(task) {
+    console.log(task);
+    let time = Date.now();
+    task.completed_at = time;
+    console.log(task.completed_at);
+    return axios({
+      method: 'put',
+      url: `/api/tasks/${task.id}`,
+      data: { task },
+    }).catch(err => console.log(err));
+  }
+
   async function createUser(user) {
     const turtle =
       user.street.split(' ').join('+') +
@@ -146,6 +158,7 @@ const useApplicationData = () => {
     console.log('accepting task,', task);
     task.helper_id = helper_id;
     task.accepted_at = Date.now();
+    addToAccepted(task);
     console.log(task);
     return axios({
       method: 'put',
@@ -176,6 +189,14 @@ const useApplicationData = () => {
     }).catch(err => console.log(err));
   }
 
+  function getWeather(obj) {
+    return axios({
+      method: 'get',
+      url: `http://api.openweathermap.org/data/2.5/weather?lat=${obj.lat}&lon=${obj.lng}&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+    })
+    .catch(err => console.log(err))
+  }
+
   return {
     state,
     dispatch,
@@ -188,6 +209,8 @@ const useApplicationData = () => {
     createChannel,
     getTask,
     setTasks,
+    getWeather,
+    completeTask
   };
 };
 
