@@ -28,7 +28,10 @@ export default function Nav(props) {
     <section id='nav-section'>
       {
         (props.state.users.length > 0 && props.state.loggedIn) &&
-        <Weather state={props.state} getWeather={props.getWeather}/>
+        <div id='nav-left'>
+          <div id='nav-logged-in'>Welcome {userName()}</div>
+          <Weather state={props.state} getWeather={props.getWeather}/>
+        </div>
       }
 
       {props.state.loggedIn ? (
@@ -42,9 +45,8 @@ export default function Nav(props) {
       <div id='nav-right'>
         {props.state.loggedIn && (
           <>
-            <div id='nav-logged-in'>Welcome {userName()}</div>
-            <Link to={'/posted'}>My Posted</Link>
-            <Link to={'/tasks'}>Help out!</Link>
+            <Link to={'/posted'}>My Posts</Link>
+            <Link to={'/tasks'}>Help Out</Link>
             <Link
               to={'/'}
               onClick={() => {
@@ -52,7 +54,7 @@ export default function Nav(props) {
                 sessionStorage.removeItem('token');
               }}
               >
-              Log out
+              Log Out
             </Link>
           </>
         )}
