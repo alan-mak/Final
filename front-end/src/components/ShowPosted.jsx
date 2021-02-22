@@ -19,10 +19,9 @@ export default function ShowPosted(props) {
                    id={task.id}><h2 className="task-title" >{task.name}</h2>
                    <div className="task-underline"></div>
                    <p className="task-description" >{task.description}</p>
-                   {(task.helper_id && !task.completed_at) && <Button message="mark completed!" onClick={() => completeTask(task)} />} 
+                   {(task.helper_id && !task.completed_at) && <Button message="Done?" onClick={() => completeTask(task)} />} 
                    {!task.helper_id && <p className="task-message">Nobody has accepted this task yet </p>}
                    {(task.helper_id && task.completed_at) && <p className="task-message" >Done! Thanks neighbor</p>}
-                   
                    </div>)
   
   const body = (
