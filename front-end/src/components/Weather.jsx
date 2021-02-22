@@ -19,7 +19,7 @@ export default function Weather(props) {
   }, [user])
   console.log(icon)
   return (
-    <div id='nav-left'>
+    <div id="weather">
         <img src={icon}/>     
       <div>
         Temperature In Your Area:

@@ -37,9 +37,10 @@ export default function TaskListItem(props) {
       )}
         {(!props.accepted && !accepted) && <Button message='Accept!' onClick={handleAccept} />}
         {chat && <p className='task-list-item-accepted-message'>
-          View your chatlog in the "chats" tab
+          View your chatlog in the "Chat" tab
         </p>}
-        {!chat && <Button
+        {!chat && <Button 
+          className="task-button-no-border"
           message='Clarify!'
           onClick={clarifyTask}
         />}  
