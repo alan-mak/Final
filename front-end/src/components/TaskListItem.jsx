@@ -31,13 +31,17 @@ export default function TaskListItem(props) {
       <div className='task-list-item-buttons'>
       {((props.accepted || accepted) && !chat) && (
         <p className='task-list-item-accepted-message'>
-          You accepted this task! Click <strong>Clarify</strong> to contact the
+          <span>
+            You accepted this task! Click <strong>Clarify</strong> to contact the
           poster!
+          </span>
         </p>
       )}
         {(!props.accepted && !accepted) && <Button message='Accept!' onClick={handleAccept} />}
         {chat && <p className='task-list-item-accepted-message'>
-          View your chatlog in the "Chat" tab
+          <span>
+            View your chatlog in the <strong>Chat</strong> tab
+          </span>
         </p>}
         {!chat && <Button 
           className="task-button-no-border"

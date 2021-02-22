@@ -18,7 +18,7 @@ export default function ShowPosted(props) {
                    id={task.id}><h2 className="task-title" >{task.name}</h2>
                    <div className="task-underline"></div>
                    <p className="task-description" >{task.description}</p>
-                   <Button message="message poster!" onClick={() => props.onClarify(task.recipient_id, task.name)} />
+                   <Button message="Message Poster!" onClick={() => props.onClarify(task.recipient_id, task.name)} />
  
                    
                    </div>)

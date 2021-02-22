@@ -49,9 +49,13 @@
 
   p.task-list-item-accepted-message {
     align-self: center;
-    padding: 8px 92px;
-    border: 2px solid black;
-    border-radius: 7px;
+    text-align: center;
+    padding: 8px 20px;
+    border: none;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
     background-color: lightblue;
     margin: 0px 5px 0px 5px;
   }
