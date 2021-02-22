@@ -9,6 +9,7 @@ import Create from './components/TaskItem/Create';
 import { Chat } from './components/Chat/Chat';
 import ShowAccepted from './components/ShowAccepted';
 import ShowPosted from './components/ShowPosted';
+import Accepted from './components/Accepted';
 
 import { LogSign } from './components/Login';
 
@@ -106,6 +107,12 @@ const App = () => {
           </Route>
           <Route path='/posted'>
             <ShowPosted state={state} onComplete={completeTask} />
+          </Route>
+          <Route path='/accepted'>
+            <Accepted state={state}   
+            onClarify={handleChannelCreate}
+            setRooms={setRooms} />
+            <Chat setRooms={setRooms} rooms={rooms} state={state}/>
           </Route>
           <Route path='/'>
             <LogSign
