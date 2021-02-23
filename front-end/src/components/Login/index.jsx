@@ -31,29 +31,37 @@ export class LogSign extends React.Component {
     const current = isLogin ? 'Sign Up Here' : 'Log In Here';
     const currentActive = isLogin ? 'login' : 'signUp';
     const body = (
-      <div className='login'>
-        <div className='container' ref={ref => (this.container = ref)}>
-          {isLogin && (
-            <Login
-              loginUser={this.props.loginUser}
-              baseRef={ref => (this.current = ref)}
-              setLoggedIn={this.props.setLoggedIn}
-            />
-          )}
-          {!isLogin && (
-            <SignUp
-              createUser={this.props.createUser}
-              baseRef={ref => (this.current = ref)}
-              loginUser={this.props.loginUser}
-            />
-          )}
+      <div id='login-layout'>
+        <p id='blurb'>
+          <h1 id='welcome'>Welcome!</h1>
+          Request free help from community members who are willing to offer a
+          helping hand. <br />
+          Or if you would like to help out, take a look through the listings!
+        </p>
+        <div className='login'>
+          <div className='container' ref={ref => (this.container = ref)}>
+            {isLogin && (
+              <Login
+                loginUser={this.props.loginUser}
+                baseRef={ref => (this.current = ref)}
+                setLoggedIn={this.props.setLoggedIn}
+              />
+            )}
+            {!isLogin && (
+              <SignUp
+                createUser={this.props.createUser}
+                baseRef={ref => (this.current = ref)}
+                loginUser={this.props.loginUser}
+              />
+            )}
+          </div>
+          <Side
+            current={current}
+            currentActive={currentActive}
+            baseRef={ref => (this.side = ref)}
+            onClick={this.changeState.bind(this)}
+          />
         </div>
-        <Side
-          current={current}
-          currentActive={currentActive}
-          baseRef={ref => (this.side = ref)}
-          onClick={this.changeState.bind(this)}
-        />
       </div>
     );
     return <Background body={body} />;
