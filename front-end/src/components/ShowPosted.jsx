@@ -7,6 +7,7 @@ export default function ShowPosted(props) {
   const [completed, setCompleted] = useState(false);
   const token = sessionStorage.getItem('token')
   const userID = jwt_decode(token);
+
   const completeTask = function (task) {
     props.onComplete(task);
     setCompleted(true);
@@ -22,7 +23,7 @@ export default function ShowPosted(props) {
                    {(task.helper_id && !task.completed_at) && <Button message="Done?" onClick={() => completeTask(task)} />} 
                    {!task.helper_id && <p className="task-message">Nobody has accepted this task yet </p>}
                    {(task.helper_id && task.completed_at) && <p className="task-message" >Done! Thanks neighbor</p>}
-                   <Button />
+                   <Button onClick={() => props.onCancel(task)} message="cancel" />
                    </div>)
   
   const body = (

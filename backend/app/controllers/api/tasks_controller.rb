@@ -25,8 +25,9 @@ class Api::TasksController < ApplicationController
   def destroy
     @task = Task.find_by(id: params[:id])
     @task.destroy
+    redirect_to api_tasks_path
   end
-  
+
 
   def create
     @task = Task.new(task_params)

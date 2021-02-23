@@ -61,7 +61,8 @@ const App = () => {
     setLoggedIn,
     createChannel,
     getWeather,
-    completeTask
+    completeTask,
+    cancelTask
   } = useApplicationData();
 
   const { mode, transition } = useVisualMode();
@@ -112,7 +113,7 @@ const App = () => {
             }
           </Route>
           <Route path='/posted'>
-            <ShowPosted state={state} onComplete={completeTask} />
+            <ShowPosted state={state} onCancel={cancelTask} onComplete={completeTask} />
           </Route>
           <Route path='/accepted'>
             <Accepted state={state}   

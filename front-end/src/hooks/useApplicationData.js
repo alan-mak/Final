@@ -94,6 +94,15 @@ const useApplicationData = () => {
     }).catch(err => console.log(err));
   }
 
+  function cancelTask(task) {
+    console.log('deleting: ', task);
+    return axios({
+      method: 'delete',
+      url: `/api/tasks/${task.id}`,
+      data: { task },
+    }).catch(err => console.log(err));
+  }
+
   async function createUser(user) {
     const turtle =
       user.street.split(' ').join('+') +
@@ -210,7 +219,8 @@ const useApplicationData = () => {
     getTask,
     setTasks,
     getWeather,
-    completeTask
+    completeTask,
+    cancelTask
   };
 };
 
