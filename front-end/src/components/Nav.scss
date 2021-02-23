@@ -14,14 +14,18 @@
   }
 
   .logo {
-    text-align: center;
     font-family: $font-logo;
     font-size: 50px;
     font-weight: 900;
     padding: 5px 12px;
     border-radius: 10px;
-    // box-shadow: 0 2px 2px 1px #3a3a3a;
-    // background-color: $primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+      margin-right: 10px;
+      filter: invert(63%) sepia(13%) saturate(839%) hue-rotate(147deg) brightness(86%) contrast(88%);
+    }
   }
 
   .logo-accent {
