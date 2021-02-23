@@ -62,7 +62,7 @@ const App = () => {
     createChannel,
     getWeather,
     completeTask,
-    cancelTask
+    cancelTask,
   } = useApplicationData();
 
   const { mode, transition } = useVisualMode();
@@ -84,7 +84,7 @@ const App = () => {
   const taskListBody = (
     <>
       <div className='task-list'>{parsedTaskList}</div>
-      <Chat setRooms={setRooms} rooms={rooms} state={state}/>
+      <Chat setRooms={setRooms} rooms={rooms} state={state} />
       <ShowAccepted tasks={state.tasks} />
     </>
   );
@@ -92,7 +92,7 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
-        <Nav setLoggedIn={setLoggedIn} state={state} getWeather={getWeather}/>
+        <Nav setLoggedIn={setLoggedIn} state={state} getWeather={getWeather} />
         <Switch>
           <Route path='/choice'>
             <AfterLogin />
@@ -108,18 +108,22 @@ const App = () => {
             )}
           />
           <Route path='/tasks'>
-            {state.users.length > 0 &&
-              <Background body={taskListBody} />
-            }
+            {state.users.length > 0 && <Background body={taskListBody} />}
           </Route>
           <Route path='/posted'>
-            <ShowPosted state={state} onCancel={cancelTask} onComplete={completeTask} />
+            <ShowPosted
+              state={state}
+              onCancel={cancelTask}
+              onComplete={completeTask}
+            />
           </Route>
           <Route path='/accepted'>
-            <Accepted state={state}   
-            onClarify={handleChannelCreate}
-            setRooms={setRooms} />
-            <Chat setRooms={setRooms} rooms={rooms} state={state}/>
+            <Accepted
+              state={state}
+              onClarify={handleChannelCreate}
+              setRooms={setRooms}
+            />
+            <Chat setRooms={setRooms} rooms={rooms} state={state} />
           </Route>
           <Route path='/'>
             <LogSign
