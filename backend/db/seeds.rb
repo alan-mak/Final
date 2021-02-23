@@ -288,7 +288,7 @@ Task.create!(
 )
 
 Task.create!(
-  name: "I am a bad typer",
+  name: "I am a slow typer",
   description: "I am very slow at typing and need a way to help me type faster",
   recipient_id: 11,
   helper_id: 12
