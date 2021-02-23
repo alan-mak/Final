@@ -21,3 +21,10 @@
     outline: none;
   }
 }
+
+#cancel {
+  background-color: $danger-color;
+}
+#cancel:hover {
+  background-color: #AD3B3B;
+}
