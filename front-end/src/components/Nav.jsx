@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import jwt_decode from 'jwt-decode';
-import Weather from './Weather'
+import Weather from './Weather';
+import handShake from '../styles/handshake.png'
 
 import './Nav.scss';
 
@@ -9,10 +10,15 @@ export default function Nav(props) {
   const body = (
     <div className='logo'>
       <div>
-        <span className='logo-accent'>help</span>Me
+        <img src={handShake} alt="Hand Shake" height={75} width={75}/>
       </div>
-      <div>
-        help<span className='logo-accent'>You</span>
+      <div className="words">
+        <div>
+          <span className='logo-accent'>help</  span>Me
+        </div>
+        <div>
+          help<span className='logo-accent'>You</ span>
+        </div>
       </div>
     </div>
   );
