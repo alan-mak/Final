@@ -253,25 +253,74 @@ Task.create!(
   recipient_id: 5,
 )
 
+# Task.create!(
+#   name: "Fix my final project",
+#   description: "I took a programming course and I'm too tired for finals",
+#   recipient_id: 11,
+#   helper_id: 12
+# )
+
+# Task.create!(
+#   name: "Pick up my mail, I'm in quarantine!",
+#   description: "Tested positive for the big Rona, now I can't go get my packages",
+#   recipient_id: 11
+# )
+# Task.create!(
+#   name: "First job! Can anyone read my resume?",
+#   description: "I don't know what these are supposed to look like",
+#   recipient_id: 11,
+#   helper_id: 12
+# )
+
+# TESTING PURPOSE ONLY
+
 Task.create!(
-  name: "Fix my final project",
-  description: "I took a programming course and I'm too tired for finals",
+  name: "Any dog lovers?",
+  description: "I need help making an app that connects dog owners, hopefully they can pin their location",
   recipient_id: 11,
   helper_id: 12
 )
 
 Task.create!(
-  name: "Pick up my mail, I'm in quarantine!",
-  description: "Tested positive for the big Rona, now I can't go get my packages",
+  name: "Need someone for removal",
+  description: "The morgues are overwhelmed and need help removing a two day old corpse",
   recipient_id: 11
 )
+
 Task.create!(
-  name: "First job! Can anyone read my resume?",
-  description: "I don't know what these are supposed to look like",
+  name: "I am a bad typer",
+  description: "I am very slow at typing and need a way to help me type faster",
   recipient_id: 11,
   helper_id: 12
 )
 
+# Task.create!(
+#   name: "Am I doing yoga correctly?",
+#   description: "Can some watch me using their webcam to see if I am performing my yoga poses properly?",
+#   recipient_id: 11,
+#   helper_id: 12
+# )
+
+# Task.create!(
+#   name: "My messages are coming too quickly",
+#   description: "Messages are being sent too quickly, is there a way to make messages arrive slower?",
+#   recipient_id: 11,
+#   helper_id: 12
+# )
+
+# Task.create!(
+#   name: "Planning a trip to mars",
+#   description: "My travel agent went out of business due to COVID. Could someone recommend an online alternative? Also could someone tell me the weather information for mars as well?",
+#   recipient_id: 11,
+#   helper_id: 12
+# )
+
+# Task.create!(
+#   name: "My pipes burst",
+#   description: "Could someone write a ticket to maintenance for me",
+#   recipient_id: 11,
+#   helper_id: 12
+# )
 puts "Re-creating Channels"
 
 Channel.destroy_all

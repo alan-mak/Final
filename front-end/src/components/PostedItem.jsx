@@ -31,7 +31,7 @@ export default function PostedItem(props) {
                    {(props.task.helper_id && !props.task.completed_at && active) && <Button message="Done?" onClick={() => completeTask(props.task)} /> } 
                    {(!props.task.helper_id && active) && <p className="task-message">Nobody has accepted this task yet </p>}
                    {(props.task.helper_id && props.task.completed_at) && <p className="task-message" >Done! Thanks neighbor</p>}
-                   {(active && !props.task.completed_at) && <Button id="cancel" onClick={() => cancelTask(props.task)} message="cancel" />}
+                   {(active && !props.task.completed_at) && <Button id="cancel" onClick={() => cancelTask(props.task)} message="Cancel" />}
                    {!active && <p className="task-message">You cancelled this task</p>}
                   
                    </div>
