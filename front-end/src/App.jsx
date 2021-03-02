@@ -14,7 +14,6 @@ import Accepted from './components/Accepted';
 import { LogSign } from './components/Login';
 
 import useApplicationData from './hooks/useApplicationData';
-import useVisualMode from './hooks/useVisualMode';
 
 import './App.scss';
 import './components/tasks.scss';
@@ -65,7 +64,6 @@ const App = () => {
     cancelTask,
   } = useApplicationData();
 
-  const { mode, transition } = useVisualMode();
 
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
