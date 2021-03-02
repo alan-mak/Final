@@ -15,10 +15,6 @@ export default function PostedItem(props) {
   const cancelTask = function (task) {
     props.cancel(task);
     setActive(false);
-    // let taskInState = props.state.tasks.find(selected => selected.id === task.id);
-    // console.log('deletingon showposted', taskInState);
-    // taskInState = null;
-    // console.log('deletingon showposted', taskInState);
   }
 
   return (
