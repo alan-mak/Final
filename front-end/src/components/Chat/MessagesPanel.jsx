@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Message } from './Message';
-import Button from '../Button';
 
 export class MessagesPanel extends React.Component {
   state = { input_value: '' };

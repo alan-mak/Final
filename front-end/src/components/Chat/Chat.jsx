@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ChannelList } from './ChannelList';
 import  { MessagesPanel } from './MessagesPanel';
 import socketClient from 'socket.io-client';
-import jwt_decode from 'jwt-decode';
 import './Chat.scss';
 
 
