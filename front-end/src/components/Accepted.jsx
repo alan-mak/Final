@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Background from './Background';
 import jwt_decode from 'jwt-decode';
 import Button from './Button';

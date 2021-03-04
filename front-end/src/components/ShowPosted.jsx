@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Background from './Background';
 import jwt_decode from 'jwt-decode';
-import Button from './Button';
 import PostedItem from './PostedItem';
 import { Helmet } from 'react-helmet';
 
 import './ShowPosted.scss';
 
 export default function ShowPosted(props) {
-  const [completed, setCompleted] = useState(false);
-  const [active, setActive] = useState(true);
   const token = sessionStorage.getItem('token');
   const userID = jwt_decode(token);
 
