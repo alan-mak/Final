@@ -17,18 +17,19 @@
   left: 0;
 }
 .posted-item {
+  font-family: $font-family;
+  margin-bottom: 30px;
+  width: 600px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background-color: white;
-  margin-bottom: 25px;
-  border-radius: 15px;
   padding: 20px 50px;
-  width: 600px;
+  background-color: white;
   box-shadow: 0 5px 7px 2px #3a3a3a;
+  border-radius: 20px;
+
   button {
     align-self: center;
-    margin-bottom: 8px;
+    margin-top: 8px;
     background-image: none;
     border: none;
   }
@@ -38,21 +39,12 @@
   margin: 10px 0;
   width: 400px;
   border-bottom: 3px solid black;
-  margin-left: 10px;
 }
-
 
 .task-title {
-  margin-left: 10px;
+  margin: 0;
 }
 .task-description {
-  margin-left: 10px;
+  margin: 0 0 15px;
+  font-size: 18px;
 }
-
-// #cancel {
-//   background-color: red;
-// }
-
-// #cancel:hover {
-//   background-color: blue;
-// }
