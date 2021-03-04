@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import socketClient from 'socket.io-client';
 
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import TaskListItem from './components/TaskListItem';
 import Background from './components/Background';
 import Show from './components/TaskItem/Show';
@@ -64,7 +65,6 @@ const App = () => {
     cancelTask,
   } = useApplicationData();
 
-
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
       key={task.id}
@@ -90,6 +90,10 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
+        <Helmet>
+          <meta charSet='utf-8' />
+          <title>HelpMeHelpYou</title>
+        </Helmet>
         <Nav setLoggedIn={setLoggedIn} state={state} getWeather={getWeather} />
         <Switch>
           <Route path='/choice'>
