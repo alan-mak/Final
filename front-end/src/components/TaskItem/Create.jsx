@@ -1,10 +1,11 @@
 import React, { useCallback } from 'react';
-import { useState } from 'react';
-import jwt_decode from 'jwt-decode';
-import Button from '../Button';
-import Background from '../Background';
 import { useHistory } from 'react-router-dom';
 import { SlideDown } from 'react-slidedown';
+import { useState } from 'react';
+import jwt_decode from 'jwt-decode';
+
+import Button from '../Button';
+import Background from '../Background';
 
 import './Create.scss';
 

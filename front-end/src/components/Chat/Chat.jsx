@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChannelList } from './ChannelList';
 import  { MessagesPanel } from './MessagesPanel';
+
 import socketClient from 'socket.io-client';
 import './Chat.scss';
 

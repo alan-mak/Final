@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Background from './Background';
 import jwt_decode from 'jwt-decode';
 import Button from './Button';
 import './ShowPosted.scss';
 export default function ShowPosted(props) {
-  // const handleMessage = function () {
-  //   props.onClarify(task.)
-  // }
- 
+
   const token = sessionStorage.getItem('token')
   const userID = jwt_decode(token);
 
