@@ -1,7 +1,9 @@
+// React and Router imports
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useState } from 'react';
 import socketClient from 'socket.io-client';
 
-import React, { useState } from 'react';
+// Components
 import TaskListItem from './components/TaskListItem';
 import Background from './components/Background';
 import Show from './components/TaskItem/Show';
@@ -10,16 +12,17 @@ import { Chat } from './components/Chat/Chat';
 import ShowAccepted from './components/ShowAccepted';
 import ShowPosted from './components/ShowPosted';
 import Accepted from './components/Accepted';
-
 import { LogSign } from './components/Login';
+import AfterLogin from './components/Landing/AfterLogin';
+import Nav from './components/Nav';
 
+// Style and custom hooks
 import useApplicationData from './hooks/useApplicationData';
 
 import './App.scss';
 import './components/tasks.scss';
 
-import AfterLogin from './components/Landing/AfterLogin';
-import Nav from './components/Nav';
+
 
 const SERVER = 'http://localhost:3005';
 
