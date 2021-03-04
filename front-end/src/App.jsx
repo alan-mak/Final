@@ -67,7 +67,6 @@ const App = () => {
     cancelTask,
   } = useApplicationData();
 
-
   const parsedTaskList = state.tasks.map(task => (
     <TaskListItem
       key={task.id}
@@ -93,6 +92,10 @@ const App = () => {
   return (
     <Router>
       <div className='app'>
+        <Helmet>
+          <meta charSet='utf-8' />
+          <title>HelpMeHelpYou</title>
+        </Helmet>
         <Nav setLoggedIn={setLoggedIn} state={state} getWeather={getWeather} />
         <Switch>
           <Route path='/choice'>
