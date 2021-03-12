@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import React, { useState } from 'react';
 import socketClient from 'socket.io-client';
 
+import Helmet from 'react-helmet';
+
 // Components
 import TaskListItem from './components/TaskListItem';
 import Background from './components/Background';
